@@ -1,4 +1,5 @@
 import { useAuth } from "react-use-auth";
+import Link from "next/link"
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -16,6 +17,11 @@ function AppNavbar() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
+              <Link href="/dog" passHref={true}>
+                <Nav.Link>
+                  Random Dog
+                </Nav.Link>
+              </Link>
             </Nav>
             {
               isAuthenticated() ? (
