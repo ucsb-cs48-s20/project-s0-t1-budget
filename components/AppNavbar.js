@@ -1,5 +1,5 @@
 import { useAuth } from "react-use-auth";
-import Link from "next/link"
+import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -31,7 +31,7 @@ function AppNavbar() {
                     <NavDropdown title={
                       <>
                         Hi, {user.name}
-                        <Image className="ml-2" src={user.picture} width={24} height={24}/>
+                        <Image className="ml-2" src={user.picture} width={24} height={24} />
                       </>
                     }>
                       <NavDropdown.Item className="text-danger" onClick={logout}>

@@ -9,7 +9,7 @@ function AuthDetails() {
   const { data } = useSWR(() => [ "/api/info", authResult.accessToken ], fetchWithToken);
 
   if (!data) {
-    return <Spinner animation="border"/>;
+    return <Spinner animation="border" />;
   }
 
   return (

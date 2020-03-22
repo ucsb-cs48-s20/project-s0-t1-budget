@@ -1,5 +1,5 @@
 import { AuthProvider } from "react-use-auth";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       >
         <Component {...pageProps} />
       </AuthProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

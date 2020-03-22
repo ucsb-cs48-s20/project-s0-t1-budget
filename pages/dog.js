@@ -14,7 +14,7 @@ function RandomDog() {
   });
 
   if (!data) {
-    return <Spinner animation="border"/>;
+    return <Spinner animation="border" />;
   }
 
   return (
