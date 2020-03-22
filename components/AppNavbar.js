@@ -13,7 +13,9 @@ function AppNavbar() {
   return (
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="/">Next.js Demo App</Navbar.Brand>
+          <Link href="/" passHref={true}>
+            <Navbar.Brand>Next.js Demo App</Navbar.Brand>
+          </Link>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
@@ -23,22 +25,24 @@ function AppNavbar() {
                 </Nav.Link>
               </Link>
             </Nav>
-            {
-              isAuthenticated() ? (
-                  <NavDropdown title={
-                    <>
-                      Hi, {user.name}
-                      <Image className="ml-2" src={user.picture} width={24} height={24}/>
-                    </>
-                  }>
-                    <NavDropdown.Item onClick={logout}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-              ) : (
-                  <Button onClick={login}>Login</Button>
-              )
-            }
+            <Nav>
+              {
+                isAuthenticated() ? (
+                    <NavDropdown title={
+                      <>
+                        Hi, {user.name}
+                        <Image className="ml-2" src={user.picture} width={24} height={24}/>
+                      </>
+                    }>
+                      <NavDropdown.Item className="text-danger" onClick={logout}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                ) : (
+                    <Button onClick={login}>Login</Button>
+                )
+              }
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
