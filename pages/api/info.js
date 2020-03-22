@@ -1,9 +1,10 @@
-import { authenticateRequest } from "../../utils/auth";
+import { authenticateRequest, getUserDetails } from "../../utils/auth";
 
 export default async function (req, res) {
-  const response = await authenticateRequest(req);
+  const { token } = await authenticateRequest(req);
+  const details = await getUserDetails(token);
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify(response));
+  res.end(JSON.stringify(details));
 }

@@ -1,6 +1,7 @@
 import jwtCore from "jsonwebtoken";
 import jwksClient from "jwks-rsa";
 import pify from "pify";
+import { fetchWithToken } from "./fetch";
 
 const jwt = pify(jwtCore);
 const client = jwksClient({
@@ -34,6 +35,12 @@ export async function authenticateRequest(req) {
 
   const token = authHeader.substring(7);
 
-  return verifyToken(token);
+  return {
+    details: verifyToken(token),
+    token
+  };
 }
 
+export async function getUserDetails(token) {
+  return fetchWithToken(`https://${process.env.AUTH0_DOMAIN}/userinfo`, token)
+}
