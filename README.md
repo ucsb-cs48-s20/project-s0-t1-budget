@@ -19,3 +19,19 @@ Set up authentication by following the instructions in [docs/auth0.md](./docs/au
 ### Running on localhost
 
 To run on localhost, run `npm run dev`. The app will run on http://localhost:3000.
+
+### Deploying
+
+To deploy this app, you will need [zeit.co account](https://zeit.co/signup). Run `now login` (in this directory) to
+login to your account.
+
+To copy secrets to your new account, run `./uploadSecrets.sh`.
+You will need to run this command any time your secrets change.
+
+Once you've uploaded your secrets, run `now`. The first time you deploy your app, you will be asked a few questions
+about the app. For most of the questions, you can hit enter to go with the suggested value, though you may want to
+choose your own app name.
+
+If your deployment was successful, the link to the production app should be copied to your clipboard. The first time
+you do this, you will have to make a small modification to your Auth0 configuration. Follow the instructions under
+"After your first deploy" in [docs/auth0.md](./docs/auth0.md).
