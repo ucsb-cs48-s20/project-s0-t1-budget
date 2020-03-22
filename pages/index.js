@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Spinner from "react-bootstrap/Spinner";
 import { fetchWithToken } from "../utils/fetch";
 import Layout from "../components/Layout";
+import AuthenticatedContent from "../components/AuthenticatedContent";
 
 function AuthDetails() {
   const { authResult } = useAuth();
@@ -26,7 +27,9 @@ function AuthDetails() {
 function HomePage() {
   return (
       <Layout>
-        <AuthDetails />
+        <AuthenticatedContent>
+          <AuthDetails />
+        </AuthenticatedContent>
       </Layout>
   );
 }
