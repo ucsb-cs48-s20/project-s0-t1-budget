@@ -29,7 +29,7 @@ login to your account.
 To copy secrets to your new account, run `./uploadSecrets.sh`.
 You will need to run this command any time your secrets change.
 
-Once you've uploaded your secrets, run `now`. The first time you deploy your app, you will be asked a few questions
+Once you've uploaded your secrets, run `now --prod`. The first time you deploy your app, you will be asked a few questions
 about the app. For most of the questions, you can hit enter to go with the suggested value, though you may want to
 choose your own app name.
 
