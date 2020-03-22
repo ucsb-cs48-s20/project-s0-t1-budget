@@ -18,7 +18,8 @@ Set up authentication by following the instructions in [docs/auth0.md](./docs/au
 
 ### Running on localhost
 
-To run on localhost, run `npm run dev`. The app will run on http://localhost:3000.
+To run on localhost, run `npm run dev`. The app will run on http://localhost:3000. While the app is running in
+development mode, any changes you make to the codebase will automatically be reflected in the browser. 
 
 ### Deploying
 
