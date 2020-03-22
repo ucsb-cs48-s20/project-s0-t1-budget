@@ -19,7 +19,7 @@ function AppNavbar() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav className="mr-auto">
-              <Link href="/dog" passHref={true}>
+              <Link href="/woof" passHref={true}>
                 <Nav.Link>
                   Random Dog
                 </Nav.Link>
