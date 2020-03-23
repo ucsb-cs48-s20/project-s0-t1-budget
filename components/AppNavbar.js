@@ -39,7 +39,7 @@ function AppNavbar() {
                       </NavDropdown.Item>
                     </NavDropdown>
                 ) : (
-                    <Button onClick={login}>Login</Button>
+                    <Button data-cy="login" onClick={login}>Login</Button>
                 )
               }
             </Nav>

@@ -22,7 +22,7 @@ function RandomDog() {
         <p>
           Enjoy this doggo!
         </p>
-        <Image src={data.image} />
+        <Image data-cy="doggo" src={data.image} />
       </div>
   );
 }
