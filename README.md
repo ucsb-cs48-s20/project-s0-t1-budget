@@ -23,7 +23,7 @@ development mode, any changes you make to the codebase will automatically be ref
 
 ### Deploying
 
-To deploy this app, you will need [zeit.co account](https://zeit.co/signup). You'll also need to install the `now` cli via `npm i -g now`. Run `now login` (in this directory) to login to your account.
+To deploy this app, you will need [zeit.co account](https://zeit.co/signup). Just a reminder: you need to install the `now` cli via `npm i -g now`. Run `now login` (in this directory) to login to your account.
 
 To copy secrets to your new account, run `./uploadSecrets.sh`.
 You will need to run this command any time your secrets change.
