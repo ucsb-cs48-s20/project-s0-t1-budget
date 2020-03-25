@@ -1,5 +1,6 @@
 schedule(async () => {
   const packageDiff = await danger.git.JSONDiffForFile("package.json");
+  message(JSON.stringify(packageDiff));
   const dependenciesDiff = packageDiff.dependencies;
 
   if (dependenciesDiff) {
