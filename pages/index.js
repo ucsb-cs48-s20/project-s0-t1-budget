@@ -7,30 +7,30 @@ import AuthenticatedContent from "../components/AuthenticatedContent";
 
 function AuthDetails() {
   const { authResult } = useAuth();
-  const { data } = useSWR(() => [ "/api/info", authResult.accessToken ], fetchWithToken);
+  const { data } = useSWR(
+    () => ["/api/info", authResult.accessToken],
+    fetchWithToken
+  );
 
   if (!data) {
     return <Spinner animation="border" />;
   }
 
   return (
-      <div>
-        You're logged in! This is the information that the server knows about you:
-        <pre>
-          {JSON.stringify(data, null, "\t")}
-        </pre>
-      </div>
+    <div>
+      You're logged in! This is the information that the server knows about you:
+      <pre>{JSON.stringify(data, null, "\t")}</pre>
+    </div>
   );
 }
 
-
 function HomePage() {
   return (
-      <Layout>
-        <AuthenticatedContent>
-          <AuthDetails />
-        </AuthenticatedContent>
-      </Layout>
+    <Layout>
+      <AuthenticatedContent>
+        <AuthDetails />
+      </AuthenticatedContent>
+    </Layout>
   );
 }
 

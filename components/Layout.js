@@ -4,13 +4,11 @@ import AppFooter from "./AppFooter";
 
 function Layout(props) {
   return (
-      <>
-        <AppNavbar />
-        <Container>
-          {props.children}
-        </Container>
-        <AppFooter />
-      </>
+    <>
+      <AppNavbar />
+      <Container>{props.children}</Container>
+      <AppFooter />
+    </>
   );
 }
 

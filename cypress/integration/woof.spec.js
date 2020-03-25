@@ -10,8 +10,7 @@ describe("Random Dog page", () => {
   it("displays a dog from the api", () => {
     const image = "https://images.dog.ceo/breeds/chow/n02112137_10654.jpg";
 
-    cy.server()
-        .route("/api/dog", { image }).as("dog");
+    cy.server().route("/api/dog", { image }).as("dog");
 
     cy.visit("http://localhost:3000/woof");
 

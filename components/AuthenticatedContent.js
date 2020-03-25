@@ -6,20 +6,14 @@ function AuthenticatedContent(props) {
 
   if (!isAuthenticated()) {
     return (
-        <div>
-          <p>
-            You must log in to view this content.
-          </p>
-          <Button onClick={login}>Login</Button>
-        </div>
-    )
+      <div>
+        <p>You must log in to view this content.</p>
+        <Button onClick={login}>Login</Button>
+      </div>
+    );
   }
 
-  return (
-      <>
-        {props.children}
-      </>
-  )
+  return <>{props.children}</>;
 }
 
 export default AuthenticatedContent;

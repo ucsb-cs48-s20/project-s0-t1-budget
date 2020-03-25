@@ -10,7 +10,7 @@ function RandomDog() {
     // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
     // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
     revalidateOnFocus: false,
-    revalidateOnReconnect: false
+    revalidateOnReconnect: false,
   });
 
   if (!data) {
@@ -18,21 +18,18 @@ function RandomDog() {
   }
 
   return (
-      <div>
-        <p>
-          Enjoy this doggo!
-        </p>
-        <Image data-cy="doggo" src={data.image} />
-      </div>
+    <div>
+      <p>Enjoy this doggo!</p>
+      <Image data-cy="doggo" src={data.image} />
+    </div>
   );
 }
 
-
 function DogPage() {
   return (
-      <Layout>
-        <RandomDog />
-      </Layout>
+    <Layout>
+      <RandomDog />
+    </Layout>
   );
 }
 

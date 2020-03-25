@@ -7,13 +7,13 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   return (
-      <AuthProvider
-          navigate={router.push}
-          auth0_domain={process.env.AUTH0_DOMAIN}
-          auth0_client_id={process.env.AUTH0_CLIENT_ID}
-      >
-        <Component {...pageProps} />
-      </AuthProvider>
+    <AuthProvider
+      navigate={router.push}
+      auth0_domain={process.env.AUTH0_DOMAIN}
+      auth0_client_id={process.env.AUTH0_CLIENT_ID}
+    >
+      <Component {...pageProps} />
+    </AuthProvider>
   );
 }
 

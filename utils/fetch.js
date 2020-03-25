@@ -11,7 +11,7 @@ export async function fetchWithToken(url, token, options) {
     ...options,
     headers: {
       ...options?.headers,
-      authorization: `Bearer ${token}`
-    }
+      authorization: `Bearer ${token}`,
+    },
   });
 }

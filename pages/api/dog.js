@@ -5,7 +5,9 @@ export default async function (req, res) {
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify({
-    image: response.message
-  }));
+  res.end(
+    JSON.stringify({
+      image: response.message,
+    })
+  );
 }
