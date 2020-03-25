@@ -9,7 +9,7 @@
     "cy:run": "cypress run",
     "fix:format": "prettier --write \"**/*.{js,json,md}\" --ignore-path .gitignore",
     "test": "npm-run-all test:*",
-    "test:format": "prettier --check \"**/*.js\" --ignore-path .gitignore",
+    "test:format": "prettier --check \"**/*.{js,json,md}\" --ignore-path .gitignore",
     "test:cypress": "start-server-and-test dev 3000 cy:run"
   },
   "husky": {
