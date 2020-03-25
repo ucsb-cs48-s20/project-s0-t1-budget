@@ -23,10 +23,10 @@
     "jsonwebtoken": "^8.5.1",
     "jwks-rsa": "^1.7.0",
     "next": "9.3.1",
-    "now": "^17.0.4",
+    "now": "^17.1.1",
     "pify": "^5.0.0",
     "react": "16.13.1",
-    "react-bootstrap": "^1.0.0-beta.17",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "16.13.1",
     "react-use-auth": "^0.5.3",
     "swr": "^0.1.18"
