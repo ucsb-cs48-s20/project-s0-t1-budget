@@ -10,13 +10,13 @@ Next, register a new application. You do this by navigating to the "Applications
 "Create Application" button. Give it a name and ensure you set it up as a "Single Page Application".
 
 In the configuration for the application you just created, click on the "Settings" tab and fill in the following values
- in the appropriate fields:
+in the appropriate fields:
 
-| Field | Value |
-| --- | --- |
+| Field                 | Value                                |
+| --------------------- | ------------------------------------ |
 | Allowed Callback URLs | http://localhost:3000/auth0_callback |
-| Allowed Logout URLs | http://localhost:3000 |
-| Allowed Web Origins | http://localhost:3000 |
+| Allowed Logout URLs   | http://localhost:3000                |
+| Allowed Web Origins   | http://localhost:3000                |
 
 Make sure to click "Save Changes" at the bottom of the page to save your changes.
 
@@ -51,11 +51,11 @@ apps will work properly.
 
 For example, if your production url is https://ucsb-demo-nextjs-app.now.sh/, your fields should now look like this:
 
-| Field | Value |
-| --- | --- |
+| Field                 | Value                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------- |
 | Allowed Callback URLs | http://localhost:3000/auth0_callback, https://ucsb-demo-nextjs-app.now.sh/auth0_callback |
-| Allowed Logout URLs | http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh |
-| Allowed Web Origins | http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh |
+| Allowed Logout URLs   | http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh                               |
+| Allowed Web Origins   | http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh                               |
 
 Don't just copy the above values, replace https://ucsb-demo-nextjs-app.now.sh with the link to your own deployment of
 the production app.
