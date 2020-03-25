@@ -48,7 +48,11 @@ schedule(async () => {
 
   const prReviewers = danger.github.requested_reviewers;
 
-  if (!prReviewers) {
+  if (prReviewers.users.length === 0 && prReviewers.teams.length === 0) {
     warn("Don't forget to request reviewers!");
   }
+
+  const prAuthor = danger.github.pr.user.login;
+
+  markdown(`:raised_hands: Thanks for the contribution, ${prAuthor}!`);
 });
