@@ -21,4 +21,8 @@ jobs:
         env:
           CI: true
           AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}  
+          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+      - run: npm run danger
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DANGER_DISABLE_TRANSPILATION: true
