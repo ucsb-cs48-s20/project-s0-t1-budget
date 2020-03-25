@@ -39,4 +39,16 @@ schedule(async () => {
 
   messageDependencyChanges(packageDiff);
   messageDevDependencyChanges(packageDiff);
+
+  const prBody = danger.github.pr.body;
+
+  if (!prBody) {
+    warn("Don't forget to add a description to your PR!");
+  }
+
+  const prReviewers = danger.github.requested_reviewers;
+
+  if (!prReviewers) {
+    warn("Don't forget to request reviewers!");
+  }
 });
