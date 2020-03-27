@@ -1,9 +1,9 @@
-name: Node.js CI
+name: Danger
 
-on: push
+on: pull_request
 
 jobs:
-  build:
+  danger:
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,8 +17,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm test
+      - run: npm run danger ci
         env:
-          CI: true
-          AUTH0_DOMAIN: ${{ secrets.AUTH0_DOMAIN }}
-          AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DANGER_DISABLE_TRANSPILATION: true
