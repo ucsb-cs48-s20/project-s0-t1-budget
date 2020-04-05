@@ -5,7 +5,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 
 function getAppName(github, app) {
-  return `cs48-${github}-${app}`;
+  return `cs48-${github}-${app}`.toLowerCase();
 }
 
 function addSecret(appName, key, value) {
@@ -39,11 +39,14 @@ inquirer
       validate: (value, { github }) => {
         const appName = getAppName(github, value);
         const valid =
-          appName.length <= 52 && !/--/.test(value) && !/-$/.test(value);
+          appName.length <= 52 &&
+          !/[^a-z0-9\-]/.test(value) &&
+          !/--/.test(value) &&
+          !/-$/.test(value);
 
         return (
           valid ||
-          "Invalid app name. Try shortening the name, and remove any consecutive/trailing '-' characters."
+          "Invalid app name. The full app name must be no more than 52 characters and only contain alphanumeric characters and non-consecutive/non-trailing dashes."
         );
       },
     },
