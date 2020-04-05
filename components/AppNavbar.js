@@ -1,4 +1,3 @@
-import { useAuth } from "react-use-auth";
 import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,8 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
-function AppNavbar() {
-  const { isAuthenticated, login, logout, user } = useAuth();
+function AppNavbar(props) {
+  const user = props.user;
 
   return (
     <Navbar bg="light" expand="lg">
@@ -22,9 +21,14 @@ function AppNavbar() {
             <Link href="/woof" passHref={true}>
               <Nav.Link>Random Dog</Nav.Link>
             </Link>
+            {user && (
+              <Link href="/woof-private" passHref={true}>
+                <Nav.Link>Random Dog with Auth</Nav.Link>
+              </Link>
+            )}
           </Nav>
           <Nav>
-            {isAuthenticated() ? (
+            {user ? (
               <NavDropdown
                 title={
                   <>
@@ -38,12 +42,12 @@ function AppNavbar() {
                   </>
                 }
               >
-                <NavDropdown.Item className="text-danger" onClick={logout}>
+                <NavDropdown.Item className="text-danger" href="/api/logout">
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Button data-cy="login" onClick={login}>
+              <Button data-cy="login" href="/api/login">
                 Login
               </Button>
             )}

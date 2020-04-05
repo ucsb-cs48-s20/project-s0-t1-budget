@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "setup": "node ./setup_now.js",
     "cy:run": "cypress run",
     "fix:format": "prettier --write \"**/*.{js,json,md}\" --ignore-path .gitignore",
     "test": "npm-run-all test:*",
@@ -19,17 +20,13 @@
     }
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^0.11.0",
     "bootstrap": "^4.4.1",
     "isomorphic-unfetch": "^3.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "jwks-rsa": "^1.7.0",
     "next": "9.3.2",
-    "now": "^17.1.1",
-    "pify": "^5.0.0",
     "react": "16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "16.13.1",
-    "react-use-auth": "^0.5.3",
     "swr": "^0.1.18"
   },
   "devDependencies": {
@@ -38,6 +35,8 @@
     "danger": "^10.0.0",
     "dotenv": "^8.2.0",
     "husky": "^4.2.3",
+    "inquirer": "^7.1.0",
+    "now": "^17.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.2",
     "pretty-quick": "^2.0.1",
