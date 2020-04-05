@@ -26,10 +26,10 @@ development mode, any changes you make to the codebase will automatically be ref
 To deploy this app, you will need a [zeit.co account](https://zeit.co/signup). Run `npx now login` (in this directory)
 to login to your account.
 
-To copy secrets to your new account, run `./uploadSecrets.sh`.
-You will need to run this command any time your secrets change.
+To set up your project, you will need to generate a now.json by running `npm run setup`. Follow the instructions in your
+terminal to set up a new project and it will generate a now.json file for you.
 
-Once you've uploaded your secrets, run `npx now --prod`. The first time you deploy your app, you will be asked a few
+Once you've set up your now.json, run `npx now --prod --confirm`. The first time you deploy your app, you will be asked a few
 questions about the app. For most of the questions, you can hit enter to go with the suggested value, though you may
 want to choose your own app name.
 
