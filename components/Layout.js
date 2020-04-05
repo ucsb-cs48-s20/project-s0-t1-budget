@@ -3,9 +3,11 @@ import AppNavbar from "./AppNavbar";
 import AppFooter from "./AppFooter";
 
 function Layout(props) {
+  const user = props.user;
+
   return (
     <>
-      <AppNavbar />
+      <AppNavbar user={user} />
       <Container>{props.children}</Container>
       <AppFooter />
     </>

@@ -1,4 +1,4 @@
-import { authenticateRequest, getUserDetails } from "../../utils/auth";
+import { authenticateRequest, getUserDetails } from "../../utils/ssr";
 
 export default async function (req, res) {
   const { token } = await authenticateRequest(req);

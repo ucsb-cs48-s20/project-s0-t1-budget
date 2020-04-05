@@ -1,35 +1,21 @@
-import { useAuth } from "react-use-auth";
-import useSWR from "swr";
-import Spinner from "react-bootstrap/Spinner";
-import { fetchWithToken } from "../utils/fetch";
 import Layout from "../components/Layout";
-import AuthenticatedContent from "../components/AuthenticatedContent";
+import { optionalAuth } from "../utils/ssr";
 
-function AuthDetails() {
-  const { authResult } = useAuth();
-  const { data } = useSWR(
-    () => ["/api/info", authResult.accessToken],
-    fetchWithToken
-  );
+export const getServerSideProps = optionalAuth;
 
-  if (!data) {
-    return <Spinner animation="border" />;
-  }
+function HomePage(props) {
+  const user = props.user;
 
   return (
-    <div>
-      You're logged in! This is the information that the server knows about you:
-      <pre>{JSON.stringify(data, null, "\t")}</pre>
-    </div>
-  );
-}
-
-function HomePage() {
-  return (
-    <Layout>
-      <AuthenticatedContent>
-        <AuthDetails />
-      </AuthenticatedContent>
+    <Layout user={user}>
+      {user ? (
+        <div>
+          You're logged in! Here's what the server knows about you:
+          <pre>{JSON.stringify(user, null, "\t")}</pre>
+        </div>
+      ) : (
+        <div>You're not logged in!</div>
+      )}
     </Layout>
   );
 }

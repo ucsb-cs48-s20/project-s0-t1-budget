@@ -3,6 +3,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Image from "react-bootstrap/Image";
 import { fetch } from "../utils/fetch";
 import Layout from "../components/Layout";
+import { optionalAuth } from "../utils/ssr";
 
 function RandomDog() {
   const { data } = useSWR("/api/dog", fetch, {
@@ -25,9 +26,13 @@ function RandomDog() {
   );
 }
 
-function DogPage() {
+export const getServerSideProps = optionalAuth;
+
+function DogPage(props) {
+  const user = props.user;
+
   return (
-    <Layout>
+    <Layout user={user}>
       <RandomDog />
     </Layout>
   );
