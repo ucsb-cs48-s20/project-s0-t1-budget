@@ -27,6 +27,7 @@ inquirer
       name: "github",
       message: "What's your github username?",
       validate: (value) => {
+        // from https://github.com/shinnn/github-username-regex
         const valid = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(value);
 
         return valid || "You must enter a valid GitHub username!";
