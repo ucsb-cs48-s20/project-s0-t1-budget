@@ -1,4 +1,4 @@
-#Budget Visualizer
+# Budget Visualizer
 
 * A dynamic and easy to comprehend organized data set of an individuals income and expenses history.
 
