@@ -1,6 +1,6 @@
 # Agreements List
 
-Team Members:
+Team Members(githubids):
   * Tomas Vera (tomasvera24)
   * Connor McIntosh (connormcintosh)
   * Edward Thai (eddythai)
