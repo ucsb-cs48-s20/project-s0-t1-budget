@@ -17,6 +17,7 @@ Description:
 
 User Roles:
   * There will be one user role which is the person that enters their spending and income data.
+  * Admins can see anonymous data to compute averages for people who wish to see and agree to share their info.
   
 Permission:
   * Users should be able to decide if they want to send their budgeting data to other people and what types of data they want to send.
