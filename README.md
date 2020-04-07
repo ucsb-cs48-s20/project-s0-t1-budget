@@ -16,6 +16,8 @@ next few steps.
 
 Set up authentication by following the instructions in [docs/auth0.md](./docs/auth0.md).
 
+* A note to Windows Subsystem for Linux (WSL) users: If you are using WSL to deploy your app, make sure your .env file uses the UNIX line ending (`\n`) instead of the Windows (DOS) line ending (`\r\n`).
+
 ### Running on localhost
 
 To run on localhost, run `npm run dev`. The app will run on http://localhost:3000. While the app is running in
