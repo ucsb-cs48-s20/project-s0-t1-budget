@@ -56,7 +56,7 @@ If the test cases were passing on the starter code repo, but are now
 failing, it is likely because you need to configure the secrets
 for Github Actions. That process is explained here: [docs/auth0-github-actions.md](./docs/auth0-github-actions.md).
 
-## Deploying to now.sh
+## Deploying to now.sh for the first time
 
 To deploy this app, you will need a [zeit.co account](https://zeit.co/signup).
 
@@ -77,9 +77,11 @@ If your deployment was successful, the link to the production app
 should be copied to your clipboard.
 
 The first time you do this, you will have to make a small modification
-to your Auth0 configuration. Follow the instructions under "After your
-first deploy" in
-[docs/auth0-production.md](./docs/auth0-production.md).
+to your Auth0 configuration. Follow the instructions in
+[docs/auth0-production.md](./docs/auth0-production.md) to configure your
+app for OAuth.
+
+Then, test whether your application works on the production URL.
 
 # The value of `SESSION_COOKIE_SECRET`
 
