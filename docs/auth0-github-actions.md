@@ -43,4 +43,4 @@ Actions. This is done via the `Secrets` item in the repository settings.
 
 # Next step
 
-Return to [README.md](../README.md) and proceed with configurig for production on now.sh
+Return to [README.md](../README.md) and proceed with configuring for production on now.sh
