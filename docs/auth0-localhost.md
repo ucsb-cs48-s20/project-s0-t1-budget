@@ -41,7 +41,7 @@ These additional steps are described in [docs/auth0-github-actions.md](./auth0-g
 
 # Create the `.env` file:
 
-The `.env` file should be created by running `cp env.SAMPLE .env`
+The `.env` file should be created by running `cp .env.SAMPLE .env`
 
 This file is only stored in the local repo, not in the file system of the GitHub repo
 
