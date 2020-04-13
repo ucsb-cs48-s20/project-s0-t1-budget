@@ -46,3 +46,6 @@ Notes:
 
 Don't forget to click `Save Changes` at the bottom of the page.
 
+# Next step
+
+Return to [README.md](../README.md) 
