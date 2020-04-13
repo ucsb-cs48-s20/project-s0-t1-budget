@@ -27,15 +27,22 @@ For every field that references `http://localhost:3000`:
 - It is important you include **both** `localhost` **and** production urls so that both your localhost and production apps will work properly.
 
 For example, if your production url is `https://ucsb-demo-nextjs-app.now.sh`,
-your fields should now look like this:
+your fields should now look like this.  
 
-| Field                 | Value                                                                                    |
-| --------------------- | ---------------------------------------------------------------------------------------- |
-| Allowed Callback URLs | `http://localhost:3000/auth0_callback, https://ucsb-demo-nextjs-app.now.sh/api/callback` |
-| Allowed Logout URLs   | `http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh`                             |
+Allowed Callback URLs:
+```
+http://localhost:3000/auth0_callback, https://ucsb-demo-nextjs-app.now.sh/api/callback
+```
 
-Don't just copy the above values; replace
-`https://ucsb-demo-nextjs-app.now.sh` with the link to your own
-deployment of the production app.
+Allowed Logout URLs:
+```
+http://localhost:3000, https://ucsb-demo-nextjs-app.now.sh
+```
+
+Notes:
+* Be sure that the `localhost` values use `http` but the `now.sh` values use `https`
+* Don't just copy the above values; replace `https://ucsb-demo-nextjs-app.now.sh` with the link to your own
+  deployment of the production app.
 
 Don't forget to click `Save Changes` at the bottom of the page.
+
