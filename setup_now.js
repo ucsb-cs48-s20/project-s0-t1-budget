@@ -1,3 +1,7 @@
+// Read secrets from .env file and add them to now app
+// Prepend secrets with a string that disambiguates different
+// applications.
+
 require("dotenv").config();
 const crypto = require("crypto");
 const { execSync } = require("child_process");
@@ -55,6 +59,9 @@ inquirer
   .then(({ github, app }) => {
     const appName = getAppName(github, app);
     const cookieSecret = crypto.randomBytes(32).toString("hex");
+    // This generates a random value for SESSION_COOKIE_SECRET
+    // The importance of this is explained here:
+    //   https://martinfowler.com/articles/session-secret.html
 
     const secrets = [
       ["AUTH0_DOMAIN", null, process.env.AUTH0_DOMAIN],
