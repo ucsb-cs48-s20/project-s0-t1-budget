@@ -59,9 +59,14 @@ for Github Actions. That process is explained here: [docs/auth0-github-actions.m
 ## Deploying to now.sh for the first time
 
 To deploy this app, you will need a [zeit.co account](https://zeit.co/signup).
+* Signup for an account before proceeding.  We recommend using your GitHub credentials to login
 
 Run `npx now login` (in this directory) to login to your account.
-
+* When asked for an email, if you used GitHub to sign in to zeit.co, you should use the same email that is the 
+  primary email on your GitHub account.
+* When signing in for the first time, you'll be asked to confirm your email.  Be sure that you can 
+  get access to read an email sent to the email address that you typed it.
+  
 To deploy your project, run `npx now --prod`. The first time you run this command, you will be prompted with a
 series of questions.
 
