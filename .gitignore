@@ -41,4 +41,3 @@ cypress/screenshots
 cypress/videos
 
 .now
-now.json

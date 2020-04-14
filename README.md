@@ -62,22 +62,24 @@ To deploy this app, you will need a [zeit.co account](https://zeit.co/signup).
 
 Run `npx now login` (in this directory) to login to your account.
 
-To set up your project, you will need to generate a `now.json` by
-running `npm run setup`. Follow the instructions in your terminal to
-set up a new project and it will generate a now.json file for you.
+To deploy your project, run `npx now --prod`. The first time you run this command, you will be prompted with a
+series of questions.
 
-Once you've set up your now.json, run `npx now --prod --confirm`.
+For most of these questions, you can hit enter to use the suggested value.
+**When asked "What's your project's name", enter in a project name in the form _`cs48-githubid-lab00`_,
+replacing _`githubid`_ with your github id**
 
-- The first time you deploy your app, you will be asked a few
-  questions about the app.
-- For most of the questions, you can hit enter to go with the suggested value,
-  though you may want to choose your own app name.
+If the deployment was successful, you should see the line `✅ Production: <production url> [copied to clipboard]`.
+`<production url>` is the link to your running production app. If you are working locally, this value should be
+copied to your clipboard.
 
-If your deployment was successful, the link to the production app
-should be copied to your clipboard.
+If you visit your production app, you may notice that your app is responding with a 500 Internal Server Error. This
+is because the server has not been configured with your Auth0 configuration.
 
-The first time you do this, you will have to make a small modification
-to your Auth0 configuration. Follow the instructions in
+To set this up, run `npm run setup`. You will be prompted to paste the url of your production app, which you should have
+from when you first deployed the app. The setup script will automatically upload your credentials and redeploy your app.
+
+You will also have to make a small modification to your Auth0 configuration. Follow the instructions in
 [docs/auth0-production.md](./docs/auth0-production.md) to configure your
 app for OAuth.
 
