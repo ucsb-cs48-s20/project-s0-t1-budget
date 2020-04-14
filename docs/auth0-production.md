@@ -49,7 +49,7 @@ Notes:
 * Don't just copy the above values; replace `https://cs48-cgaucho-lab00.now.sh` with the link to your own
   deployment of the production app.
 
-Don't forget to click `Save Changes` at the bottom of the page.
+Don't forget to scroll down and click `Save Changes` at the bottom of the page.
 
 # Next step
 
