@@ -1,16 +1,18 @@
-# Setting up Authentication for now.sh
-
-# Setting up Auth0 for now.sh
+# Setting up Auth0 for now.sh (production)
 
 In order for Auth0 to recognize the app running on a production url
 running on now.sh, you will need to make a small change to the app you
 created in the first step.
+
+Navigate back to the settings page of the app you created in the Auth0
+dashboard.
 
 To do this:
 
 * return to the web interface of <https://auth0.com/> and login
 * click on `Applications` in the side menu
 * select your application
+* go to the second tab for `Settings`
 
 Your production url is something of the form
 
@@ -23,9 +25,6 @@ For example, for lab00 in CS48, it might be:
 ```
 https://cs48-cgaucho-lab00.now.sh
 ```
-
-Navigate back to the settings page of the app you created in the Auth0
-dashboard.
 
 For every field that references `http://localhost:3000`:
 
