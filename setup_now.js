@@ -37,6 +37,9 @@ inquirer
     addEnvVar("AUTH0_CLIENT_SECRET", process.env.AUTH0_CLIENT_SECRET);
     addEnvVar("REDIRECT_URI", `${url}/api/callback`);
     addEnvVar("POST_LOGOUT_REDIRECT_URI", url);
+    // This generates a random value for SESSION_COOKIE_SECRET
+    // The importance of this is explained here:
+    //   https://martinfowler.com/articles/session-secret.html
     addEnvVar("SESSION_COOKIE_SECRET", crypto.randomBytes(32).toString("hex"));
 
     console.log("Configured all environment variables. Redeploying...");
