@@ -6,7 +6,7 @@ const inquirer = require("inquirer");
 
 function addEnvVar(key, value) {
   try {
-    execSync(`echo "${value}" | npx now env add "${key}" production`);
+    execSync(`printf "${value}" | npx now env add "${key}" production`);
   } catch {
     console.error(
       `Could not add "${key}". If it already exists, that's fine. If you want to update an existing environment variable, run "npx now env rm ${key} production"`
