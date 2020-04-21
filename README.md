@@ -3,12 +3,12 @@
 * A dynamic and easy to comprehend organized data set of an individuals income and expenses history.
 
 Team Members:
-  * Tomas Vera (tomasvera24)
-  * Connor McIntosh (connormcintosh)
-  * Edward Thai (eddythai)
-  * Tristan Hernandez (tristanhernandez)
-  * Trung Bui (trungbui2000)
-  * Preetham Kesineni (preethamkesineni)
+  * Tomas Vera (tomasvera24) - tomasvera@ucsb.edu
+  * Connor McIntosh (connormcintosh) - connormcintosh@ucsb.edu
+  * Edward Thai (eddythai) - edwardthai@ucsb.edu
+  * Tristan Hernandez (tristanhernandez) - tristanhernandez@ucsb.edu
+  * Trung Bui (trungbui2000) - trungbui@ucsb.edu
+  * Preetham Kesineni (preethamkesineni) - preethamkesineni@ucsb.edu
   
 Tech Stack: Next.js
 
