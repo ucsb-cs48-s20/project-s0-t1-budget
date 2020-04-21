@@ -8,13 +8,22 @@
 
 ## Installing dependencies
 
-The first time you clone this repo, as well as any time you pull/switch branches, you should update the project's
-dependencies by running `npm install`
+Run the command:
+
+```
+npm install
+```
+
+Do this:
+
+- The first time you clone this repo
+- Any time you switch branches
+- Any time you pull new changes from GitHub
 
 ## Obtaining Secrets
 
-To work properly, this application must be configured to use Google OAuth
-using the Auth0 service.
+To work properly, this application must be configured to use Google
+OAuth using the Auth0 service.
 
 This involves:
 
@@ -56,58 +65,25 @@ If the test cases were passing on the starter code repo, but are now
 failing, it is likely because you need to configure the secrets
 for Github Actions. That process is explained here: [docs/auth0-github-actions.md](./docs/auth0-github-actions.md).
 
-## Deploying to now.sh for the first time
+## Deployment to Production
 
-To deploy this app, you will need a [zeit.co account](https://zeit.co/signup).
-* Signup for an account before proceeding.  We recommend using your GitHub credentials to login
+At some point, you'll want to deploy your application to the public internet
+so that real users can access it: we call this a _production_ deployment
+of your app.
 
-Run `npx now login` (in this directory) to login to your account.
-* When asked for an email, if you used GitHub to sign in to zeit.co, you should use the same email that is the 
-  primary email on your GitHub account.
-* When signing in for the first time, you'll be asked to confirm your email.  Be sure that you can 
-  get access to read an email sent to the email address that you typed it.
-  
-To deploy your project, run `npx now --prod`. The first time you run this command, you will be prompted with a
-series of questions.
+There are a variety of cloud-based platforms where we can deploy our
+applications. The file [docs/platforms.md](./docs/platforms.md) describes
+the pros/cons of Heroku vs. now.sh and Amazon Web Services. The summary
+is that we've chosen Heroku for it's easy of user for beginners
+and the ability for a team to collaborate on managing a deployment.
 
-For most of these questions, you can hit enter to use the suggested value.
-**When asked "What's your project's name", enter in a project name in the form _`cs48-githubid-lab00`_,
-replacing _`githubid`_ with your github id**
+Instructions for configuring your app for Heroku are listed in the file
+[docs/heroku.md](./docs/heroku.md)
 
-If the deployment was successful, you should see the line `✅ Production: <production url> [copied to clipboard]`.
-`<production url>` is the link to your running production app. If you are working locally, this value should be
-copied to your clipboard.
+## The value of `SESSION_COOKIE_SECRET`
 
-If you visit your production app, you may notice that your app is responding with a 500 Internal Server Error. This
-is because the server has not been configured with your Auth0 configuration.
+For deployments to localhost and now.sh, the value of `SESSION_COOKIE_SECRET` is automatically determined by the files `next.config.js` and `setup_now.js`, respectively.
 
-To set this up, run `npm run setup`. You will be prompted to paste the url of your production app, which you should have
-from when you first deployed the app. The setup script will automatically upload your credentials and redeploy your app.
+For Heroku deployments, this value needs to be set by hand in the .env file.
 
-You will also have to make a small modification to your Auth0 configuration. Follow the instructions in
-[docs/auth0-production.md](./docs/auth0-production.md) to configure your
-app for OAuth.
-
-Then, test whether your application works on the production URL.
-
-# The value of `SESSION_COOKIE_SECRET`
-
-You will note that in addition to the three secrets defined for Auth0,
-there is another value defined in the file `next.config.js` and in the
-file `setup_now.js` called `SESSION_COOKIE_SECRET`.
-
-The value of `SESSION_COOKIE_SECRET` can be set to any arbitrary long
-unguessable string. It is used to provide extra cryptographic security
-to make it more difficult for hackers to hijack sessions on a web server.
-
-When running on `localhost`, or on CI, a default value can be used.
-This default value is defined in the file `next.config.js`
-
-When running in production, it is important to define a good
-unguessable value, and not use a default value that can be found
-in source code. In this app, the script `setup_now.js` does
-this with the line of code:
-
-```
- const cookieSecret = crypto.randomBytes(32).toString("hex");
-```
+The purpose of this value is described in the file [docs/session-cookie-secret.md](./docs/session-cookie-secret.md)
