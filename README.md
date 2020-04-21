@@ -4,7 +4,7 @@
 
 Team Members:
   * Tomas Vera (tomasvera24) - tomasvera@ucsb.edu
-  * Connor McIntosh (connormcintosh) - 
+  * Connor McIntosh (connormcintosh) - connormcintosh@ucsb.edu
   * Edward Thai (eddythai) - edwardthai@ucsb.edu
   * Tristan Hernandez (tristanhernandez) - tristanhernandez@ucsb.edu
   * Trung Bui (trungbui2000) - trungbui@ucsb.edu
