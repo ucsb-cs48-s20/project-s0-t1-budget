@@ -1,7 +1,7 @@
 # Setting up Auth0 for Heroku (production)
 
 In order for Auth0 to recognize the app running on a production url
-running on now.sh, you will need to make a small change to the Auth0
+running on Heroku, you will need to make a small change to the Auth0
 configuration you did to get set up on `localhost`.
 
 Navigate back to the settings page of the app you created in the Auth0
