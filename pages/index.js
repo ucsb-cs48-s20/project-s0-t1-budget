@@ -14,7 +14,7 @@ function HomePage(props) {
           <pre>{JSON.stringify(user, null, "\t")}</pre>
         </div>
       ) : (
-        <div>You're not logged in!</div>
+        <h1>We are coming soon!</h1>
       )}
     </Layout>
   );

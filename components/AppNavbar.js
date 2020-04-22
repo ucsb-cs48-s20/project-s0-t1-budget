@@ -13,20 +13,10 @@ function AppNavbar(props) {
     <Navbar bg="light" expand="lg">
       <Container>
         <Link href="/" passHref={true}>
-          <Navbar.Brand>Next.js Demo App</Navbar.Brand>
+          <Navbar.Brand>Budget Visualizer</Navbar.Brand>
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className="mr-auto">
-            <Link href="/woof" passHref={true}>
-              <Nav.Link>Random Dog</Nav.Link>
-            </Link>
-            {user && (
-              <Link href="/woof-private" passHref={true}>
-                <Nav.Link>Random Dog with Auth</Nav.Link>
-              </Link>
-            )}
-          </Nav>
           <Nav>
             {user ? (
               <NavDropdown
