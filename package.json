@@ -1,15 +1,46 @@
 {
-  "name": "budget_visualizer",
+  "name": "demo-nextjs-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT",
+    "setup": "node ./setup_now.js",
+    "cy:run": "cypress run",
+    "fix:format": "prettier --write \"**/*.{js,json,md}\" --ignore-path .gitignore",
+    "test": "npm-run-all test:*",
+    "test:format": "prettier --check \"**/*.{js,json}\" --ignore-path .gitignore",
+    "test:cypress": "start-server-and-test dev 3000 cy:run",
+    "danger": "danger"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "dependencies": {
-    "next": "9.3.5",
+    "@auth0/nextjs-auth0": "^0.11.0",
+    "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "9.3.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-bootstrap": "^1.0.0",
+    "react-dom": "16.13.1",
+    "swr": "^0.1.18"
+  },
+  "devDependencies": {
+    "@rckeller/cypress-unfetch": "^1.0.1",
+    "cypress": "^4.2.0",
+    "danger": "^10.0.0",
+    "heroku-dotenv": "^0.4.1",
+    "husky": "^4.2.3",
+    "inquirer": "^7.1.0",
+    "now": "^18.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.2",
+    "pretty-quick": "^2.0.1",
+    "start-server-and-test": "^1.10.11"
   }
 }

@@ -1,10 +1,23 @@
-import Head from 'next/head'
+import Layout from "../components/Layout";
+import { optionalAuth } from "../utils/ssr";
 
-export default function Home() {
+export const getServerSideProps = optionalAuth;
+
+function HomePage(props) {
+  const user = props.user;
+
   return (
-    <div>
-      <h1>Budgeting App</h1>
-      <p> This is the starting page</p>
-    </div>
-    )
+    <Layout user={user}>
+      {user ? (
+        <div>
+          You're logged in! Here's what the server knows about you:
+          <pre>{JSON.stringify(user, null, "\t")}</pre>
+        </div>
+      ) : (
+        <div>You're not logged in!</div>
+      )}
+    </Layout>
+  );
 }
+
+export default HomePage;
