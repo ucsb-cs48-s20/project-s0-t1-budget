@@ -15,7 +15,7 @@ function AppNavbar(props) {
         <Link href="/" passHref={true}>
           <Navbar.Brand>Budget Visualizer</Navbar.Brand>
         </Link>
-        <Navbar.Toggle />
+        {/* <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav>
             {user ? (
@@ -42,7 +42,7 @@ function AppNavbar(props) {
               </Button>
             )}
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse> */}
       </Container>
     </Navbar>
   );

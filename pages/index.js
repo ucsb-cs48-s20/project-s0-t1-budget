@@ -1,4 +1,6 @@
 import Layout from "../components/Layout";
+import ChartComponent from "../components/ChartComponent";
+import ChartFormComponent from "../components/ChartFormComponent";
 import { optionalAuth } from "../utils/ssr";
 
 export const getServerSideProps = optionalAuth;
@@ -14,7 +16,11 @@ function HomePage(props) {
           <pre>{JSON.stringify(user, null, "\t")}</pre>
         </div>
       ) : (
-        <h1>We are coming soon!</h1>
+        <div>
+          <ChartFormComponent></ChartFormComponent>
+
+          <ChartComponent></ChartComponent>
+        </div>
       )}
     </Layout>
   );
