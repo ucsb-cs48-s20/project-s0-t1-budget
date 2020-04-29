@@ -1,7 +1,7 @@
 describe("Index page", () => {
-  it("Does have a form submit button", () => {
+  it("Website logo exists", () => {
     cy.visit("http://localhost:3000");
 
-    cy.contains("Submit");
+    cy.contains("Budget Visualizer");
   });
 });
