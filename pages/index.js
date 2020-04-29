@@ -5,6 +5,28 @@ import { optionalAuth } from "../utils/ssr";
 
 export const getServerSideProps = optionalAuth;
 
+var inputA = [];
+
+var data = {
+  labels: inputA,
+  datasets: [
+    {
+      label: "My First dataset",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 1,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: [10, 59, -20, 81, 56, 55, 40],
+    },
+  ],
+};
+
+function handleClick() {
+  inputA.push("Added");
+  console.log(inputA);
+}
+
 function HomePage(props) {
   const user = props.user;
 
@@ -18,8 +40,8 @@ function HomePage(props) {
       ) : (
         <div>
           <ChartFormComponent></ChartFormComponent>
-
-          <ChartComponent></ChartComponent>
+          <button onClick={handleClick}>addData</button>
+          <ChartComponent graph={data} />
         </div>
       )}
     </Layout>
