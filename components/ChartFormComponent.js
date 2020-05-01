@@ -23,12 +23,7 @@ class ChartFormComponent extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(
-      "A value was submitted input: " +
-        this.state.input +
-        " category: " +
-        this.state.category
-    );
+    this.props.handleFormUpdate(this.state.category, this.state.input);
     event.preventDefault();
   }
 
