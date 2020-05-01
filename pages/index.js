@@ -7,21 +7,27 @@ import { Component } from "react";
 export const getServerSideProps = optionalAuth;
 
 class HomePage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      chartData: {},
-    };
-  }
+  state = {
+    chartData: {
+      labels: ["Net Income"],
+      datasets: [
+        {
+          label: "Categories",
+          backgroundColor: "rgba(255,99,132,0.2)",
+          borderColor: "rgba(255,99,132,1)",
+          borderWidth: 1,
+          hoverBackgroundColor: "rgba(255,99,132,0.4)",
+          hoverBorderColor: "rgba(255,99,132,1)",
+          data: [0],
+        },
+      ],
+    },
+  };
 
-  componentWillMount() {
-    this.getChartData();
-  }
-
-  getChartData() {
+  handleClick = () => {
     this.setState({
       chartData: {
-        labels: ["Groceries", "Utility", "Decor", "Other"],
+        labels: this.state.chartData.labels.concat("hello"),
         datasets: [
           {
             label: "Categories",
@@ -30,18 +36,19 @@ class HomePage extends Component {
             borderWidth: 1,
             hoverBackgroundColor: "rgba(255,99,132,0.4)",
             hoverBorderColor: "rgba(255,99,132,1)",
-            data: [10, 59, -20, 81, 56, 55, 40],
+            data: this.state.chartData.datasets[0].data.concat(10),
           },
         ],
       },
     });
-  }
+  };
 
   render() {
     return (
       <Layout>
         <div>
           <ChartFormComponent></ChartFormComponent>
+          <button onClick={this.handleClick}>change chart</button>
           <ChartComponent chartData={this.state.chartData} />
         </div>
       </Layout>
