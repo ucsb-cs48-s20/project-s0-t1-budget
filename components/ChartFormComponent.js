@@ -40,10 +40,10 @@ class ChartFormComponent extends React.Component {
               value={this.state.category}
               onChange={this.handleChange}
             >
-              <option value="Groceries">Groceries</option> 
-              <option value="Utility">Utility</option> 
-              <option value="Decor">Decoration</option> 
-              <option value="Other">Other</option> 
+              <option value="Groceries">Groceries</option>
+              <option value="Utility">Utility</option>
+              <option value="Decor">Decoration</option>
+              <option value="Other">Other</option>
             </select>
             <input
               name="input"

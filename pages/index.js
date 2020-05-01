@@ -12,9 +12,9 @@ class HomePage extends Component {
       labels: ["Net Income"],
       datasets: [
         {
-          label: "Categories",
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
+          label: "Income",
+          backgroundColor: ["rgba(0,255,0,0.2)", "rgba(255,99,132,0.2)"],
+          borderColor: ["rgba(0,255,0,1)", "rgba(255,99,132,1)"],
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255,99,132,0.4)",
           hoverBorderColor: "rgba(255,99,132,1)",
@@ -35,17 +35,63 @@ class HomePage extends Component {
       const arr = [...this.state.chartData.datasets[0].data];
       arr.splice(0, 1, sumIncome);
       arr.splice(index, 1, sum);
+      var cbkColor = "rgba(238,130,238,0.2)";
+      var cboColor = "rgba(238,130,238,1)";
+      var chbkColor = "rgba(238,130,238,0.4)";
+      var chboColor = "rgba(238,130,238,1)";
+      var bkColor, boColor, hbkColor, hboColor;
+      if (sumIncome > 0) {
+        bkColor = "rgba(0,255,0,0.2)";
+        boColor = "rgba(0,255,0,1)";
+        hbkColor = "rgba(0,255,0.4)";
+        hboColor = "rgba(0,255,0,1)";
+      } else {
+        bkColor = "rgba(255,99,132,0.2)";
+        boColor = "rgba(255,99,132,1)";
+        hbkColor = "rgba(255,99,132,0.4)";
+        hboColor = "rgba(255,99,132,0,1)";
+      }
       this.setState({
         chartData: {
           labels: this.state.chartData.labels,
           datasets: [
             {
-              label: "Categories",
-              backgroundColor: "rgba(255,99,132,0.2)",
-              borderColor: "rgba(255,99,132,1)",
+              label: "Income",
+              backgroundColor: [
+                bkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+              ],
+              borderColor: [
+                boColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+              ],
               borderWidth: 1,
-              hoverBackgroundColor: "rgba(255,99,132,0.4)",
-              hoverBorderColor: "rgba(255,99,132,1)",
+              hoverBackgroundColor: [
+                hbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+              ],
+              hoverBorderColor: [
+                hboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+              ],
               data: arr,
             },
           ],
@@ -55,21 +101,66 @@ class HomePage extends Component {
       const arr = [...this.state.chartData.datasets[0].data];
       var sumIncome =
         parseInt(this.state.chartData.datasets[0].data[0]) + parseInt(value);
+      var cbkColor = "rgba(238,130,238,0.2)";
+      var cboColor = "rgba(238,130,238,1)";
+      var chbkColor = "rgba(238,130,238,0.4)";
+      var chboColor = "rgba(238,130,238,1)";
 
       arr.push(value);
       arr.splice(0, 1, sumIncome);
+      if (sumIncome > 0) {
+        bkColor = "rgba(0,255,0,0.2)";
+        boColor = "rgba(0,255,0,1)";
+        hbkColor = "rgba(0,255,0.4)";
+        hboColor = "rgba(0,255,0,1)";
+      } else {
+        bkColor = "rgba(255,99,132,0.2)";
+        boColor = "rgba(255,99,132,1)";
+        hbkColor = "rgba(255,99,132,0.4)";
+        hboColor = "rgba(255,99,132,0,1)";
+      }
 
       this.setState({
         chartData: {
           labels: this.state.chartData.labels.concat(category),
           datasets: [
             {
-              label: "Categories",
-              backgroundColor: "rgba(255,99,132,0.2)",
-              borderColor: "rgba(255,99,132,1)",
+              label: "Income",
+              backgroundColor: [
+                bkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+                cbkColor,
+              ],
+              borderColor: [
+                boColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+                cboColor,
+              ],
               borderWidth: 1,
-              hoverBackgroundColor: "rgba(255,99,132,0.4)",
-              hoverBorderColor: "rgba(255,99,132,1)",
+              hoverBackgroundColor: [
+                hbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+                chbkColor,
+              ],
+              hoverBorderColor: [
+                hboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+                chboColor,
+              ],
               data: arr,
             },
           ],
@@ -85,7 +176,6 @@ class HomePage extends Component {
           <ChartFormComponent
             handleFormUpdate={this.handleFormUpdate.bind(this)}
           ></ChartFormComponent>
-          <button onClick={this.handleClick}>change chart</button>
           <ChartComponent chartData={this.state.chartData} />
         </div>
       </Layout>
