@@ -47,7 +47,7 @@ class ChartFormComponent extends React.Component {
             </select>
             <input
               name="input"
-              type="text"
+              type="number"
               value={this.state.input}
               onChange={this.handleChange}
             />
