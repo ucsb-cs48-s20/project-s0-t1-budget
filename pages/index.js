@@ -2,10 +2,15 @@ import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 import { optionalAuth } from "../utils/ssr";
+import { Bar } from "react-chartjs-2";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
 export const getServerSideProps = optionalAuth;
 
-var inputA = [];
+var inputA = ["Hello0", "hell0"];
+var inputD = [0];
+var i = 0;
 
 var data = {
   labels: inputA,
@@ -17,15 +22,46 @@ var data = {
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [10, 59, -20, 81, 56, 55, 40],
+      data: inputD,
     },
   ],
 };
 
 function handleClick() {
-  inputA.push("Added");
-  console.log(inputA);
+  inputD.push(++i * 10);
+  inputA.push("Hello" + i);
+  ReactDOM.unmountComponentAtNode(document.getElementById("chart"));
+  ReactDOM.render(
+    <ChartComponent graph={data} />,
+    document.getElementById("chart")
+  );
 }
+
+// class ChartComponentS extends Component
+// {
+//   constructor(props)
+//   {
+//     super(props);
+//     this.chartReference=React.createRef();
+//   }
+
+//   componentDidMount()
+//   {
+//     console.log(this.chartReference);
+//   }
+//   render()
+//   {
+//     return (
+//     <Bar ref={this.chartReference} data={data} options={
+//       {maintainAspectRatio: true},
+//       {responsive: true},
+//       {title: {
+//         display: true,
+//         text: "Front Page Graph"
+//       }}
+//     }/>)
+//   }
+// }
 
 function HomePage(props) {
   const user = props.user;
@@ -41,7 +77,7 @@ function HomePage(props) {
         <div>
           <ChartFormComponent></ChartFormComponent>
           <button onClick={handleClick}>addData</button>
-          <ChartComponent graph={data} />
+          <div id="chart"></div>
         </div>
       )}
     </Layout>
