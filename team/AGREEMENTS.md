@@ -1,5 +1,9 @@
 # Agreements List
 
+# 4/30/2020
+   
+Team decided to make repo public (open source under MIT license).
+
 Team Members(githubids):
   * Tomas Vera (tomasvera24)
   * Connor McIntosh (connormcintosh)
