@@ -12,7 +12,15 @@ export default class ChartComponent extends Component {
           width={100}
           height={50}
           options={{
-            maintainAspectRatio: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
           }}
         />
       </div>
