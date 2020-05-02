@@ -1,6 +1,9 @@
 import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
+
+import TableComponent from "../components/ChartComponent";
+
 import { optionalAuth } from "../utils/ssr";
 import { Bar } from "react-chartjs-2";
 import React, { Component } from "react";
@@ -34,6 +37,9 @@ function handleClick() {
   ReactDOM.render(
     <ChartComponent graph={data} />,
     document.getElementById("chart")
+
+    //<TableComponent table={data} />,
+    //document.getElementById("chart")
   );
 }
 
@@ -75,6 +81,7 @@ function HomePage(props) {
         </div>
       ) : (
         <div>
+          <TableComponent></TableComponent>
           <ChartFormComponent></ChartFormComponent>
           <button onClick={handleClick}>addData</button>
           <div id="chart"></div>
