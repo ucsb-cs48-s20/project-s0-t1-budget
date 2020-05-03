@@ -43,13 +43,19 @@ class ChartFormComponent extends React.Component {
               <option value="Groceries">Groceries</option>
               <option value="Utility">Utility</option>
               <option value="Decor">Decoration</option>
+              <option value="Transport">Transportation</option>
+              <option value="Insurance">Insurance</option>
               <option value="Other">Other</option>
             </select>
             <input
               name="input"
+              onKeyPress="return isNumberKey(event)"
               type="number"
               value={this.state.input}
               onChange={this.handleChange}
+              onKeyDown={(evt) =>
+                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+              } //Stop the user from entering the letter 'e'
             />
           </label>
           <br />
@@ -61,3 +67,5 @@ class ChartFormComponent extends React.Component {
 }
 
 export default ChartFormComponent;
+
+//Checks for the required input
