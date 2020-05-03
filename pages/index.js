@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 
-import TableComponent from "../components/ChartComponent";
+import TableComponent from "../components/TableComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Bar } from "react-chartjs-2";
