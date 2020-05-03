@@ -49,8 +49,10 @@ class ChartFormComponent extends React.Component {
             </select>
             <input
               name="input"
+              id="catinput"
               onKeyPress="return isNumberKey(event)"
               type="number"
+              required
               value={this.state.input}
               onChange={this.handleChange}
               onKeyDown={(evt) =>
@@ -67,5 +69,3 @@ class ChartFormComponent extends React.Component {
 }
 
 export default ChartFormComponent;
-
-//Checks for the required input
