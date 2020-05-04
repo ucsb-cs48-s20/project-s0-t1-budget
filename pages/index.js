@@ -1,6 +1,9 @@
 import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
+
+import TableComponent from "../components/TableComponent";
+
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
 
@@ -177,6 +180,7 @@ class HomePage extends Component {
             handleFormUpdate={this.handleFormUpdate.bind(this)}
           ></ChartFormComponent>
           <ChartComponent chartData={this.state.chartData} />
+          <TableComponent></TableComponent>
         </div>
       </Layout>
     );
