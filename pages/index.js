@@ -46,8 +46,11 @@ class HomePage extends Component {
         <div>
           <ChartFormComponent
             handleFormUpdate={this.handleFormUpdate.bind(this)}
-          ></ChartFormComponent>
-          <ChartComponent chartData={this.state.chartData} />
+          />
+          <ChartComponent 
+          labels={this.state.labels}
+          data={this.state.data}
+          />
           <TableComponent></TableComponent>
         </div>
       </Layout>
