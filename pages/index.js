@@ -30,7 +30,8 @@ class HomePage extends Component {
     } else {
       const arr = [...this.state.data];
       var sumIncome = parseInt(this.state.data[0]) + parseInt(value);
-      arr.push(value);
+      var intValue = parseInt(value);
+      arr.push(intValue);
       arr.splice(0, 1, sumIncome);
       this.setState({
         labels: this.state.labels.concat(category),

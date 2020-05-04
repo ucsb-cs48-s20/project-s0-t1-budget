@@ -23,8 +23,65 @@ export default class ChartComponent extends Component {
     ],
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.data[0] > 0) {
+      bkColor = "rgba(0,255,0,0.2)";
+      boColor = "rgba(0,255,0,1)";
+      hbkColor = "rgba(0,255,0.4)";
+      hboColor = "rgba(0,255,0,1)";
+    } else {
+      bkColor = "rgba(255,99,132,0.2)";
+      boColor = "rgba(255,99,132,1)";
+      hbkColor = "rgba(255,99,132,0.4)";
+      hboColor = "rgba(255,99,132,0,1)";
+    }
+    return {
+      labels: props.labels,
+      datasets: [
+        {
+          label: "Income",
+          backgroundColor: [
+            bkColor,
+            cbkColor,
+            cbkColor,
+            cbkColor,
+            cbkColor,
+            cbkColor,
+            cbkColor,
+          ],
+          borderColor: [
+            boColor,
+            cboColor,
+            cboColor,
+            cboColor,
+            cboColor,
+            cboColor,
+            cboColor,
+          ],
+          borderWidth: 1,
+          hoverBackgroundColor: [
+            hbkColor,
+            chbkColor,
+            chbkColor,
+            chbkColor,
+            chbkColor,
+            chbkColor,
+          ],
+          hoverBorderColor: [
+            hboColor,
+            chboColor,
+            chboColor,
+            chboColor,
+            chboColor,
+            chboColor,
+          ],
+          data: props.data,
+        },
+      ],
+    };
+  }
+
   render() {
-    const { chartData } = this.props;
     return (
       <div>
         <h2>Bar Graph</h2>
