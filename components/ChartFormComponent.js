@@ -50,7 +50,6 @@ class ChartFormComponent extends React.Component {
             <input
               name="input"
               id="catinput"
-              onKeyPress="return isNumberKey(event)"
               type="number"
               required
               value={this.state.input}
