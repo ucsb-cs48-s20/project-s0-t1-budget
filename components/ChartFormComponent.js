@@ -23,12 +23,7 @@ class ChartFormComponent extends React.Component {
   }
 
   handleSubmit(event) {
-    alert(
-      "A value was submitted input: " +
-        this.state.input +
-        " category: " +
-        this.state.category
-    );
+    this.props.handleFormUpdate(this.state.category, this.state.input);
     event.preventDefault();
   }
 
@@ -45,16 +40,24 @@ class ChartFormComponent extends React.Component {
               value={this.state.category}
               onChange={this.handleChange}
             >
-              <option value="Groceries">Groceries</option> 
-              <option value="Utility">Utility</option> 
-              <option value="Decor">Decoration</option> 
-              <option value="Other">Other</option> 
+              <option value="Groceries">Groceries</option>
+              <option value="Utility">Utility</option>
+              <option value="Decor">Decoration</option>
+              <option value="Transport">Transportation</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Other">Other</option>
             </select>
             <input
               name="input"
-              type="text"
+              id="catinput"
+              onKeyPress="return isNumberKey(event)"
+              type="number"
+              required
               value={this.state.input}
               onChange={this.handleChange}
+              onKeyDown={(evt) =>
+                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+              } //Stop the user from entering the letter 'e'
             />
           </label>
           <br />

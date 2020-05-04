@@ -2,39 +2,26 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 
 export default class ChartComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.chartReference = React.createRef();
-  }
-
-  componentDidMount() {
-    console.log(this.chartReference);
-  }
-
-  // componentWillMount() {
-  //  setInterval(() => {
-  //    this.setState(getState());
-  //  }, 500);
-  // }
-
   render() {
+    const { chartData } = this.props;
     return (
       <div>
+        <h2>Bar Graph</h2>
         <Bar
-          ref={this.chartReference}
-          data={this.props.graph}
+          data={chartData}
           width={100}
           height={50}
-          options={
-            ({ maintainAspectRatio: true },
-            { responsive: true },
-            {
-              title: {
-                display: true,
-                text: "Front Page Graph",
-              },
-            })
-          }
+          options={{
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+          }}
         />
       </div>
     );
