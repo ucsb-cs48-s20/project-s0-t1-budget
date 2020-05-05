@@ -3,7 +3,7 @@ import { render } from "react-dom";
 class ChartFormComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { input: "", category: "Groceries" };
+    this.state = { income: "", input: "", category: "Groceries" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,16 +23,34 @@ class ChartFormComponent extends React.Component {
   }
 
   handleSubmit(event) {
-    this.props.handleFormUpdate(this.state.category, this.state.input);
+    this.props.handleFormUpdate(
+      this.state.income,
+      this.state.category,
+      this.state.input
+    );
     event.preventDefault();
   }
-
+  // insert seperate tab for income submission
   render() {
     return (
       <div>
         <h4>Monthly Expense</h4>
         <form onSubmit={this.handleSubmit}>
           <label>
+            Enter Income($):
+            <br />
+            <input
+              name="income"
+              id="incomeinput"
+              type="number"
+              required
+              value={this.state.income}
+              onChange={this.handleChange}
+              onKeyDown={(evt) =>
+                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+              } //Stop the user from entering the letter 'e'
+            />
+            <br />
             Enter Value of expense($):
             <br />
             <select
@@ -61,6 +79,9 @@ class ChartFormComponent extends React.Component {
           </label>
           <br />
           <input type="submit" value="Submit" />
+        </form>
+        <form onSubmit={this.constructor}>
+          <input type="submit" value="Reset" />
         </form>
       </div>
     );
