@@ -15,11 +15,12 @@ class HomePage extends Component {
     data: [0],
   };
 
-  handleFormUpdate = (income, category, value) => {
+  handleFormUpdate = (category, value) => {
     if (this.state.labels.includes(category)) {
       const index = this.state.labels.indexOf(category);
-      var sum = parseInt(this.state.data[index]) - parseInt(value);
-      var sumIncome = parseInt(this.state.data[0]) - parseInt(value);
+      console.log(category);
+      var sum = parseInt(this.state.data[index]) + parseInt(value);
+      var sumIncome = parseInt(this.state.data[0]) + parseInt(value);
       const arr = [...this.state.data];
       arr.splice(0, 1, sumIncome);
       arr.splice(index, 1, sum);
@@ -29,13 +30,8 @@ class HomePage extends Component {
       });
     } else {
       const arr = [...this.state.data];
-      if (this.state.data[0] == "") {
-        var sumIncome = parseInt(income) - parseInt(value);
-      } else {
-        var sumIncome = parseInt(this.state.data[0]) - parseInt(value);
-      }
-
-      var intValue = -parseInt(value);
+      var sumIncome = parseInt(this.state.data[0]) + parseInt(value);
+      var intValue = parseInt(value);
       arr.push(intValue);
       arr.splice(0, 1, sumIncome);
       this.setState({
@@ -46,6 +42,7 @@ class HomePage extends Component {
   };
 
   render() {
+    // console.log([0]);
     return (
       <Layout>
         <div>
@@ -53,7 +50,10 @@ class HomePage extends Component {
             handleFormUpdate={this.handleFormUpdate.bind(this)}
           />
           <ChartComponent labels={this.state.labels} data={this.state.data} />
-          <TableComponent></TableComponent>
+          <TableComponent
+            category={this.state.labels}
+            price={this.state.data}
+          />
         </div>
       </Layout>
     );

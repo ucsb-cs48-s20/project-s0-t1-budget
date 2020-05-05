@@ -1,40 +1,36 @@
 import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 
-export default class TableComponent extends React.Component {
-  render() {
-    const products = [
-      {
-        col1: "Hello",
-        col2: "World",
-        col3: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-        col3: "World",
-      },
-      {
-        col1: "whatever",
-        col2: "you want",
-        col3: "World",
-      },
-    ];
-    const columns = [
-      {
-        dataField: "col1",
-        text: "Product ID",
-      },
-      {
-        dataField: "col2",
-        text: "Product Name",
-      },
-      {
-        dataField: "col3",
-        text: "Product Price",
-      },
-    ];
+var dict = { col1: "Hello", col2: "World" };
 
-    return <BootstrapTable keyField="id" data={products} columns={columns} />;
+export default class TableComponent extends React.Component {
+  state = {
+    columns: [
+      {
+        dataField: "category",
+        text: "Category",
+      },
+      {
+        dataField: "price",
+        text: "Price",
+      },
+    ],
+    values: [],
+  };
+
+  // this.props.category contains an array of labels
+  // this.props.data contains an array of values
+  static getDerivedStateFromProps(props, state) {
+    // for i in (this.props.category.length(),
+  }
+
+  render() {
+    return (
+      <BootstrapTable
+        keyField="id"
+        data={this.state.values}
+        columns={this.state.columns}
+      />
+    );
   }
 }
