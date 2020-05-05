@@ -45,6 +45,13 @@ class HomePage extends Component {
     }
   };
 
+  handleResetUpdate = () => {
+    this.setState({
+      labels: ["Net Income"],
+      data: [0],
+    });
+  };
+
   render() {
     return (
       <Layout>
@@ -52,6 +59,7 @@ class HomePage extends Component {
           <ChartFormComponent
             handleFormUpdate={this.handleFormUpdate.bind(this)}
           />
+          <button onClick={this.handleResetUpdate}>Reset</button>
           <ChartComponent labels={this.state.labels} data={this.state.data} />
           <TableComponent></TableComponent>
         </div>
