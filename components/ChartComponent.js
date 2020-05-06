@@ -12,7 +12,7 @@ export default class ChartComponent extends Component {
     labels: ["Net Income"],
     datasets: [
       {
-        label: "Income",
+        label: "Amount ($)",
         backgroundColor: ["rgba(0,255,0,0.2)", "rgba(255,99,132,0.2)"],
         borderColor: ["rgba(0,255,0,1)", "rgba(255,99,132,1)"],
         borderWidth: 1,
@@ -39,7 +39,7 @@ export default class ChartComponent extends Component {
       labels: props.labels,
       datasets: [
         {
-          label: "Income",
+          label: "Amount ($)",
           backgroundColor: [
             bkColor,
             cbkColor,

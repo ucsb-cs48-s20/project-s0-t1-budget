@@ -12,7 +12,7 @@ export default class TableComponent extends React.Component {
       },
       {
         dataField: "price",
-        text: "Current Amount",
+        text: "Current Amount ($)",
       },
     ],
     values: [],
