@@ -28,7 +28,7 @@ export default class TableComponent extends React.Component {
     while (i < stop) {
       if (i == 0) {
         dict = {
-          category: "Net Income",
+          category: "Income",
           price: props.price[0],
         };
       } else {
