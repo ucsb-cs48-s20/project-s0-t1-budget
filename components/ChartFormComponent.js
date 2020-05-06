@@ -1,6 +1,8 @@
 import { render } from "react-dom";
+import { Component } from "react";
+import { Form, Col, Button } from "react-bootstrap";
 
-class ChartFormComponent extends React.Component {
+class ChartFormComponent extends Component {
   constructor(props) {
     super(props);
     this.state = { income: "", input: "", category: "Groceries" };
@@ -10,15 +12,6 @@ class ChartFormComponent extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.name == "input") {
-      let numTest = event.target.value;
-
-      if (!Number(numTest) && !(numTest == "")) {
-        alert("Please Enter a Valid Number you entered " + numTest);
-        return;
-      }
-    }
-
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -31,55 +24,62 @@ class ChartFormComponent extends React.Component {
     event.preventDefault();
   }
 
-  // insert seperate tab for income submission
   render() {
     return (
       <div>
-        <h4>Monthly Expense</h4>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Enter Income($):
-            <br />
-            <input
+        <h4>Monthly Expenses</h4>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="monthlyIncome">
+            <Form.Label>Monthly Income($):</Form.Label>
+            <Form.Control
               name="income"
-              id="incomeinput"
+              placeholder="7000"
               type="number"
-              required
               value={this.state.income}
+              id="incomeinput"
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
-              } //Stop the user from entering the letter 'e'
+              } //Stop the user from entering the letter 'e' required
             />
-            <br />
-            Enter Value of expense($):
-            <br />
-            <select
-              name="category"
-              value={this.state.category}
-              onChange={this.handleChange}
-            >
-              <option value="Groceries">Groceries</option>
-              <option value="Utility">Utility</option>
-              <option value="Decor">Decoration</option>
-              <option value="Transport">Transportation</option>
-              <option value="Insurance">Insurance</option>
-              <option value="Other">Other</option>
-            </select>
-            <input
-              name="input"
-              type="number"
-              required
-              value={this.state.input}
-              onChange={this.handleChange}
-              onKeyDown={(evt) =>
-                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
-              } //Stop the user from entering the letter 'e'
-            />
-          </label>
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
+          </Form.Group>
+
+          <Form.Row>
+            <Form.Group as={Col} md="4" controlId="category">
+              <Form.Label>Category:</Form.Label>
+              <Form.Control
+                as="select"
+                name="category"
+                onChange={this.handleChange}
+                value={this.state.category}
+              >
+                <option value="Groceries">Groceries</option>
+                <option value="Utility">Utility</option>
+                <option value="Decor">Decoration</option>
+                <option value="Transport">Transportation</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Other">Other</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group as={Col} md="8" controlId="expense">
+              <Form.Label>Expense($):</Form.Label>
+              <Form.Control
+                name="input"
+                placeholder="300"
+                value={this.state.input}
+                type="number"
+                onChange={this.handleChange}
+                onKeyDown={(evt) =>
+                  ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+                } //Stop the user from entering the letter 'e' required
+                required
+              />
+            </Form.Group>
+          </Form.Row>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </div>
     );
   }
