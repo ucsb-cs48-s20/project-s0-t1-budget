@@ -27,10 +27,10 @@ class ChartFormComponent extends Component {
   render() {
     return (
       <div>
-        <h4>Monthly Expenses</h4>
+        <h4>Calculate Finances</h4>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="monthlyIncome">
-            <Form.Label>Monthly Income($):</Form.Label>
+            <Form.Label>Income($):</Form.Label>
             <Form.Control
               name="income"
               placeholder="7000"
