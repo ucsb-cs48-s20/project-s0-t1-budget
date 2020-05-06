@@ -1,11 +1,11 @@
 import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
-
 import TableComponent from "../components/TableComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
+import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
 
 export const getServerSideProps = optionalAuth;
 
@@ -55,17 +55,29 @@ class HomePage extends Component {
   render() {
     return (
       <Layout>
-        <div>
-          <ChartFormComponent
-            handleFormUpdate={this.handleFormUpdate.bind(this)}
-          />
-          <button onClick={this.handleResetUpdate}>Reset</button>
+        <Container>
+          <br />
+          <Row>
+            <Col md="5">
+              <Jumbotron>
+                <ChartFormComponent
+                  handleFormUpdate={this.handleFormUpdate.bind(this)}
+                />
+                <br />
+                <Button variant="secondary" onClick={this.handleResetUpdate}>
+                  Reset
+                </Button>
+              </Jumbotron>
+            </Col>
+            <Col md="7">
+              <TableComponent
+                category={this.state.labels}
+                price={this.state.data}
+              />
+            </Col>
+          </Row>
           <ChartComponent labels={this.state.labels} data={this.state.data} />
-          <TableComponent
-            category={this.state.labels}
-            price={this.state.data}
-          />
-        </div>
+        </Container>
       </Layout>
     );
   }
