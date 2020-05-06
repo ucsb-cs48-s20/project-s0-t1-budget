@@ -30,6 +30,7 @@ class ChartFormComponent extends React.Component {
     );
     event.preventDefault();
   }
+
   // insert seperate tab for income submission
   render() {
     return (
@@ -79,9 +80,6 @@ class ChartFormComponent extends React.Component {
           </label>
           <br />
           <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={this.constructor}>
-          <input type="submit" value="Reset" />
         </form>
       </div>
     );
