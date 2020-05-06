@@ -40,7 +40,8 @@ class ChartFormComponent extends Component {
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
-              } //Stop the user from entering the letter 'e' required
+              } //Stop the user from entering the letter 'e'
+              required
             />
           </Form.Group>
 
@@ -71,7 +72,7 @@ class ChartFormComponent extends Component {
                 onChange={this.handleChange}
                 onKeyDown={(evt) =>
                   ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
-                } //Stop the user from entering the letter 'e' required
+                } //Stop the user from entering the letter 'e'
                 required
               />
             </Form.Group>
