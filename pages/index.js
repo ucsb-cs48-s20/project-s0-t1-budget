@@ -61,7 +61,10 @@ class HomePage extends Component {
           />
           <button onClick={this.handleResetUpdate}>Reset</button>
           <ChartComponent labels={this.state.labels} data={this.state.data} />
-          <TableComponent></TableComponent>
+          <TableComponent
+            category={this.state.labels}
+            price={this.state.data}
+          />
         </div>
       </Layout>
     );
