@@ -15,12 +15,11 @@ class HomePage extends Component {
     data: [0],
   };
 
-  handleFormUpdate = (category, value) => {
+  handleFormUpdate = (income, category, value) => {
     if (this.state.labels.includes(category)) {
       const index = this.state.labels.indexOf(category);
-      console.log(category);
-      var sum = parseInt(this.state.data[index]) + parseInt(value);
-      var sumIncome = parseInt(this.state.data[0]) + parseInt(value);
+      var sum = parseInt(this.state.data[index]) - parseInt(value);
+      var sumIncome = parseInt(this.state.data[0]) - parseInt(value);
       const arr = [...this.state.data];
       arr.splice(0, 1, sumIncome);
       arr.splice(index, 1, sum);
@@ -30,8 +29,13 @@ class HomePage extends Component {
       });
     } else {
       const arr = [...this.state.data];
-      var sumIncome = parseInt(this.state.data[0]) + parseInt(value);
-      var intValue = parseInt(value);
+      if (this.state.data[0] == "") {
+        var sumIncome = parseInt(income) - parseInt(value);
+      } else {
+        var sumIncome = parseInt(this.state.data[0]) - parseInt(value);
+      }
+
+      var intValue = -parseInt(value);
       arr.push(intValue);
       arr.splice(0, 1, sumIncome);
       this.setState({
@@ -49,7 +53,6 @@ class HomePage extends Component {
   };
 
   render() {
-    // console.log([0]);
     return (
       <Layout>
         <div>

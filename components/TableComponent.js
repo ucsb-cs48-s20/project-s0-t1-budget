@@ -21,35 +21,30 @@ export default class TableComponent extends React.Component {
   // this.props.category contains an array of labels
   // this.props.data contains an array of values
   static getDerivedStateFromProps(props, state) {
-    //  var i =  0;
-    //  var putValue = [];
-    //  var stop = props.category.length;
-    // //  console.log(stop)
-    //   while(i < stop)
-    //   {
-    //       if (i == 0)
-    //       {
-    //         dict = {
-    //           category: 'Net Income',
-    //           price: props.price[0]
-    //         }
-    //       }
-    //       else
-    //       {
-    //         dict = {
-    //           category: props.category[i],
-    //           price: props.price[i]
-    //         }
-    //       }
-    //       console.log(props.category)
-    //       console.log(props.price)
-    //       putValue.push(dict);
-    //       i++;
-    //   }
-    //   i = 0;
-    //   return {
-    //     values: putValue
-    //   };
+    var i = 0;
+    var putValue = []; // Values will be stored as dictionary in here
+    var stop = props.category.length; // to know where to stop iterating
+    //A while loop to iterate through categories and their corresponding input and put them in putValue array
+    while (i < stop) {
+      if (i == 0) {
+        dict = {
+          category: "Net Income",
+          price: props.price[0],
+        };
+      } else {
+        dict = {
+          category: props.category[i],
+          price: props.price[i],
+        };
+      }
+      putValue.push(dict);
+      i++;
+    }
+    i = 0; //resets the iteration index
+    //Return function that puts whatever is in putValue into values
+    return {
+      values: putValue,
+    };
   }
 
   render() {

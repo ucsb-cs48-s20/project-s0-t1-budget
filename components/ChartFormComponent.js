@@ -68,7 +68,6 @@ class ChartFormComponent extends React.Component {
             </select>
             <input
               name="input"
-              id="catinput"
               type="number"
               required
               value={this.state.input}
