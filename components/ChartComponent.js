@@ -5,11 +5,18 @@ var cbkColor = "rgba(238,130,238,0.2)";
 var cboColor = "rgba(238,130,238,1)";
 var chbkColor = "rgba(238,130,238,0.4)";
 var chboColor = "rgba(238,130,238,1)";
-var bkColor, boColor, hbkColor, hboColor;
+var bkColor,
+  boColor,
+  hbkColor,
+  hboColor,
+  ibkColor,
+  iboColor,
+  ihbkColor,
+  ihboColor;
 
 export default class ChartComponent extends Component {
   state = {
-    labels: ["Net Income"],
+    labels: ["Income", "Net Income"],
     datasets: [
       {
         label: "Amount ($)",
@@ -18,16 +25,20 @@ export default class ChartComponent extends Component {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255,99,132,0.4)",
         hoverBorderColor: "rgba(255,99,132,1)",
-        data: [0],
+        data: [0, 0],
       },
     ],
   };
 
   static getDerivedStateFromProps(props, state) {
-    if (props.data[0] > 0) {
+    ibkColor = "rgba(0,0,255,0.2)";
+    iboColor = "rgba(0,0,255,1)";
+    ihbkColor = "rgba(0,0,255,0.4)";
+    ihboColor = "rgba(0,0,255,1)";
+    if (props.data[1] > 0) {
       bkColor = "rgba(0,255,0,0.2)";
       boColor = "rgba(0,255,0,1)";
-      hbkColor = "rgba(0,255,0.4)";
+      hbkColor = "rgba(0,255,0,0.4)";
       hboColor = "rgba(0,255,0,1)";
     } else {
       bkColor = "rgba(255,99,132,0.2)";
@@ -41,8 +52,8 @@ export default class ChartComponent extends Component {
         {
           label: "Amount ($)",
           backgroundColor: [
+            ibkColor,
             bkColor,
-            cbkColor,
             cbkColor,
             cbkColor,
             cbkColor,
@@ -50,8 +61,8 @@ export default class ChartComponent extends Component {
             cbkColor,
           ],
           borderColor: [
+            iboColor,
             boColor,
-            cboColor,
             cboColor,
             cboColor,
             cboColor,
@@ -60,16 +71,16 @@ export default class ChartComponent extends Component {
           ],
           borderWidth: 1,
           hoverBackgroundColor: [
+            ihbkColor,
             hbkColor,
-            chbkColor,
             chbkColor,
             chbkColor,
             chbkColor,
             chbkColor,
           ],
           hoverBorderColor: [
+            ihboColor,
             hboColor,
-            chboColor,
             chboColor,
             chboColor,
             chboColor,
