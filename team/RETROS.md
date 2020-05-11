@@ -15,7 +15,7 @@
 - The Retro was quick and efficient. We were able to as a group figure out what we believe is a more appropriate approach to completing our project efficiently.
 - Advice I would give to the next person leading the retro is possibly trying a different framework. While I found this one to be efficient and effective with the project being so early on our team didn't have too much to discuss as far as stoping and starting. We mostly had the most to discuss on what we should continue.
 
-# Retro 05/04/20
+# Retro 05/11/20
 
 - Led by: Trung Bui
 - Present: Connor McIntosh, Edward Thai, Tomas Vera, Tristan Hernandez, Trung Bui
@@ -23,9 +23,25 @@
 
 ## Action item
 
-- a goal: identify something the team wants to get better at
-- a change: identify one thing that the team will change about how it works together
-- a measurement: identify at least one way to measure whether the change helped the team acheive the goal, or move closer to it.
+- a goal (at the end of 2nd iteration): Having a working database (MongoDB) abd incorporate more diverse range of charts.
+- a change: Start working in smaller group (2 or less), allow flexibility in choosing issues to work on.
+- a measurement: Keep track of the PRs rate.
+
+Note:
+
+Continue:
+ - Working collaboratively, efficient with MVP, agreement + communication going swell, slack active, at least a person to review PRs
+ - Spltting up workload effectively
+Stop:
+- So far no negatives...
+- Assigning workload equally
+- mob programming 
+Start:
+- Brainstorming ideas -> clarification on current ideas in icebox
+- Split up a big issue to smaller ones (beneficial for individual work)
+- More individual coding (group of 2 or less)
+- If any question, ask team members for clarification
+- Reviewing MongoDB and OAuth
 
 ## Brief description of how retro went
 
