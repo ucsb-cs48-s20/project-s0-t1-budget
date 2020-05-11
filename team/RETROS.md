@@ -29,14 +29,14 @@
 
 Note:
 
-* Continue:
+#### Continue:
  - Working collaboratively, efficient with MVP, agreement + communication going swell, slack active, at least a person to review PRs
  - Spltting up workload effectively
-* Stop:
+#### Stop:
 - So far no negatives...
 - Assigning workload equally
 - mob programming 
-* Start:
+#### Start:
 - Brainstorming ideas -> clarification on current ideas in icebox
 - Split up a big issue to smaller ones (beneficial for individual work)
 - More individual coding (group of 2 or less)
