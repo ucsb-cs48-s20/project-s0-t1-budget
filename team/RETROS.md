@@ -29,14 +29,14 @@
 
 Note:
 
-Continue:
+* Continue:
  - Working collaboratively, efficient with MVP, agreement + communication going swell, slack active, at least a person to review PRs
  - Spltting up workload effectively
-Stop:
+* Stop:
 - So far no negatives...
 - Assigning workload equally
 - mob programming 
-Start:
+* Start:
 - Brainstorming ideas -> clarification on current ideas in icebox
 - Split up a big issue to smaller ones (beneficial for individual work)
 - More individual coding (group of 2 or less)
@@ -45,7 +45,6 @@ Start:
 
 ## Brief description of how retro went
 
-- A brief description of what retro outline or process you used.
-- A brief assessment of how it went.
-- What advice would you give to the next person leading a retro
-  based on what you learned today?
+- The retro proccess that I used in this retros is the start/stop/continue template. This template serves to identify what we are currently doing that is beneficial, what we are doing that is not helping the team and what should our team start doing so that we can better the team as a whole.
+- The retros today went super well, each of the team members all chimed in about how they think the group project is going so far with everyone agreed that we have done a great job thus far.
+- For the person that is conducting the next retros, a piece of advice that I would give would be to help facilitate conversation between group members more by asking thought-provoking questions.
