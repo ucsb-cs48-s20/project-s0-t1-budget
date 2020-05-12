@@ -1,4 +1,30 @@
+# Sprint Planning, 05/12/2020
+  
+* Leader: Connor McIntosh
+* Present: All
+* Absent: None
+
+## Sprint Goal for 05/12-05/21
+  
+Which of the 10 powerful questions did you ask?
+Number 7
+
+Describe your sprint goal here.
+For the next Demo we want to have the new graphs implemented as well as have oauth working. Focus on saving user's data.
+  
+Describe briefly how you came up with that goal.
+These are two important goals and necessities for our app to work and provide value, as a result we decided to focus on implementing these as soon as possible.
+  
+## Discussion of previous Sprint Goal
+  
+Briefly: was the sprint goal acheived?  Was it too ambitious?  Too modest? 
+
+Our last goal was to have good data graphs, Finish MVP
+
+We did finish the mvp and provided a good visual representation of a user's expenses, as a result we met our spring goal.
+
 # Status, Monday 04/27/2020
+
 
 ## Sprint Goal for Monday 04/27 through Monday 05/04
 
