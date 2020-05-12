@@ -2,6 +2,8 @@ import Layout from "../components/Layout";
 import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 import TableComponent from "../components/TableComponent";
+import LineGraphComponent from "../components/LineGraphComponent";
+import PieChartComponent from "../components/PieChartComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
@@ -71,6 +73,8 @@ class HomePage extends Component {
             </Col>
           </Row>
           <ChartComponent labels={this.state.labels} data={this.state.data} />
+          <PieChartComponent />
+          <LineGraphComponent />
         </Container>
       </Layout>
     );
