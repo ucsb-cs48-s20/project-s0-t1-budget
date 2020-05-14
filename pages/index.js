@@ -84,8 +84,14 @@ class HomePage extends Component {
               </Col>
             </Row>
             <ChartComponent labels={this.state.labels} data={this.state.data} />
-            <PieChartComponent />
-            <LineGraphComponent />
+            <PieChartIncomeComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
+            <PieChartExpensesComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
           </Container>
         )}
       </Layout>
