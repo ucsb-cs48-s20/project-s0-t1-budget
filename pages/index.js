@@ -3,7 +3,8 @@ import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
-import PieChartComponent from "../components/PieChartComponent";
+import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
+import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
