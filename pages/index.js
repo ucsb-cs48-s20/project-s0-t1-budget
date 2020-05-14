@@ -12,6 +12,10 @@ import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
 export const getServerSideProps = optionalAuth;
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     labels: ["Income", "Net Income"],
     data: [0, 0],
@@ -50,32 +54,39 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Layout>
-        <Container>
-          <br />
-          <Row>
-            <Col md="5">
-              <Jumbotron>
-                <ChartFormComponent
-                  handleFormUpdate={this.handleFormUpdate.bind(this)}
+      <Layout user={this.props.user}>
+        {this.props.user ? (
+          <div>
+            You're logged in! Here's what the server knows about you:
+            <pre>{JSON.stringify(this.props.user, null, "\t")}</pre>
+          </div>
+        ) : (
+          <Container>
+            <br />
+            <Row>
+              <Col md="5">
+                <Jumbotron>
+                  <ChartFormComponent
+                    handleFormUpdate={this.handleFormUpdate.bind(this)}
+                  />
+                  <br />
+                  <Button variant="secondary" onClick={this.handleResetUpdate}>
+                    Reset
+                  </Button>
+                </Jumbotron>
+              </Col>
+              <Col md="7">
+                <TableComponent
+                  category={this.state.labels}
+                  price={this.state.data}
                 />
-                <br />
-                <Button variant="secondary" onClick={this.handleResetUpdate}>
-                  Reset
-                </Button>
-              </Jumbotron>
-            </Col>
-            <Col md="7">
-              <TableComponent
-                category={this.state.labels}
-                price={this.state.data}
-              />
-            </Col>
-          </Row>
-          <ChartComponent labels={this.state.labels} data={this.state.data} />
-          <PieChartComponent />
-          <LineGraphComponent />
-        </Container>
+              </Col>
+            </Row>
+            <ChartComponent labels={this.state.labels} data={this.state.data} />
+            <PieChartComponent />
+            <LineGraphComponent />
+          </Container>
+        )}
       </Layout>
     );
   }
