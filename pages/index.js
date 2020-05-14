@@ -5,6 +5,7 @@ import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import PieChartTestComponent from "../components/PieChartTestComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
@@ -20,6 +21,7 @@ class HomePage extends Component {
   state = {
     labels: ["Income", "Net Income"],
     data: [0, 0],
+    month: "",
   };
 
   handleFormUpdate = (income, category, value) => {
@@ -89,6 +91,10 @@ class HomePage extends Component {
               data={this.state.data}
             />
             <PieChartExpensesComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
+            <PieChartTestComponent
               labels={this.state.labels}
               data={this.state.data}
             />
