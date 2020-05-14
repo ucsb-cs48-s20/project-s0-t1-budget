@@ -16,11 +16,6 @@ export default class PieChartIncomeComponent extends Component {
 
   static getDerivedStateFromProps(props, state) {
     var expColor = "#FF6384";
-    if (props.data[1] > 0) {
-      bkColor = "rgba(0,255,0,0.7)";
-    } else {
-      bkColor = "rgba(255,99,132,0.7)";
-    }
     var IncomeData = props.data.slice(0, 2);
     var Expenses = IncomeData[0] - IncomeData[1];
     IncomeData[1] = Expenses;
