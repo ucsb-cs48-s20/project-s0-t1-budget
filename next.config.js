@@ -1,9 +1,17 @@
 require("dotenv").config();
 
+function mongodb_uri() {
+  if (process.env.NODE_ENV === "production") {
+    return process.env.MONGODB_URI_PRODUCTION;
+  } else if (process.env.NODE_ENV === "staging") {
+    return process.env.MONGODB_URI_STAGING;
+  }
+  return process.env.MONGODB_URI;
+}
 module.exports = {
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
-    MONGODB_URI: process.env.MONGODB_URI,
+    MONGODB_URI: mongodb_uri(),
     AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
     AUTH0_SCOPE: "openid profile",
