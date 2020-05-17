@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Pie } from "react-chartjs-2";
+import { Card } from "react-bootstrap";
 
 export default class PieChartExpensesComponent extends Component {
   state = {
@@ -11,6 +12,7 @@ export default class PieChartExpensesComponent extends Component {
         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
+    isActive: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -23,15 +25,22 @@ export default class PieChartExpensesComponent extends Component {
           hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
         },
       ],
+      isActive: props.isActive,
     };
   }
 
   render() {
-    return (
-      <div>
-        <h2>Pie Chart of Expenses</h2>
-        <Pie data={this.state} />
-      </div>
-    );
+    if (this.state.isActive) {
+      return (
+        <Card body>
+          <div>
+            <h2>Pie Chart of Expenses</h2>
+            <Pie data={this.state} />
+          </div>
+        </Card>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }

@@ -8,7 +8,17 @@ import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
-import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Row,
+  Jumbotron,
+  Card,
+  CardGroup,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
 
 export const getServerSideProps = optionalAuth;
 
@@ -20,6 +30,9 @@ class HomePage extends Component {
   state = {
     labels: ["Income", "Net Income"],
     data: [0, 0],
+    barActive: true,
+    incomePieActive: true,
+    expensePieActive: true,
   };
 
   handleFormUpdate = (income, category, value) => {
@@ -50,7 +63,46 @@ class HomePage extends Component {
     this.setState({
       labels: ["Income", "Net Income"],
       data: [0, 0],
+      barActive: true,
+      incomePieActive: true,
+      expensePieActive: true,
     });
+  };
+
+  handleBar = () => {
+    if (this.state.barActive) {
+      this.setState({
+        barActive: false,
+      });
+    } else {
+      this.setState({
+        barActive: true,
+      });
+    }
+  };
+
+  handlePieIncome = () => {
+    if (this.state.incomePieActive) {
+      this.setState({
+        incomePieActive: false,
+      });
+    } else {
+      this.setState({
+        incomePieActive: true,
+      });
+    }
+  };
+
+  handlePieExpense = () => {
+    if (this.state.expensePieActive) {
+      this.setState({
+        expensePieActive: false,
+      });
+    } else {
+      this.setState({
+        expensePieActive: true,
+      });
+    }
   };
 
   render() {
@@ -74,6 +126,19 @@ class HomePage extends Component {
                   <Button variant="secondary" onClick={this.handleResetUpdate}>
                     Reset
                   </Button>
+                  <br />
+                  <br />
+                  <DropdownButton id="dropdown-item-button" title="Graphs">
+                    <Dropdown.Item as="button" onClick={this.handleBar}>
+                      Bar Graph
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={this.handlePieIncome}>
+                      Income Pie Chart
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={this.handlePieExpense}>
+                      Expenses Pie Chart
+                    </Dropdown.Item>
+                  </DropdownButton>
                 </Jumbotron>
               </Col>
               <Col md="7">
@@ -83,15 +148,24 @@ class HomePage extends Component {
                 />
               </Col>
             </Row>
-            <ChartComponent labels={this.state.labels} data={this.state.data} />
-            <PieChartIncomeComponent
-              labels={this.state.labels}
-              data={this.state.data}
-            />
-            <PieChartExpensesComponent
-              labels={this.state.labels}
-              data={this.state.data}
-            />
+            <CardGroup>
+              <ChartComponent
+                isActive={this.state.barActive}
+                labels={this.state.labels}
+                data={this.state.data}
+              />
+              <PieChartIncomeComponent
+                isActive={this.state.incomePieActive}
+                labels={this.state.labels}
+                data={this.state.data}
+              />
+
+              <PieChartExpensesComponent
+                isActive={this.state.expensePieActive}
+                labels={this.state.labels}
+                data={this.state.data}
+              />
+            </CardGroup>
           </Container>
         )}
       </Layout>
