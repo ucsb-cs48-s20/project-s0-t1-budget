@@ -3,7 +3,9 @@ import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
-import PieChartComponent from "../components/PieChartComponent";
+import PieChartComponent from "../components/PieChartComponent"; // Conflict cause
+import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
+import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
 import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
@@ -93,8 +95,14 @@ class HomePage extends Component {
               </Col>
             </Row>
             <ChartComponent labels={this.state.labels} data={this.state.data} />
-            <PieChartComponent />
-            <LineGraphComponent />
+            <PieChartIncomeComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
+            <PieChartExpensesComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
           </Container>
         )}
       </Layout>
