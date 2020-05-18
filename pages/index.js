@@ -69,7 +69,7 @@ class HomePage extends Component {
         {this.props.user ? (
           <div>
             You're logged in! Here's what the server knows about you:
-            <pre>{JSON.stringify(this.props.user, null, "\t")}</pre>
+            <pre>{JSON.stringify(this.props, null, "\t")}</pre>
           </div>
         ) : (
           <Container>
