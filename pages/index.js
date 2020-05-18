@@ -4,11 +4,21 @@ import ChartFormComponent from "../components/ChartFormComponent";
 import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartComponent from "../components/PieChartComponent";
-
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
 import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
+import fetch from "isomorphic-unfetch";
 
+//tb-integrating user mongoDB field to show up
+/* Work in Progress
+const budgets = ({data}) => { }
+
+budgets.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/userbudgets/index')
+  const json = await res.json()
+  return {data: json}
+}
+*/
 export const getServerSideProps = optionalAuth;
 
 class HomePage extends Component {
