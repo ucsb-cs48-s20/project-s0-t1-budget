@@ -9,22 +9,23 @@ const budgetSchema = new mongoose.Schema({
     unique: true,
   },
   month: {
-    type: Int64,
+    type: Number,
     required: [true, "Budget month is missing"],
   },
   year: {
-    type: Int32,
+    type: Number,
     required: [true, "Budget year is missing"],
   },
   labels: {
-    type: Array,
+    type: [],
     required: [true, "There is no budget label"],
   },
   data: {
-    type: Array,
+    type: [],
     required: [true, "Missing Budget Data"],
   },
 });
 
 module.exports =
   mongoose.Model.budgetSchema || mongoose.model("Budget Schema", budgetSchema);
+// console.log(module.exports)

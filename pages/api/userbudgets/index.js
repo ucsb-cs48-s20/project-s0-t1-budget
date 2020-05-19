@@ -8,19 +8,19 @@ handler.use(middleware); //here the handler will be using our database from mong
 
 handler.get(async (req, res) => {
   const { method } = req;
-
   switch (method) {
     case "GET":
       try {
-        const userBudget = await budgetSchema.find({});
+        const userBudget = await req.db.collection("database").find().toArray();
         res.status(200).json({ success: true, data: userBudget });
       } catch (error) {
+        console.log(error);
         res.status(400).json({ success: false });
       }
       break;
     case "POST":
       try {
-        const userBudget = await budgetSchema.create(req.body);
+        const userBudget = await req.db.collection("database").insert(req.body);
 
         res.status(201).json({ success: true, data: userBudget });
       } catch (error) {
