@@ -64,7 +64,7 @@ handler.put(async (req, res) => {
               req.body +
               " and yes it's empty, please pass in a valid JSON string"
           );
-          //Don't know what to pass in? Check out https://docs.mongodb.com/manual/reference/method/db.collection.findAndModify/ to find apporpriate update
+          //Don't know what to pass in? Check out https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/ to find apporpriate update
           //parameter to pass into the data
           return res.status(400).json({ success: false });
         }
@@ -104,6 +104,7 @@ handler.delete(async (req, res) => {
   switch (method) {
     case "DELETE": //Deleting the budget from out schema
       try {
+        //Link for deleteOne ref: https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/
         const deletedBudget = await req.db
           .collection("database")
           .deleteOne({ _id: Archetype.to(id, ObjectId) }); //Using archetype to convert MongoDB object
