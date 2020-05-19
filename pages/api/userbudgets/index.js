@@ -1,6 +1,5 @@
 import nextConnect from "next-connect";
 import middleware from "../../../middleware/database";
-import budgetSchema from "../../../models/budgetSchema";
 
 const handler = nextConnect();
 
