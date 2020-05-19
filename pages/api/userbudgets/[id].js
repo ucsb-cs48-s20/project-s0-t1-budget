@@ -2,14 +2,19 @@ import nextConnect from "next-connect";
 import middleware from "../../../middleware/database";
 
 /* The purpose of this file is to modify data in the database
-http://localhost:3000/api/userbudgets/ENDPOINT
-All method here will search by id and the ENDPOINT is the id here
+http://localhost:3000/api/userbudgets/trungbui@ucsb.edu102020
+Here:
+Email : trungbui@ucsb.edu (string)
+Month: 10 (integer)
+Year: 2020 (integer)
+
+All method here will search by the parameters specified above
 DELETE method - delete will delete data in the database
 GET method - will return the cursor to the data
 PUT method - will modify the data
 */
 
-const { ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb"); //To get MongoDB objectIDs
 const Archetype = require("archetype-js"); //Handler conversion to MongoDB ObjectIds
 const handler = nextConnect();
 
@@ -89,18 +94,42 @@ handler.put(async (req, res) => {
               req.body +
               " and yes it's empty, please pass in a valid JSON string"
           );
-
-          //Don't know what to pass in? Check out https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/ to find apporpriate update
-          //parameter to pass into the data
           return res.status(400).json({ success: false });
         }
+        /*Don't know what to pass in? Check out https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/
+          to find apporpriate update parameter to pass into the data
 
-        /* Format to pass into the request body function, $set, $inc all works
+        Format to pass into the request body function, $set, $inc all works
         {
           "$set": {"month" : 200}
         } */
+
+        //Checking the length of the id to make sure it is appropriately long
+        if (id.toString().length <= 10) {
+          //maybe the query is wrong
+          console.log("query is too short maybing missing something");
+          return res.status(400).json({ success: false });
+        }
+
+        //Extracting the info from the string, we are searching by id, month and year
+        const userEmail = id.toString().substring(0, id.toString().length - 6);
+        var userMonth = id
+          .toString()
+          .substring(id.toString().length - 6, id.toString().length - 4);
+        const userYear = parseInt(
+          id
+            .toString()
+            .substring(id.toString().length - 4, id.toString().length)
+        );
+
+        //In the case that the month is single digit, an if statement to clean out the zero and just return the number
+        if (userMonth.substring(0, 1) == "0") {
+          userMonth = userMonth.substring(1, 2);
+        }
+        userMonth = parseInt(userMonth);
+
         const budget = await req.db.collection("database").updateOne(
-          { _id: Archetype.to(id, ObjectId) },
+          { email: userEmail, month: userMonth, year: userYear },
 
           req.body,
           { upsert: true }
@@ -131,10 +160,35 @@ handler.delete(async (req, res) => {
   switch (method) {
     case "DELETE": //Deleting the budget from out schema
       try {
+        //Making sure the string passed in is of appropriate length
+        if (id.toString().length <= 10) {
+          //maybe the query is wrong
+          console.log("query is too short maybing missing something");
+          return res.status(400).json({ success: false });
+        }
+
+        //Extracting the info from the string, we are searching by id, month and year
+        const userEmail = id.toString().substring(0, id.toString().length - 6);
+        var userMonth = id
+          .toString()
+          .substring(id.toString().length - 6, id.toString().length - 4);
+        const userYear = parseInt(
+          id
+            .toString()
+            .substring(id.toString().length - 4, id.toString().length)
+        );
+
+        //In the case that the month is single digit, an if statement to clean out the zero and just return the number
+        if (userMonth.substring(0, 1) == "0") {
+          userMonth = userMonth.substring(1, 2);
+        }
+        userMonth = parseInt(userMonth);
+
         //Link for deleteOne ref: https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/
         const deletedBudget = await req.db
           .collection("database")
-          .deleteOne({ _id: Archetype.to(id, ObjectId) }); //Using archetype to convert MongoDB object
+          .deleteOne({ email: userEmail, month: userMonth, year: userYear }); // Finding and deleting the user by their email
+
         //What happen if there is no budget to delete??
         if (!deletedBudget) {
           return res.status(400).json({ success: false });
