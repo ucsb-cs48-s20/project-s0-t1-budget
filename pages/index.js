@@ -5,10 +5,17 @@ import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import UserPageComponent from "../components/UserPageComponent";
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
-import { Button, Col, Container, Row, Jumbotron } from "react-bootstrap";
-import fetch from "isomorphic-unfetch";
+import {
+  Button,
+  Col,
+  Container,
+  Row,
+  Jumbotron,
+  Dropdown,
+} from "react-bootstrap";
 
 //tb-integrating user mongoDB field to show up
 /* Work in Progress
@@ -67,10 +74,7 @@ class HomePage extends Component {
     return (
       <Layout user={this.props.user}>
         {this.props.user ? (
-          <div>
-            You're logged in! Here's what the server knows about you:
-            <pre>{JSON.stringify(this.props, null, "\t")}</pre>
-          </div>
+          <UserPageComponent user={this.props.user} />
         ) : (
           <Container>
             <br />
