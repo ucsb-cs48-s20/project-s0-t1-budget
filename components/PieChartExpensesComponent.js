@@ -32,9 +32,8 @@ export default class PieChartExpensesComponent extends Component {
   render() {
     if (this.state.isActive) {
       return (
-        <Card body>
+        <Card style={{ border: "none" }} body>
           <div>
-            <h2>Pie Chart of Expenses</h2>
             <Pie data={this.state} />
           </div>
         </Card>

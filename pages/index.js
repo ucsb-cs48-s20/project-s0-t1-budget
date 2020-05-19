@@ -5,9 +5,18 @@ import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
-
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
+
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import { flexbox } from "@material-ui/system";
+import Box from "@material-ui/core/Box";
+import React from "react";
+
+import { ArrowsFullscreen, X } from "react-bootstrap-icons";
+
 import {
   Button,
   Col,
@@ -15,10 +24,30 @@ import {
   Row,
   Jumbotron,
   Card,
-  CardGroup,
+  CardDeck,
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
+
+import fetch from "isomorphic-unfetch";
+
+//tb-integrating user mongoDB field to show up
+/* Work in Progress
+const budgets = ({data}) => { }
+>>>>>>> 35a1c3cfb2dc7ac075818fc383ca440e056b412e
+
+budgets.getInitialProps = async () => {
+  const res = await fetch('http://localhost:3000/api/userbudgets/index')
+  const json = await res.json()
+  return {data: json}
+}
+*/
+
+const style = {
+  zIndex: 1,
+  color: "#fff",
+  display: "flex",
+};
 
 export const getServerSideProps = optionalAuth;
 
@@ -33,6 +62,9 @@ class HomePage extends Component {
     barActive: true,
     incomePieActive: true,
     expensePieActive: true,
+    openBar: false,
+    openPieInc: false,
+    openPieExp: false,
   };
 
   handleFormUpdate = (income, category, value) => {
@@ -57,6 +89,24 @@ class HomePage extends Component {
     var totalExpenses = (arr.reduce((a, b) => a + b, 0) - arr[0] - arr[1]) * -1;
     var netIncome = arr[0] - totalExpenses;
     arr.splice(1, 1, parseInt(netIncome));
+  };
+
+  handleToggleBar = () => {
+    this.setState({
+      openBar: !this.state.openBar,
+    });
+  };
+
+  handleTogglePieInc = () => {
+    this.setState({
+      openPieInc: !this.state.openPieInc,
+    });
+  };
+
+  handleTogglePieExp = () => {
+    this.setState({
+      openPieExp: !this.state.openPieExp,
+    });
   };
 
   handleResetUpdate = () => {
@@ -139,6 +189,55 @@ class HomePage extends Component {
                       Expenses Pie Chart
                     </Dropdown.Item>
                   </DropdownButton>
+                  <br />
+                  <div>
+                    <Backdrop
+                      style={style}
+                      open={this.state.openBar}
+                      onClick={this.handleToggleBar}
+                    >
+                      <Box width="75%">
+                        <h2>Bar Graph</h2>
+                        <ChartComponent
+                          isActive={this.state.barActive}
+                          labels={this.state.labels}
+                          data={this.state.data}
+                        />
+                      </Box>
+                    </Backdrop>
+                  </div>
+                  <div>
+                    <Backdrop
+                      style={style}
+                      open={this.state.openPieInc}
+                      onClick={this.handleTogglePieInc}
+                    >
+                      <Box width="75%">
+                        <h2>Pie Chart of Income</h2>
+                        <PieChartIncomeComponent
+                          isActive={this.state.incomePieActive}
+                          labels={this.state.labels}
+                          data={this.state.data}
+                        />
+                      </Box>
+                    </Backdrop>
+                  </div>
+                  <div>
+                    <Backdrop
+                      style={style}
+                      open={this.state.openPieExp}
+                      onClick={this.handleTogglePieExp}
+                    >
+                      <Box width="75%">
+                        <h2>Pie Chart of Expense</h2>
+                        <PieChartExpensesComponent
+                          isActive={this.state.expensePieActive}
+                          labels={this.state.labels}
+                          data={this.state.data}
+                        />
+                      </Box>
+                    </Backdrop>
+                  </div>
                 </Jumbotron>
               </Col>
               <Col md="7">
@@ -148,24 +247,132 @@ class HomePage extends Component {
                 />
               </Col>
             </Row>
-            <CardGroup>
-              <ChartComponent
-                isActive={this.state.barActive}
-                labels={this.state.labels}
-                data={this.state.data}
-              />
-              <PieChartIncomeComponent
-                isActive={this.state.incomePieActive}
-                labels={this.state.labels}
-                data={this.state.data}
-              />
-
-              <PieChartExpensesComponent
-                isActive={this.state.expensePieActive}
-                labels={this.state.labels}
-                data={this.state.data}
-              />
-            </CardGroup>
+            <CardDeck>
+              <Card style={this.state.barActive ? {} : { display: "none" }}>
+                <Card.Header>
+                  <h3>Bar Chart</h3>
+                </Card.Header>
+                <Card.Body>
+                  <ChartComponent
+                    isActive={this.state.barActive}
+                    labels={this.state.labels}
+                    data={this.state.data}
+                  />
+                </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="primary"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handleToggleBar}
+                  >
+                    <ArrowsFullscreen size={25} />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handleBar}
+                  >
+                    <X size={25} />
+                  </Button>
+                </Card.Footer>
+              </Card>
+              <Card
+                style={this.state.incomePieActive ? {} : { display: "none" }}
+              >
+                <Card.Header>
+                  <h3>Pie Income Chart</h3>
+                </Card.Header>
+                <Card.Body>
+                  <PieChartIncomeComponent
+                    isActive={this.state.incomePieActive}
+                    labels={this.state.labels}
+                    data={this.state.data}
+                  />
+                </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="primary"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handleTogglePieInc}
+                  >
+                    <ArrowsFullscreen size={25} />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handlePieIncome}
+                  >
+                    <X size={25} />
+                  </Button>
+                </Card.Footer>
+              </Card>
+              <Card
+                style={this.state.expensePieActive ? {} : { display: "none" }}
+              >
+                <Card.Header>
+                  <h3>Pie Chart of Expenses</h3>
+                </Card.Header>
+                <Card.Body>
+                  <PieChartExpensesComponent
+                    isActive={this.state.expensePieActive}
+                    labels={this.state.labels}
+                    data={this.state.data}
+                  />
+                </Card.Body>
+                <Card.Footer>
+                  <Button
+                    variant="primary"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handleTogglePieExp}
+                  >
+                    <ArrowsFullscreen size={25} />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    style={{
+                      height: 50,
+                      width: 50,
+                      margin: 5,
+                      borderRadius: 25,
+                      align: "center",
+                    }}
+                    onClick={this.handlePieExpense}
+                  >
+                    <X size={25} />
+                  </Button>
+                </Card.Footer>
+              </Card>
+            </CardDeck>
           </Container>
         )}
       </Layout>

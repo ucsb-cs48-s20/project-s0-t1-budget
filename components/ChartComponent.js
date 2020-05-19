@@ -98,9 +98,8 @@ export default class ChartComponent extends Component {
   render() {
     if (this.state.isActive) {
       return (
-        <Card body>
+        <Card style={{ border: "none" }} body>
           <div>
-            <h2>Bar Graph</h2>
             <Bar
               data={this.state}
               width={100}
