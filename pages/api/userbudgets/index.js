@@ -5,22 +5,34 @@ const handler = nextConnect();
 
 handler.use(middleware); //here the handler will be using our database from mongoDB
 
+//Handing the GET method
 handler.get(async (req, res) => {
   const { method } = req;
   switch (method) {
     case "GET":
       try {
-        const userBudget = await req.db.collection("database").find().toArray();
+        const userBudget = await req.db.collection("database").find().toArray(); //Finding everything inside the database
         res.status(200).json({ success: true, data: userBudget });
       } catch (error) {
         console.log(error);
         res.status(400).json({ success: false });
       }
       break;
+    default:
+      res.status(400).json({ success: false });
+      break;
+  }
+});
+
+//Handling the POST method
+handler.post(async (req, res) => {
+  const { method } = req;
+  switch (method) {
     case "POST":
       try {
-        const userBudget = await req.db.collection("database").insert(req.body);
-
+        const userBudget = await req.db
+          .collection("database")
+          .insertOne(req.body); //Adding whatever is inside req body into the database
         res.status(201).json({ success: true, data: userBudget });
       } catch (error) {
         res.status(400).json({ success: false });
