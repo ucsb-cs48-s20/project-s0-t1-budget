@@ -22,3 +22,4 @@ User Roles:
 Permission:
   * Users should be able to decide if they want to send their budgeting data to other people and what types of data they want to send.
  
+* [Deployment Instructions](./docs/DEPLOY.md)
