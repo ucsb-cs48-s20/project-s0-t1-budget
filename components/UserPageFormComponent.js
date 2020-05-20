@@ -26,7 +26,7 @@ class USerPageFormComponent extends Component {
       data: [this.state.income, diff.toString(), this.state.input],
     };
 
-    fetch("http://localhost:3000/api/userbudgets", {
+    fetch("https://cs48-s20-s0-t1-qa.herokuapp.com/api/userbudgets", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

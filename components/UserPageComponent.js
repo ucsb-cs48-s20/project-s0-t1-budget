@@ -47,7 +47,7 @@ export default class UserPageComponent extends Component {
       selectYear: year,
     });
 
-    fetch("http://localhost:3000/api/userbudgets")
+    fetch("https://cs48-s20-s0-t1-qa.herokuapp.com/api/userbudgets")
       .then((res) => res.json())
       .then(
         (result) => {
