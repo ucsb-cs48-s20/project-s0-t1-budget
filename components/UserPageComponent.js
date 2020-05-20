@@ -12,19 +12,27 @@ export default class UserPageComponent extends Component {
 
   state = {
     dataLoaded: false,
+    selectMonth: 1,
+    selectYear: 2020,
   };
 
   componentDidMount() {
-    this.loadData(1);
+    this.loadData(this.state.selectMonth, this.state.selectYear);
   }
 
   handleChange = (e) => {
-    this.loadData(e.target.value);
+    this.loadData(e.target.value, this.state.selectYear);
   };
 
-  loadData = (val) => {
+  handleChange2 = (e) => {
+    this.loadData(this.state.selectMonth, e.target.value);
+  };
+
+  loadData = (month, year) => {
     this.setState({
       dataLoaded: false,
+      selectMonth: month,
+      selectYear: year,
     });
 
     fetch("http://localhost:3000/api/userbudgets")
@@ -35,7 +43,8 @@ export default class UserPageComponent extends Component {
           for (var i = 0; i < result.data.length; i++) {
             if (
               result.data[i].email == this.props.user.email &&
-              result.data[i].month == val
+              result.data[i].month == month &&
+              result.data[i].year == year
             ) {
               out = result.data[i];
             }
@@ -44,7 +53,8 @@ export default class UserPageComponent extends Component {
             this.setState({
               dataLoaded: true,
               dataFound: true,
-              selectValue: val,
+              selectMonth: month,
+              selectYear: year,
               labels: out.labels,
               data: out.data,
             });
@@ -52,14 +62,16 @@ export default class UserPageComponent extends Component {
             this.setState({
               dataLoaded: true,
               dataFound: false,
-              selectValue: val,
+              selectMonth: month,
+              selectYear: year,
             });
           }
         },
         (error) => {
           this.setState({
             dataLoaded: false,
-            selectValue: val,
+            selectMonth: month,
+            selectYear: year,
             labels: ["Income", "Net Income"],
             data: [0, 0],
             error,
@@ -76,7 +88,7 @@ export default class UserPageComponent extends Component {
             {this.state.dataFound ? (
               <div>
                 <select
-                  value={this.state.selectValue}
+                  value={this.state.selectMonth}
                   onChange={this.handleChange}
                 >
                   <option value="1">January</option>
@@ -92,6 +104,15 @@ export default class UserPageComponent extends Component {
                   <option value="11">November</option>
                   <option value="12">December</option>
                 </select>
+
+                <select
+                  value={this.state.selectYear}
+                  onChange={this.handleChange2}
+                >
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                </select>
+
                 <TableComponent
                   category={this.state.labels}
                   price={this.state.data}
@@ -112,7 +133,7 @@ export default class UserPageComponent extends Component {
             ) : (
               <div>
                 <select
-                  value={this.state.selectValue}
+                  value={this.state.selectMonth}
                   onChange={this.handleChange}
                 >
                   <option value="1">January</option>
@@ -128,6 +149,15 @@ export default class UserPageComponent extends Component {
                   <option value="11">November</option>
                   <option value="12">December</option>
                 </select>
+
+                <select
+                  value={this.state.selectYear}
+                  onChange={this.handleChange2}
+                >
+                  <option value="2019">2019</option>
+                  <option value="2020">2020</option>
+                </select>
+
                 <h3>No Data for this month</h3>
               </div>
             )}
