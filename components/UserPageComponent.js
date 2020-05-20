@@ -3,11 +3,14 @@ import ChartComponent from "../components/ChartComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
-import { Spinner } from "react-bootstrap";
+import UserPageFormComponent from "../components/UserPageFormComponent";
+import { Spinner, Jumbotron } from "react-bootstrap";
 
 export default class UserPageComponent extends Component {
   constructor(props) {
     super(props);
+
+    this.update = this.update.bind(this);
   }
 
   state = {
@@ -17,6 +20,15 @@ export default class UserPageComponent extends Component {
   };
 
   componentDidMount() {
+    this.loadData(this.state.selectMonth, this.state.selectYear);
+  }
+
+  update(month, year) {
+    this.setState({
+      dataLoaded: false,
+      selectMonth: month,
+      selectYear: year,
+    });
     this.loadData(this.state.selectMonth, this.state.selectYear);
   }
 
@@ -109,8 +121,17 @@ export default class UserPageComponent extends Component {
                   value={this.state.selectYear}
                   onChange={this.handleChange2}
                 >
-                  <option value="2019">2019</option>
                   <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
                 </select>
 
                 <TableComponent
@@ -154,11 +175,30 @@ export default class UserPageComponent extends Component {
                   value={this.state.selectYear}
                   onChange={this.handleChange2}
                 >
-                  <option value="2019">2019</option>
                   <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
                 </select>
 
-                <h3>No Data for this month</h3>
+                <h3>No Data for this month :(</h3>
+                <br />
+                <h4>Would you like to add some?</h4>
+                <Jumbotron>
+                  <UserPageFormComponent
+                    user={this.props.user}
+                    month={this.state.selectMonth}
+                    year={this.state.selectYear}
+                    update={this.update}
+                  />
+                </Jumbotron>
               </div>
             )}
           </div>
