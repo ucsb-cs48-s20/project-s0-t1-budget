@@ -5,64 +5,63 @@ const handler = nextConnect();
 
 handler.use(middleware); //here the handler will be using our database from mongoDB
 
+//Handing the GET method - this method will be getting you everything inside the database
 handler.get(async (req, res) => {
-  let doc = await req.db.collection("database").findOne(); //Getting all the data in the database
-  console.log(doc);
-  res.json(doc);
+  const { method } = req;
+  switch (method) {
+    case "GET":
+      try {
+        const userBudget = await req.db.collection("database").find().toArray(); //Finding everything inside the database
+        res.status(200).json({ success: true, data: userBudget });
+      } catch (error) {
+        console.log(error);
+        res.status(400).json({ success: false });
+      }
+      break;
+    default:
+      res.status(400).json({ success: false });
+      break;
+  }
+});
+
+//Handling the POST method
+/* In order to data into the database follow the JSON format below:
+Year and Month have to be integer
+{
+  "email": "trungbui@ucsb.edu",
+  "month": 12,
+  "year": 2000,
+  "labels": [
+      "Net Income",
+      "Income",
+      "Grocery",
+      "Furniture"
+  ],
+  "data": [
+      "5500",
+      "1000",
+      "500",
+      "400"
+  ]
+} */
+
+handler.post(async (req, res) => {
+  const { method } = req;
+  switch (method) {
+    case "POST":
+      try {
+        const userBudget = await req.db
+          .collection("database")
+          .insertOne(req.body); //Adding whatever is inside req body into the database
+        res.status(201).json({ success: true, data: userBudget });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+    default:
+      res.status(400).json({ success: false });
+      break;
+  }
 });
 
 export default handler;
-
-/* Code from the lab, not sure if we need admin yet
-
-async function createAdmin(req) {
-    const {email} = req.body
-
-    if (!email) {
-        throw {
-            status: 400,
-            message: "Missing email",
-        };
-    }
-
-    const client = await initDatabase();
-    const users = client.collection("database")
-
-    const query = {
-        email,
-    };
-
-    const mutation = {
-        $setOnInsert: {
-            email,
-        },
-        $set: {
-            role: "admin",
-        },
-    };
-
-    const result = await users.findOneAndUpdate(query, mutation, {
-        upsert: true,
-        returnOriginal: false,
-    });
-
-    return result.value;
-}
-    
-async function performAction(req, user) {
-    if (user.role !== "admin") {
-        throw { status: 403 }; //403 tells forbidden
-    }
-
-    switch (req.method) {
-
-        case "GET":
-            return getAdmins();
-        case "POST":
-            return createAdmin(req);
-    } 
-    throw { status: 405 }; //405 - method not allow different than not found
-}
-
-export default authenticatedAction(performAction); //Alows the user to do action that only they can do
-*/
