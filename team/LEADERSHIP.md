@@ -8,4 +8,5 @@
 | Mon 05/11 | Trung Bui         | Will lead the second Retro                             | 
 | Tue 05/12 | Connor McIntosh   | Sprint goal discussion                                 |
 | Thu 05/07 | Tristan Hernandez | Leading demo of the MVP                                |
-
+| Thu 05/21 | Connor McIntosh   | Leading demo of the second iteration                   |
+| Tue 05/26 | Tomas Vera        | Leading Third Retro                                    |
