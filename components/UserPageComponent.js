@@ -5,6 +5,7 @@ import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
 import { Spinner, Jumbotron, Form, Row, Col, Container } from "react-bootstrap";
+import LineGraphComponent from "./LineGraphComponent";
 
 export default class UserPageComponent extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class UserPageComponent extends Component {
       selectYear: year,
     });
 
-    fetch("https://cs48-s20-s0-t1-qa.herokuapp.com/api/userbudgets")
+    fetch("/api/userbudgets", { method: "GET" })
       .then((res) => res.json())
       .then(
         (result) => {
@@ -158,6 +159,10 @@ export default class UserPageComponent extends Component {
                 <PieChartExpensesComponent
                   labels={this.state.labels}
                   data={this.state.data}
+                />
+                <LineGraphComponent
+                  year={this.state.selectYear}
+                  user={this.props.user}
                 />
               </div>
             ) : (
