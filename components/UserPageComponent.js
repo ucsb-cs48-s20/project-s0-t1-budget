@@ -4,7 +4,7 @@ import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
-import { Spinner, Jumbotron } from "react-bootstrap";
+import { Spinner, Jumbotron, Form, Row, Col, Container } from "react-bootstrap";
 
 export default class UserPageComponent extends Component {
   constructor(props) {
@@ -94,46 +94,55 @@ export default class UserPageComponent extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         {this.state.dataLoaded ? (
           <div>
             {this.state.dataFound ? (
               <div>
-                <select
-                  value={this.state.selectMonth}
-                  onChange={this.handleChange}
-                >
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June</option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-
-                <select
-                  value={this.state.selectYear}
-                  onChange={this.handleChange2}
-                >
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                  <option value="2014">2014</option>
-                  <option value="2013">2013</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                </select>
-
+                <br />
+                <Form.Row>
+                  <Form.Group as={Col} md="2" controlId="Month">
+                    <Form.Control
+                      as="select"
+                      name="Month"
+                      onChange={this.handleChange}
+                      value={this.state.selectMonth}
+                    >
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group as={Col} md="2" controlId="Year">
+                    <Form.Control
+                      as="select"
+                      name="Year"
+                      onChange={this.handleChange2}
+                      value={this.state.selectYear}
+                    >
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
                 <TableComponent
                   category={this.state.labels}
                   price={this.state.data}
@@ -153,40 +162,50 @@ export default class UserPageComponent extends Component {
               </div>
             ) : (
               <div>
-                <select
-                  value={this.state.selectMonth}
-                  onChange={this.handleChange}
-                >
-                  <option value="1">January</option>
-                  <option value="2">February</option>
-                  <option value="3">March</option>
-                  <option value="4">April</option>
-                  <option value="5">May</option>
-                  <option value="6">June</option>
-                  <option value="7">July</option>
-                  <option value="8">August</option>
-                  <option value="9">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
-                </select>
-
-                <select
-                  value={this.state.selectYear}
-                  onChange={this.handleChange2}
-                >
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                  <option value="2014">2014</option>
-                  <option value="2013">2013</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                </select>
+                <br />
+                <Form.Row>
+                  <Form.Group as={Col} md="2" controlId="Month">
+                    <Form.Control
+                      as="select"
+                      name="Month"
+                      onChange={this.handleChange}
+                      value={this.state.selectMonth}
+                    >
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group as={Col} md="2" controlId="Year">
+                    <Form.Control
+                      as="select"
+                      name="Year"
+                      onChange={this.handleChange2}
+                      value={this.state.selectYear}
+                    >
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Form.Row>
 
                 <h3>No Data for this month :(</h3>
                 <br />
@@ -207,7 +226,7 @@ export default class UserPageComponent extends Component {
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
-      </div>
+      </Container>
     );
   }
 }
