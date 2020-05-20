@@ -4,7 +4,7 @@ function throwError(message) {
 
 export function infoExtract(id) {
   typeof id === "string" || throwError("endpoint should be of type string");
-  console.log(id.length);
+
   id.length >= 7 ||
     throwError("id should not be empty or less than 7 characters");
   const userEmail = id.toString().substring(0, id.toString().length - 6);
