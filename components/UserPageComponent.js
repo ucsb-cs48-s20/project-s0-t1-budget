@@ -173,11 +173,12 @@ export default class UserPageComponent extends Component {
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
-                <p>{JSON.stringify(this.state.data)}</p>
 
-                <Button variant="Primary" onClick={this.deleteBudget}>
-                  Delete Budget
+                <Button onClick={this.deleteBudget}>
+                  Delete Month's Finances
                 </Button>
+                <br />
+                <br />
 
                 <TableComponent
                   category={this.state.data.labels}

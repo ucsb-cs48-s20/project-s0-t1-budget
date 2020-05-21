@@ -44,7 +44,7 @@ class UserPageFormComponent extends Component {
   render() {
     return (
       <div>
-        <h4>Budget For This Month</h4>
+        <h4>Finances For This Month</h4>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="monthlyIncome">
             <Form.Label>Income($):</Form.Label>
