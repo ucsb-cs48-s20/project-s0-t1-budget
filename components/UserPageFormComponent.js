@@ -2,7 +2,7 @@ import { render } from "react-dom";
 import { Component } from "react";
 import { Form, Col, Button, Alert } from "react-bootstrap";
 
-class USerPageFormComponent extends Component {
+class UserPageFormComponent extends Component {
   constructor(props) {
     super(props);
     this.state = { income: "", input: "", category: "Groceries" };
@@ -20,8 +20,8 @@ class USerPageFormComponent extends Component {
     const diff = parseInt(this.state.income) - parseInt(this.state.input);
     const data = {
       email: this.props.user.email,
-      month: this.props.month,
-      year: this.props.year,
+      month: parseInt(this.props.month),
+      year: parseInt(this.props.year),
       labels: ["Income", "Net Income", this.state.category],
       data: [this.state.income, diff.toString(), this.state.input],
     };
@@ -44,7 +44,7 @@ class USerPageFormComponent extends Component {
   render() {
     return (
       <div>
-        <h4>Budget For This Month</h4>
+        <h4>Finances For This Month</h4>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="monthlyIncome">
             <Form.Label>Income($):</Form.Label>
@@ -103,4 +103,4 @@ class USerPageFormComponent extends Component {
   }
 }
 
-export default USerPageFormComponent;
+export default UserPageFormComponent;
