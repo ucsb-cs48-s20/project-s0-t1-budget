@@ -45,16 +45,53 @@ export default class LineGraphComponent extends Component {
             null,
             null,
           ]; //created array of 12 nulls each index indicates a date, 0 being Jan, 11 being Dec
+          var netIncomeDataSet = [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+          ];
+          var expenseDataSet = [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+          ];
           for (var j = 0; j < selectedData.length; j++) {
             incomeDataSet[parseInt(selectedData[j].month) - 1] = parseInt(
               selectedData[j].data[0]
-            ); //iterates through selectedData and replaces incomeDataSet with income value based off of month
+            );
+            netIncomeDataSet[parseInt(selectedData[j].month) - 1] = parseInt(
+              selectedData[j].data[1]
+            );
+            expenseDataSet[parseInt(selectedData[j].month) - 1] =
+              incomeDataSet[parseInt(selectedData[j].month) - 1] -
+              netIncomeDataSet[parseInt(selectedData[j].month) - 1];
+            //iterates through selectedData and replaces incomeDataSet with income value based off of month
           }
           //income is selectedData[j].data[0]
           //net income is selectedData[j].data[1]
           //expenses are the rest of the array of selectedData[j].data
           this.setState({
             incomeData: incomeDataSet, //creates a state label of incomeData that stores the new array containing the income data
+            netIncomeData: netIncomeDataSet,
+            expenseData: expenseDataSet,
           });
         },
         (error) => {
@@ -85,28 +122,28 @@ export default class LineGraphComponent extends Component {
         {
           label: "Net Income",
           fill: false,
-          lineTension: 0.1,
+          lineTension: 0,
           backgroundColor: "rgba(0,255,0,0.2)",
           borderColor: "rgba(0,255,0,1)",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: "miter",
-          pointBorderColor: "rgba(0,255,0,0.2)",
+          pointBorderColor: "rgba(0,255,0,1)",
           pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
+          pointBorderWidth: 5,
           pointHoverRadius: 5,
           pointHoverBackgroundColor: "rgba(0,255,0,0.2)",
           pointHoverBorderColor: "rgba(0,255,0,0.2)",
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 5,
           pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40], //this is sample data for Net Income for now, replace with new array containing the data from database
+          data: this.state.netIncomeData, //this is sample data for Net Income for now, replace with new array containing the data from database
         },
         {
           label: "Income",
           fill: false,
-          lineTension: 0.1,
+          lineTension: 0,
           backgroundColor: "rgba(0,0,255,0.2)",
           borderColor: "rgba(0,0,255,1)",
           borderCapStyle: "butt",
@@ -115,35 +152,35 @@ export default class LineGraphComponent extends Component {
           borderJoinStyle: "miter",
           pointBorderColor: "rgba(75,192,192,1)",
           pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
+          pointBorderWidth: 5,
           pointHoverRadius: 5,
           pointHoverBackgroundColor: "rgba(0,0,255,0.2)",
           pointHoverBorderColor: "rgba(0,0,255,0.2)",
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 5,
           pointHitRadius: 10,
           data: this.state.incomeData, //replaces the data of income with the new dataset of income from the state
         },
         {
           label: "Expenses",
           fill: false,
-          lineTension: 0.1,
+          lineTension: 0,
           backgroundColor: "rgba(238,130,238,0.2)",
           borderColor: "rgba(238,130,238,1)",
           borderCapStyle: "butt",
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: "miter",
-          pointBorderColor: "rgba(238,130,238,0.2)",
+          pointBorderColor: "rgba(238,130,238,1)",
           pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
+          pointBorderWidth: 5,
           pointHoverRadius: 5,
           pointHoverBackgroundColor: "rgba(238,130,238,0.2)",
           pointHoverBorderColor: "rgba(238,130,238,0.2)",
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 5,
           pointHitRadius: 10,
-          data: [20, 20, 30, 60, 40, 55, 10], //this is sample data for Expenses for now, replace with new array containing the data from database
+          data: this.state.expenseData, //this is sample data for Expenses for now, replace with new array containing the data from database
         },
       ],
     };
