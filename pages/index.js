@@ -47,6 +47,8 @@ const style = {
   zIndex: 1,
   color: "#fff",
   display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 export const getServerSideProps = optionalAuth;
