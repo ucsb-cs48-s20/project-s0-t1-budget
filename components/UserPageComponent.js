@@ -196,10 +196,10 @@ export default class UserPageComponent extends Component {
                   labels={this.state.data.labels}
                   data={this.state.data.data}
                 />
-                <LineGraphComponent
+                {/* <LineGraphComponent
                   year={this.state.selectYear}
                   user={this.props.user}
-                />
+                /> */}
               </div>
             ) : (
               <div>
