@@ -4,7 +4,15 @@ import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
-import { Spinner, Jumbotron, Form, Row, Col, Container } from "react-bootstrap";
+import {
+  Spinner,
+  Jumbotron,
+  Form,
+  Row,
+  Col,
+  Container,
+  Button,
+} from "react-bootstrap";
 import LineGraphComponent from "./LineGraphComponent";
 
 export default class UserPageComponent extends Component {
@@ -41,6 +49,28 @@ export default class UserPageComponent extends Component {
     this.loadData(this.state.selectMonth, e.target.value);
   };
 
+  deleteBudget = () => {
+    var monthstr;
+    if (this.state.data.month.toString().length == 1) {
+      monthstr = "0" + this.state.data.month.toString();
+    } else {
+      monthstr = this.state.data.month.toString();
+    }
+    fetch(
+      "/api/userbudgets/" +
+        this.state.data.email +
+        monthstr +
+        this.state.data.year,
+      { method: "DELETE" }
+    ).then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        this.update(this.state.selectMonth, this.state.selectYear);
+      } else {
+        Alert("Something Went Wrong Try Again");
+      }
+    });
+  };
+
   loadData = (month, year) => {
     this.setState({
       dataLoaded: false,
@@ -68,8 +98,7 @@ export default class UserPageComponent extends Component {
               dataFound: true,
               selectMonth: month,
               selectYear: year,
-              labels: out.labels,
-              data: out.data,
+              data: out,
             });
           } else {
             this.setState({
@@ -144,21 +173,27 @@ export default class UserPageComponent extends Component {
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
+                <p>{JSON.stringify(this.state.data)}</p>
+
+                <Button variant="Primary" onClick={this.deleteBudget}>
+                  Delete Budget
+                </Button>
+
                 <TableComponent
-                  category={this.state.labels}
-                  price={this.state.data}
+                  category={this.state.data.labels}
+                  price={this.state.data.data}
                 />
                 <ChartComponent
-                  labels={this.state.labels}
-                  data={this.state.data}
+                  labels={this.state.data.labels}
+                  data={this.state.data.data}
                 />
                 <PieChartIncomeComponent
-                  labels={this.state.labels}
-                  data={this.state.data}
+                  labels={this.state.data.labels}
+                  data={this.state.data.data}
                 />
                 <PieChartExpensesComponent
-                  labels={this.state.labels}
-                  data={this.state.data}
+                  labels={this.state.data.labels}
+                  data={this.state.data.data}
                 />
                 <LineGraphComponent
                   year={this.state.selectYear}
