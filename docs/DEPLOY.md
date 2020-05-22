@@ -6,7 +6,7 @@
 
 2. Create a new Heroku app, and link it to you forked copy, so that you are ready to deploy the master branch.
 
-3. Install Node (Steps can be found [here](./docs/INSTALL_NODE_INSTRUCTIONS.md))
+3. Install Node (Steps can be found [here](https://github.com/ucsb-cs48-s20/project-s0-t1-budget/blob/master/docs/INSTALL_NODE_INSTRUCTIONS.md))
 
 4. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md)
 
