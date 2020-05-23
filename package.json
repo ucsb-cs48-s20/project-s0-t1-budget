@@ -13,7 +13,9 @@
     "test:format": "prettier --check \"**/*.{js,json}\" --ignore-path .gitignore",
     "test:cypress": "start-server-and-test dev 3000 cy:run",
     "danger": "danger",
-    "test:jest": "jest"
+    "test:jest": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -c .storybook -o ../project-s0-t1-budget-storybook"
   },
   "husky": {
     "hooks": {
@@ -52,6 +54,17 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "start-server-and-test": "^1.10.11"
+    "start-server-and-test": "^1.10.11",
+    "@babel/core": "^7.9.6",
+    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
+    "@storybook/addon-viewport": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0",
+    "terser-webpack-plugin": "^2.3.5"
   }
 }

@@ -26,13 +26,17 @@ Permission:
 
 - Users should be able to decide if they want to send their budgeting data to other people and what types of data they want to send.
 
+| Command                   | Description                                           |
+| ------------------------- | ----------------------------------------------------- |
+| `npm install`             | Install Dependencies                                  |
+| `npm run dev`             | Runs locally in development mode                      |
+| `npm run start`           | Runs in production mode (requires `PORT` env var)     |
+| `npm run test`            | Runs entire test suite                                |
+| `npm run test:cypress`    | Runs Cypress integration tests                        |
+| `npm run test:cypress`    | Runs `prettier` format tests                          |
+| `npm run fix:format`      | Reformats all project files using `prettier`          |
+| `npm run storybook`       | Run React Storybook (made available at localhost:6006 |
+| `npm run build-storybook` | Create static react storybook for GitHub Pages        |
+
 - [Deployment Instructions](./docs/DEPLOY.md)
 
-## Table of Commands
-
-| Command                | Description                    |
-| ---------------------- | ------------------------------ |
-| `npm install`          | Install Dependencies           |
-| `npm run dev`          | Runs locally                   |
-| `npm run test`         | Runs entire test suite         |
-| `npm run test:cypress` | Runs Cypress integration tests |
