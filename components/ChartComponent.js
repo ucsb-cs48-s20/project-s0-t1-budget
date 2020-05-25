@@ -99,6 +99,7 @@ export default class ChartComponent extends Component {
     if (this.state.isActive) {
       return (
         <Card style={{ border: "none" }} body>
+          <h1>{this.props.labels}</h1>
           <div>
             <Bar
               data={this.state}

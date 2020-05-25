@@ -5,6 +5,7 @@ import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import ChartCardComponent from "../components/ChartCardComponent";
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
 
@@ -249,6 +250,7 @@ class HomePage extends Component {
                 />
               </Col>
             </Row>
+            <ChartCardComponent />
             <CardDeck>
               <Card style={this.state.barActive ? {} : { display: "none" }}>
                 <Card.Header>
