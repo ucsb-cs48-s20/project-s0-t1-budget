@@ -12,7 +12,6 @@ export default class PieChartExpensesComponent extends Component {
         hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
-    isActive: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -25,21 +24,14 @@ export default class PieChartExpensesComponent extends Component {
           hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
         },
       ],
-      isActive: props.isActive,
     };
   }
 
   render() {
-    if (this.state.isActive) {
-      return (
-        <Card style={{ border: "none" }} body>
-          <div>
-            <Pie data={this.state} />
-          </div>
-        </Card>
-      );
-    } else {
-      return <div></div>;
-    }
+    return (
+      <div>
+        <Pie data={this.state} />
+      </div>
+    );
   }
 }

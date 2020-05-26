@@ -29,7 +29,6 @@ export default class ChartComponent extends Component {
         data: [0, 0],
       },
     ],
-    isActive: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -91,37 +90,29 @@ export default class ChartComponent extends Component {
           data: props.data,
         },
       ],
-      isActive: props.isActive,
     };
   }
 
   render() {
-    if (this.state.isActive) {
-      return (
-        <Card style={{ border: "none" }} body>
-          <h1>{this.props.labels}</h1>
-          <div>
-            <Bar
-              data={this.state}
-              width={100}
-              height={50}
-              options={{
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        beginAtZero: true,
-                      },
-                    },
-                  ],
+    return (
+      <div>
+        <Bar
+          data={this.state}
+          width={100}
+          height={50}
+          options={{
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
                 },
-              }}
-            />
-          </div>
-        </Card>
-      );
-    } else {
-      return <div></div>;
-    }
+              ],
+            },
+          }}
+        />
+      </div>
+    );
   }
 }
