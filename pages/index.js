@@ -6,8 +6,6 @@ import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import ChartCardComponent from "../components/ChartCardComponent";
-import { optionalAuth } from "../utils/ssr";
-import { Component } from "react";
 
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -18,6 +16,9 @@ import React from "react";
 
 import { ArrowsFullscreen, X } from "react-bootstrap-icons";
 
+import UserPageComponent from "../components/UserPageComponent";
+import { optionalAuth } from "../utils/ssr";
+import { Component } from "react";
 import {
   Button,
   Col,
@@ -141,10 +142,7 @@ class HomePage extends Component {
     return (
       <Layout user={this.props.user}>
         {this.props.user ? (
-          <div>
-            You're logged in! Here's what the server knows about you:
-            <pre>{JSON.stringify(this.props.user, null, "\t")}</pre>
-          </div>
+          <UserPageComponent user={this.props.user} />
         ) : (
           <Container>
             <br />
