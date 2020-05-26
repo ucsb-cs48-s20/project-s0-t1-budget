@@ -75,7 +75,7 @@ Note:
 
 
 ## Brief description of how retro went
--I used the start/stop/continue template. Everyone entered their thoughts on the chat and we went over them to complete this entry.
+- I used the start/stop/continue template. Everyone entered their thoughts on the chat and we went over them to complete this entry.
 -The retro today went well, each memeber got their ideas in on the chat, then we discussed them live. Overall we agreed we have been doing well on all workflow areas.
--It is a bit tough to keep conversation going so maybe for a next the leader should focus on having questions lined up to discuss.
--Overall we concluded that our workflow works well, we may need to change some things with our Kanban board and ways to organize our codebase.
+- It is a bit tough to keep conversation going so maybe for a next the leader should focus on having questions lined up to discuss.
+- Overall we concluded that our workflow works well, we may need to change some things with our Kanban board and ways to organize our codebase.
