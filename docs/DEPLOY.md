@@ -2,7 +2,7 @@
 
 ## Steps to have an instance of the app running on Heroku given only read access to the repo
 
-1. Fork the project repo to your own personal GitHub account by clicking on the "Fork" button at the upper right hand of the repo's page on GitHub.  This creates a personal copy of the repo under your own GitHub account.
+1. Fork the project repo to your own personal GitHub account by clicking on the "Fork" button at the upper right hand of the repo's page on GitHub. This creates a personal copy of the repo under your own GitHub account.
 
 2. Create a new Heroku app, and link it to you forked copy, so that you are ready to deploy the master branch.
 
@@ -17,3 +17,15 @@
 7. Once these steps are completed, on the page for your heroku app under settings, click "reveal config vars". You should have key value pairs for the following variables: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN, MONGODB_URI, MONGODB_URI_PRODUCTION, MONGODB_URI_STAGING, and SESSION_COOKIE_SECRET
 
 8. When all of the previous steps are completed, you should be able to click the "Open app" button on heroku.
+
+# Deployment Testing
+
+Our team: s0-t1-budget
+
+Other Teams:
+
+| Team             | Who is reviewing | Issue Number |
+| ---------------- | ---------------- | ------------ |
+| s0-t2-env        | Trung,Edward     | 44           |
+| s0-t3-iv-housing | Tomas,Tristan    | 43           |
+| s0-t4-new-city   | Conner, Preetham | 42           |

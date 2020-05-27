@@ -5,6 +5,17 @@ import TableComponent from "../components/TableComponent";
 import LineGraphComponent from "../components/LineGraphComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import ChartCardComponent from "../components/ChartCardComponent";
+
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { makeStyles } from "@material-ui/core/styles";
+import { flexbox } from "@material-ui/system";
+import Box from "@material-ui/core/Box";
+import React from "react";
+
+import { ArrowsFullscreen, X } from "react-bootstrap-icons";
+
 import UserPageComponent from "../components/UserPageComponent";
 import { optionalAuth } from "../utils/ssr";
 import { Component } from "react";
@@ -14,12 +25,18 @@ import {
   Container,
   Row,
   Jumbotron,
+  Card,
+  CardColumns,
+  DropdownButton,
   Dropdown,
 } from "react-bootstrap";
+
+import fetch from "isomorphic-unfetch";
 
 //tb-integrating user mongoDB field to show up
 /* Work in Progress
 const budgets = ({data}) => { }
+>>>>>>> 35a1c3cfb2dc7ac075818fc383ca440e056b412e
 
 budgets.getInitialProps = async () => {
   const res = await fetch('http://localhost:3000/api/userbudgets/index')
@@ -27,6 +44,7 @@ budgets.getInitialProps = async () => {
   return {data: json}
 }
 */
+
 export const getServerSideProps = optionalAuth;
 
 class HomePage extends Component {
@@ -37,6 +55,9 @@ class HomePage extends Component {
   state = {
     labels: ["Income", "Net Income"],
     data: [0, 0],
+    barActive: true,
+    incomePieActive: true,
+    expensePieActive: true,
   };
 
   handleFormUpdate = (income, category, value) => {
@@ -67,7 +88,46 @@ class HomePage extends Component {
     this.setState({
       labels: ["Income", "Net Income"],
       data: [0, 0],
+      barActive: true,
+      incomePieActive: true,
+      expensePieActive: true,
     });
+  };
+
+  handleBar = () => {
+    if (this.state.barActive) {
+      this.setState({
+        barActive: false,
+      });
+    } else {
+      this.setState({
+        barActive: true,
+      });
+    }
+  };
+
+  handlePieIncome = () => {
+    if (this.state.incomePieActive) {
+      this.setState({
+        incomePieActive: false,
+      });
+    } else {
+      this.setState({
+        incomePieActive: true,
+      });
+    }
+  };
+
+  handlePieExpense = () => {
+    if (this.state.expensePieActive) {
+      this.setState({
+        expensePieActive: false,
+      });
+    } else {
+      this.setState({
+        expensePieActive: true,
+      });
+    }
   };
 
   render() {
@@ -88,6 +148,20 @@ class HomePage extends Component {
                   <Button variant="secondary" onClick={this.handleResetUpdate}>
                     Reset
                   </Button>
+                  <br />
+                  <br />
+                  <DropdownButton id="dropdown-item-button" title="Graphs">
+                    <Dropdown.Item as="button" onClick={this.handleBar}>
+                      Bar Graph
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={this.handlePieIncome}>
+                      Income Pie Chart
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={this.handlePieExpense}>
+                      Expenses Pie Chart
+                    </Dropdown.Item>
+                  </DropdownButton>
+                  <br />
                 </Jumbotron>
               </Col>
               <Col md="7">
@@ -97,15 +171,53 @@ class HomePage extends Component {
                 />
               </Col>
             </Row>
-            <ChartComponent labels={this.state.labels} data={this.state.data} />
-            <PieChartIncomeComponent
-              labels={this.state.labels}
-              data={this.state.data}
-            />
-            <PieChartExpensesComponent
-              labels={this.state.labels}
-              data={this.state.data}
-            />
+
+            <CardColumns>
+              <Card
+                border="none"
+                style={
+                  this.state.barActive
+                    ? { border: "none" }
+                    : { display: "none" }
+                }
+              >
+                <ChartCardComponent
+                  handleBar={this.handleBar}
+                  labels={this.state.labels}
+                  data={this.state.data}
+                  Component={"BarChart"}
+                />
+              </Card>
+              <Card
+                border="none"
+                style={
+                  this.state.incomePieActive
+                    ? { border: "none" }
+                    : { display: "none" }
+                }
+              >
+                <ChartCardComponent
+                  handlePieIncome={this.handlePieIncome}
+                  labels={this.state.labels}
+                  data={this.state.data}
+                  Component={"IncomePie"}
+                />
+              </Card>
+              <Card
+                style={
+                  this.state.expensePieActive
+                    ? { border: "none" }
+                    : { display: "none" }
+                }
+              >
+                <ChartCardComponent
+                  handlePieExpense={this.handlePieExpense}
+                  labels={this.state.labels}
+                  data={this.state.data}
+                  Component={"ExpensePie"}
+                />
+              </Card>
+            </CardColumns>
           </Container>
         )}
       </Layout>

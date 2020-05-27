@@ -1,6 +1,7 @@
 import { render } from "react-dom";
 import { Component } from "react";
 import { Form, Col, Button } from "react-bootstrap";
+import { ArrowsFullscreen, X } from "react-bootstrap-icons";
 
 class ChartFormComponent extends Component {
   constructor(props) {
