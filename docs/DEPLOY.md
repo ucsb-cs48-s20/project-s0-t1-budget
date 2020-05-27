@@ -2,7 +2,7 @@
 
 ## Steps to have an instance of the app running on Heroku given only read access to the repo
 
-1. Fork the project repo to your own personal GitHub account by clicking on the "Fork" button at the upper right hand of the repo's page on GitHub.  This creates a personal copy of the repo under your own GitHub account.
+1. Fork the project repo to your own personal GitHub account by clicking on the "Fork" button at the upper right hand of the repo's page on GitHub. This creates a personal copy of the repo under your own GitHub account.
 
 2. Create a new Heroku app, and link it to you forked copy, so that you are ready to deploy the master branch.
 

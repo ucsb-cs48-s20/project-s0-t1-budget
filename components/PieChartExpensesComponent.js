@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Pie } from "react-chartjs-2";
+import { Card } from "react-bootstrap";
 
 export default class PieChartExpensesComponent extends Component {
   state = {
@@ -29,7 +30,6 @@ export default class PieChartExpensesComponent extends Component {
   render() {
     return (
       <div>
-        <h2>Pie Chart of Expenses</h2>
         <Pie data={this.state} />
       </div>
     );

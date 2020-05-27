@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
+import { Card, Button } from "react-bootstrap";
 
 var cbkColor = "rgba(238,130,238,0.2)";
 var cboColor = "rgba(238,130,238,1)";
@@ -95,7 +96,6 @@ export default class ChartComponent extends Component {
   render() {
     return (
       <div>
-        <h2>Bar Graph</h2>
         <Bar
           data={this.state}
           width={100}
