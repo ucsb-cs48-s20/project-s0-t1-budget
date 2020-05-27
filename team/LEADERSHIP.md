@@ -10,3 +10,4 @@
 | Thu 05/07 | Tristan Hernandez | Leading demo of the MVP                                |
 | Thu 05/21 | Connor McIntosh   | Leading demo of the second iteration                   |
 | Tue 05/26 | Tomas Vera        | Leading Third Retro                                    |
+| Tue 05/26 | Preetham Kesineni | Leading Sprint Planning                                |
