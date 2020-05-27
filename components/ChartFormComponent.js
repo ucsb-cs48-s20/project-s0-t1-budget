@@ -37,7 +37,6 @@ class ChartFormComponent extends Component {
               placeholder="7000"
               type="number"
               value={this.state.income}
-              id="incomeinput"
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()

@@ -30,7 +30,7 @@ export default class PieChartExpensesComponent extends Component {
   render() {
     return (
       <div>
-        <Pie data={this.state} />
+        <Pie id="pie-chart-expenses" data={this.state} />
       </div>
     );
   }

@@ -50,7 +50,7 @@ export default class TableComponent extends React.Component {
   render() {
     return (
       <BootstrapTable
-        keyField="id"
+        keyField="category"
         data={this.state.values}
         columns={this.state.columns}
       />
