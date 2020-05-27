@@ -9,6 +9,6 @@ export default {
 
 export const SimplePieChartIncome = () => {
   const data = array("Data", [1, 2], ",");
-  const labels = array("Labels", ["Income", "Net Income"], ",");
+  const labels = ["Income", "Net Income"];
   return <PieChartIncomeComponent data={data} labels={labels} />;
 };
