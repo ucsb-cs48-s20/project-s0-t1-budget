@@ -15,6 +15,6 @@ describe("Home Page", () => {
 
   it("has a footer element", () => {
     cy.visit("http://localhost:3000");
-    cy.get("footer.footer").should("exist"); //footer.footer = Looking for the element tag footer and then look for the className footer
+    cy.get("footer.foot").should("exist"); //footer.footer = Looking for the element tag footer and then look for the className footer
   });
 });

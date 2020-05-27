@@ -94,9 +94,10 @@ export default class ChartComponent extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Bar Graph</h2>
+      <div className="div">
+        <h2 id="bar-graph-h2">Bar Graph</h2>
         <Bar
+          id="bar-graph"
           data={this.state}
           width={100}
           height={50}
