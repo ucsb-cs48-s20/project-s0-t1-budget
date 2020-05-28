@@ -35,15 +35,18 @@ describe("Chart Component", () => {
   it("can delete bar chart by clicking danger button", () => {
     cy.get("#delete-bar-chart").click();
     cy.get("#bar-graph").should("be.hidden");
+    cy.get("#bar-chart-h3").should("be.hidden");
   });
 
   it("can delete pie income chart by clicking danger button", () => {
     cy.get("#delete-pie-income-chart").click();
     cy.get("#pie-chart-income").should("be.hidden");
+    cy.get("#pie-chart-h3").should("be.hidden");
   });
 
   it("can delete pie expense chart by clicking danger button", () => {
     cy.get("#delete-pie-expenses-chart").click();
     cy.get("#pie-chart-expenses").should("be.hidden");
+    cy.get("#pie-expense-chart-h3").should("be.hidden");
   });
 });
