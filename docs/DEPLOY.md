@@ -16,7 +16,9 @@
 
 7. Once these steps are completed, on the page for your heroku app under settings, click "reveal config vars". You should have key value pairs for the following variables: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN, MONGODB_URI, MONGODB_URI_PRODUCTION, MONGODB_URI_STAGING, and SESSION_COOKIE_SECRET
 
-8. When all of the previous steps are completed, you should be able to click the "Open app" button on heroku.
+8. Navigate to the deploy tab in heroku and select whether you would like to deploy the master branch manually or automatically.
+
+9. When all of the previous steps are completed, you should be able to click the "Open app" button on heroku.
 
 # Deployment Testing
     
