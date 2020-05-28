@@ -46,14 +46,13 @@ class UserPageFormComponent extends Component {
       <div>
         <h4>Finances For This Month</h4>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="monthlyIncome">
+          <Form.Group controlId="monthlyIncomeUser">
             <Form.Label>Income($):</Form.Label>
             <Form.Control
               name="income"
               placeholder="7000"
               type="number"
               value={this.state.income}
-              id="incomeinput"
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
@@ -63,7 +62,7 @@ class UserPageFormComponent extends Component {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group as={Col} md="4" controlId="category">
+            <Form.Group as={Col} md="4" controlId="categoryUser">
               <Form.Label>Category:</Form.Label>
               <Form.Control
                 as="select"
@@ -73,13 +72,13 @@ class UserPageFormComponent extends Component {
               >
                 <option value="Groceries">Groceries</option>
                 <option value="Utility">Utility</option>
-                <option value="Decor">Decoration</option>
-                <option value="Transport">Transportation</option>
+                <option value="Decoration">Decoration</option>
+                <option value="Transportation">Transportation</option>
                 <option value="Insurance">Insurance</option>
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
-            <Form.Group as={Col} md="8" controlId="expense">
+            <Form.Group as={Col} md="8" controlId="expenseUser">
               <Form.Label>Expense($):</Form.Label>
               <Form.Control
                 name="input"

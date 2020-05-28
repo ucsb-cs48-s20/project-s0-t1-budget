@@ -37,7 +37,6 @@ class ChartFormComponent extends Component {
               placeholder="7000"
               type="number"
               value={this.state.income}
-              id="incomeinput"
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
@@ -57,8 +56,8 @@ class ChartFormComponent extends Component {
               >
                 <option value="Groceries">Groceries</option>
                 <option value="Utility">Utility</option>
-                <option value="Decor">Decoration</option>
-                <option value="Transport">Transportation</option>
+                <option value="Decoration">Decoration</option>
+                <option value="Transportation">Transportation</option>
                 <option value="Insurance">Insurance</option>
                 <option value="Other">Other</option>
               </Form.Control>
@@ -78,7 +77,7 @@ class ChartFormComponent extends Component {
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" id="form-submit-btn">
             Submit
           </Button>
         </Form>

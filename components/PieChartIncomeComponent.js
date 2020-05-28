@@ -42,7 +42,7 @@ export default class PieChartIncomeComponent extends Component {
   render() {
     return (
       <div>
-        <Pie data={this.state} />
+        <Pie id="pie-chart-income" data={this.state} />
       </div>
     );
   }

@@ -190,7 +190,7 @@ export default class LineGraphComponent extends Component {
         <div>
           <h4>Year</h4>
           <Form.Row>
-            <Form.Group as={Col} md="2" controlId="Year">
+            <Form.Group as={Col} md="2" controlId="YearGraph">
               <Form.Control
                 as="select"
                 name="Year"

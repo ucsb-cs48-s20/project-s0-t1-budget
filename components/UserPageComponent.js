@@ -205,7 +205,7 @@ export default class UserPageComponent extends Component {
               <div>
                 <br />
                 <Form.Row>
-                  <Form.Group as={Col} md="2" controlId="Month">
+                  <Form.Group as={Col} md="2" controlId="Month2">
                     <Form.Control
                       as="select"
                       name="Month"
@@ -226,7 +226,7 @@ export default class UserPageComponent extends Component {
                       <option value="12">December</option>
                     </Form.Control>
                   </Form.Group>
-                  <Form.Group as={Col} md="2" controlId="Year">
+                  <Form.Group as={Col} md="2" controlId="Year2">
                     <Form.Control
                       as="select"
                       name="Year"

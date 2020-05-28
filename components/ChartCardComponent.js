@@ -82,7 +82,7 @@ export default class ChartCardComponent extends Component {
             </Box>
           </Backdrop>
           <Card.Header>
-            <h3>Bar Chart</h3>
+            <h3 id="bar-chart-h3">Bar Chart</h3>
           </Card.Header>
           <Card.Body>
             <ChartComponent labels={this.state.labels} data={this.state.data} />
@@ -102,6 +102,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-bar-chart"
               variant="danger"
               style={{
                 height: 50,
@@ -136,7 +137,7 @@ export default class ChartCardComponent extends Component {
             </Box>
           </Backdrop>
           <Card.Header>
-            <h3>Pie Chart of Expenses</h3>
+            <h3 id="pie-expense-chart-h3">Pie Chart of Expenses</h3>
           </Card.Header>
           <Card.Body>
             <PieChartExpensesComponent
@@ -159,6 +160,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-pie-expenses-chart"
               variant="danger"
               style={{
                 height: 50,
@@ -193,7 +195,7 @@ export default class ChartCardComponent extends Component {
             </Box>
           </Backdrop>
           <Card.Header>
-            <h3>Pie Income Chart</h3>
+            <h3 id="pie-chart-h3">Pie Income Chart</h3>
           </Card.Header>
           <Card.Body>
             <PieChartIncomeComponent
@@ -216,6 +218,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-pie-income-chart"
               variant="danger"
               style={{
                 height: 50,

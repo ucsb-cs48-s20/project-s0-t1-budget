@@ -23,13 +23,13 @@
 10. When all of the previous steps are completed, you should be able to click the "Open app" button on heroku. Congratulations you have now deployed the app!
 
 # Deployment Testing
-    
+
 Our team: s0-t1-budget
 
 Other Teams:
-  
-| Team                     | Who is reviewing | Issue Number |
-|--------------------------|------------------|--------------|
-| s0-t2-env                |   Trung,Edward   |     44       |
-| s0-t3-iv-housing         | Tomas,Tristan    |     43       |
-| s0-t4-new-city           | Conner, Preetham |     42       |
+
+| Team             | Who is reviewing | Issue Number |
+| ---------------- | ---------------- | ------------ |
+| s0-t2-env        | Trung,Edward     | 44           |
+| s0-t3-iv-housing | Tomas,Tristan    | 43           |
+| s0-t4-new-city   | Conner, Preetham | 42           |

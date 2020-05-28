@@ -30,13 +30,18 @@
 Note:
 
 #### Continue:
- - Working collaboratively, efficient with MVP, agreement + communication going swell, slack active, at least a person to review PRs
- - Spltting up workload effectively
+
+- Working collaboratively, efficient with MVP, agreement + communication going swell, slack active, at least a person to review PRs
+- Spltting up workload effectively
+
 #### Stop:
+
 - So far no negatives...
 - Assigning workload equally
-- mob programming 
+- mob programming
+
 #### Start:
+
 - Brainstorming ideas -> clarification on current ideas in icebox
 - Split up a big issue to smaller ones (beneficial for individual work)
 - More individual coding (group of 2 or less)
@@ -64,18 +69,23 @@ Note:
 Note:
 
 #### Continue:
- - Just keeping up the good work, everything has been working well
+
+- Just keeping up the good work, everything has been working well
+
 #### Stop:
+
 - Everything has been working well
--Maybe getting the Kanban board more organized
+  -Maybe getting the Kanban board more organized
+
 #### Start:
+
 - Working on final ideas for this iteration
 - Start getting things out of the icebox and into production if possible
 - Figure out how we'll do lab 9 and test our deployment instructions.
 
-
 ## Brief description of how retro went
+
 - I used the start/stop/continue template. Everyone entered their thoughts on the chat and we went over them to complete this entry.
--The retro today went well, each memeber got their ideas in on the chat, then we discussed them live. Overall we agreed we have been doing well on all workflow areas.
+  -The retro today went well, each memeber got their ideas in on the chat, then we discussed them live. Overall we agreed we have been doing well on all workflow areas.
 - It is a bit tough to keep conversation going so maybe for a next the leader should focus on having questions lined up to discuss.
 - Overall we concluded that our workflow works well, we may need to change some things with our Kanban board and ways to organize our codebase.
