@@ -56,8 +56,8 @@ class ChartFormComponent extends Component {
               >
                 <option value="Groceries">Groceries</option>
                 <option value="Utility">Utility</option>
-                <option value="Decor">Decoration</option>
-                <option value="Transport">Transportation</option>
+                <option value="Decoration">Decoration</option>
+                <option value="Transportation">Transportation</option>
                 <option value="Insurance">Insurance</option>
                 <option value="Other">Other</option>
               </Form.Control>
@@ -77,7 +77,7 @@ class ChartFormComponent extends Component {
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" id="form-submit-btn">
             Submit
           </Button>
         </Form>

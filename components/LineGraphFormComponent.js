@@ -22,7 +22,7 @@ export default class LineGraphFormComponent extends Component {
       <div>
         <h4>Year</h4>
         <Form.Row>
-          <Form.Group as={Col} md="2" controlId="Year">
+          <Form.Group as={Col} md="2" controlId="YearForm">
             <Form.Control
               as="select"
               name="Year"
