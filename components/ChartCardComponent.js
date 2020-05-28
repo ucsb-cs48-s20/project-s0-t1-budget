@@ -102,6 +102,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-bar-chart"
               variant="danger"
               style={{
                 height: 50,
@@ -159,6 +160,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-pie-expenses-chart"
               variant="danger"
               style={{
                 height: 50,
@@ -216,6 +218,7 @@ export default class ChartCardComponent extends Component {
               <ArrowsFullscreen size={25} />
             </Button>
             <Button
+              id="delete-pie-income-chart"
               variant="danger"
               style={{
                 height: 50,

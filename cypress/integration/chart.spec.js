@@ -31,4 +31,19 @@ describe("Chart Component", () => {
   it("shows the pie chart expenses exist", () => {
     cy.get("#pie-chart-expenses").should("exist");
   });
+
+  it("can delete bar chart by clicking danger button", () => {
+    cy.get("#delete-bar-chart").click();
+    cy.get("#bar-graph").should("be.hidden");
+  });
+
+  it("can delete pie income chart by clicking danger button", () => {
+    cy.get("#delete-pie-income-chart").click();
+    cy.get("#pie-chart-income").should("be.hidden");
+  });
+
+  it("can delete pie expense chart by clicking danger button", () => {
+    cy.get("#delete-pie-expenses-chart").click();
+    cy.get("#pie-chart-expenses").should("be.hidden");
+  });
 });
