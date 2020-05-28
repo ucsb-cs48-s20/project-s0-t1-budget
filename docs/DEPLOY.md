@@ -6,15 +6,15 @@
 
 2. Create a new Heroku app, and link it to you forked copy, so that you are ready to deploy the master branch.
 
-3. Install Node (Steps can be found [here](https://github.com/ucsb-cs48-s20/project-s0-t1-budget/blob/master/docs/INSTALL_NODE_INSTRUCTIONS.md))
+3. Create a new file called ".env" at the root of the forked repository and copy the contents of the file ".env.Sample" to the ".env" file
 
-4. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md)
+4. Install Node (Steps can be found [here](https://github.com/ucsb-cs48-s20/project-s0-t1-budget/blob/master/docs/INSTALL_NODE_INSTRUCTIONS.md))
 
-5. Complete the MongoDB Cloud Atlas setup following the instructions from [this link](https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/). You should create two separate clusters for production and staging and each of them would have an unique MONGODB keys to it which you can get from creating the clusters.
+5. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md)
 
-6. Enter the command **source .env** into the terminal
+6. Complete the MongoDB Cloud Atlas setup following the instructions from [this link](https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/). You should create two separate clusters for production and staging and each of them would have an unique MONGODB keys to it which you can get from creating the clusters.
 
-7. Once these steps are completed, on the page for your heroku app under settings, click "reveal config vars". You should have key value pairs for the following variables: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN, MONGODB_URI, MONGODB_URI_PRODUCTION, MONGODB_URI_STAGING, and SESSION_COOKIE_SECRET
+7. Once these steps are completed, on the page for your heroku app under settings, click "reveal config vars". Copy all the keys of your ".env" file with the appropriate keys: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN, MONGODB_URI, MONGODB_URI_PRODUCTION, MONGODB_URI_STAGING, and SESSION_COOKIE_SECRET
 
 8. Navigate to the deploy tab in heroku and select whether you would like to deploy the master branch manually or automatically.
 
