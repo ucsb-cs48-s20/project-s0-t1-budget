@@ -10,7 +10,7 @@
 
 4. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md)
 
-5. Complete the MongoDB Cloud Atlas setup following the instructions from [this link](https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/)
+5. Complete the MongoDB Cloud Atlas setup following the instructions from [this link](https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/). You should create two separate clusters for production and staging and each of them would have an unique MONGODB keys to it which you can get from creating the clusters.
 
 6. Enter the command **source .env** into the terminal
 
