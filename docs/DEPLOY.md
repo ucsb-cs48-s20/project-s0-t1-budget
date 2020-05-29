@@ -10,7 +10,7 @@
 
 4. Install Node (Steps can be found [here](https://github.com/ucsb-cs48-s20/project-s0-t1-budget/blob/master/docs/INSTALL_NODE_INSTRUCTIONS.md))
 
-5. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md). After following these steps the following keys in the .env file should be filled: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN
+5. Create auth0 credentials following the instructions from [this link](https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md). Make sure to update "callback URL" option and add "<YOURURL>/api/callback" and for "Allowed Logout URLs" add "<YOURURL>". After following these steps the following keys in the .env file should be filled: AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_DOMAIN
 
 6. Complete the MongoDB Cloud Atlas setup following the instructions from [this link](https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/). You should create two separate clusters for production and staging and each of them would have an unique MONGODB keys to it which you can get from creating the clusters. After following these steps the following keys in the .env file should be filled: MONGODB_URI, MONGODB_URI_PRODUCTION, MONGODB_URI_STAGING
 
