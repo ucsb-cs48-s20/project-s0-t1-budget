@@ -5,15 +5,11 @@ import { draw } from "patternomaly";
 var expColor = "#d60a0a";
 var incColor = "#489c07";
 export default class PieChartIncomeComponent extends Component {
-  state = {
-    ColorBlind: false,
-  };
-
   static getDerivedStateFromProps(props, state) {
     var IncomeData = props.data.slice(0, 2);
     var Expenses = IncomeData[0] - IncomeData[1];
     IncomeData[1] = Expenses;
-    if (state.ColorBlind == true) {
+    if (props.color == true) {
       return {
         labels: ["Income", "Expenses"],
         datasets: [

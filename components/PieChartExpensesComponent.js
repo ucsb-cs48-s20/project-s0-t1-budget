@@ -3,18 +3,13 @@ import { Pie } from "react-chartjs-2";
 import { draw } from "patternomaly";
 
 export default class PieChartExpensesComponent extends Component {
-  state = {
-    ColorBlind: false,
-  };
-
   static getDerivedStateFromProps(props, state) {
     var categories = props.labels.slice(2);
     var posData = props.data.slice(2);
     for (var i = 0; i < posData.length; i++) {
       posData[i] = posData[i] * -1;
     }
-
-    if (state.ColorBlind == true) {
+    if (props.color == true) {
       return {
         labels: categories,
         datasets: [
