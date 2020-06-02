@@ -14,6 +14,7 @@ import { flexbox } from "@material-ui/system";
 import Box from "@material-ui/core/Box";
 import React from "react";
 
+import Form from "react-bootstrap/Form";
 import { ArrowsFullscreen, X } from "react-bootstrap-icons";
 
 import UserPageComponent from "../components/UserPageComponent";
@@ -58,6 +59,7 @@ class HomePage extends Component {
     barActive: true,
     incomePieActive: true,
     expensePieActive: true,
+    colorMode: false,
   };
 
   handleFormUpdate = (income, category, value) => {
@@ -130,6 +132,12 @@ class HomePage extends Component {
     }
   };
 
+  handleSwitchChange = () => {
+    this.setState({
+      colorMode: !this.state.colorMode,
+    });
+  };
+
   render() {
     return (
       <Layout user={this.props.user}>
@@ -150,6 +158,12 @@ class HomePage extends Component {
                   </Button>
                   <br />
                   <br />
+                  <Form.Check
+                    type="switch"
+                    id="custom-switch"
+                    label="Colorblind Mode"
+                    onChange={this.handleSwitchChange}
+                  />
                   <DropdownButton id="dropdown-item-button" title="Graphs">
                     <Dropdown.Item as="button" onClick={this.handleBar}>
                       Bar Graph
@@ -200,6 +214,7 @@ class HomePage extends Component {
                   handlePieIncome={this.handlePieIncome}
                   labels={this.state.labels}
                   data={this.state.data}
+                  color={this.state.colorMode}
                   Component={"IncomePie"}
                 />
               </Card>
@@ -214,6 +229,7 @@ class HomePage extends Component {
                   handlePieExpense={this.handlePieExpense}
                   labels={this.state.labels}
                   data={this.state.data}
+                  color={this.state.colorMode}
                   Component={"ExpensePie"}
                 />
               </Card>
