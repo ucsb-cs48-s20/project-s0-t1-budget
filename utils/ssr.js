@@ -1,5 +1,15 @@
 import auth0 from "./auth0";
 
+export async function getUserSession(req) {
+  let session = await auth0.getSession(req);
+
+  if (session && session.user) {
+    return session.user;
+  }
+
+  return null;
+}
+
 export async function optionalAuth({ req }) {
   const session = await auth0.getSession(req);
 

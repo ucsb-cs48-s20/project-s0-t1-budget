@@ -1,5 +1,5 @@
 import auth0 from "./auth0";
-import { attachUserMetadata } from "./user";
+// import { attachUserMetadata } from "./user";
 
 //actionFn is a function that we are passing in, so basically a function passing in a function to get use
 export function authenticatedAction(actionFn) {
@@ -11,7 +11,7 @@ export function authenticatedAction(actionFn) {
     try {
       //Then we use the getSession to extra the user object
       const { user } = await auth0.getSession(req);
-      await attachUserMetadata(user);
+      // await attachUserMetadata(user);
 
       // Here the function passed into actionFn is getting used and actual results is
       // the object that gest passed back here
