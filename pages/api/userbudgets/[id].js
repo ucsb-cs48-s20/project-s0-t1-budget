@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../../middleware/database";
+import { getUserSession } from "../../../utils/ssr";
 
 /* The purpose of this file is to modify data in the database
 http://localhost:3000/api/userbudgets/trungbui@ucsb.edu102020
@@ -21,6 +22,8 @@ const handler = nextConnect();
 handler.use(middleware); //here the handler will be using our database from mongoDB
 
 handler.get(async (req, res) => {
+  const user = await getUserSession(req);
+  // console.log("user=", JSON.stringify(user)); - Check user attributes
   const {
     query: { id },
     method,
@@ -38,6 +41,11 @@ handler.get(async (req, res) => {
 
         //Extracting the info from the string, we are searching by id, month and year
         const userEmail = id.toString().substring(0, id.toString().length - 6);
+        // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
+        if (user.email !== userEmail) {
+          return res.status(403).json({ success: false });
+        }
+
         var userMonth = id
           .toString()
           .substring(id.toString().length - 6, id.toString().length - 4);
@@ -78,6 +86,7 @@ handler.get(async (req, res) => {
 });
 
 handler.put(async (req, res) => {
+  const user = await getUserSession(req);
   const {
     query: { id },
     method,
@@ -113,6 +122,10 @@ handler.put(async (req, res) => {
 
         //Extracting the info from the string, we are searching by id, month and year
         const userEmail = id.toString().substring(0, id.toString().length - 6);
+        // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
+        if (user.email !== userEmail) {
+          return res.status(403).json({ success: false });
+        }
         var userMonth = id
           .toString()
           .substring(id.toString().length - 6, id.toString().length - 4);
@@ -169,6 +182,10 @@ handler.delete(async (req, res) => {
 
         //Extracting the info from the string, we are searching by id, month and year
         const userEmail = id.toString().substring(0, id.toString().length - 6);
+        // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
+        if (user.email !== userEmail) {
+          return res.status(403).json({ success: false });
+        }
         var userMonth = id
           .toString()
           .substring(id.toString().length - 6, id.toString().length - 4);

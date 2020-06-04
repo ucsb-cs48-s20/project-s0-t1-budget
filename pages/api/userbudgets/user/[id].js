@@ -1,6 +1,7 @@
 import nextConnect from "next-connect";
 import middleware from "../../../../middleware/database";
 import { useCallback } from "react";
+import { getUserSession } from "../../../../utils/ssr";
 
 var stringify = require("json-stringify-safe");
 
@@ -24,6 +25,7 @@ const handler = nextConnect();
 handler.use(middleware); //here the handler will be using our database from mongoDB
 
 handler.get(async (req, res) => {
+  const user = await getUserSession(req);
   const {
     query: { id },
     method,
@@ -41,6 +43,10 @@ handler.get(async (req, res) => {
 
         //Extracting the info from the string, we are searching by id
         const userEmail = id.toString();
+        // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
+        if (user.email !== userEmail) {
+          return res.status(403).json({ success: false });
+        }
 
         //Reference to the findOne method https://docs.mongodb.com/manual/reference/method/db.collection.findOne/#definition
         const budget = await req.db
