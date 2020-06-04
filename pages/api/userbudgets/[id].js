@@ -42,7 +42,7 @@ handler.get(async (req, res) => {
         //Extracting the info from the string, we are searching by id, month and year
         const userEmail = id.toString().substring(0, id.toString().length - 6);
         // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
-        if (user.email !== userEmail) {
+        if (!user.email || user.email !== userEmail) {
           return res.status(403).json({ success: false });
         }
 
@@ -123,7 +123,7 @@ handler.put(async (req, res) => {
         //Extracting the info from the string, we are searching by id, month and year
         const userEmail = id.toString().substring(0, id.toString().length - 6);
         // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
-        if (user.email !== userEmail) {
+        if (user.email == null || user.email !== userEmail) {
           return res.status(403).json({ success: false });
         }
         var userMonth = id
@@ -165,6 +165,7 @@ handler.put(async (req, res) => {
 });
 
 handler.delete(async (req, res) => {
+  const user = await getUserSession(req);
   const {
     query: { id },
     method,

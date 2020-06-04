@@ -13,9 +13,7 @@ Email : trungbui@ucsb.edu (string)
 this will get you everything you need to know about that user
 
 All method here will search by the parameters specified above
-DELETE method - delete will delete data in the database
-GET method - will return the cursor to the data
-PUT method - will modify the data
+GET method - will return all the data of the user
 */
 
 const { ObjectId } = require("mongodb"); //To get MongoDB objectIDs
