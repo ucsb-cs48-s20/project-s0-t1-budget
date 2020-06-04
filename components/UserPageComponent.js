@@ -4,13 +4,18 @@ import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
+import ChartCardComponent from "../components/ChartCardComponent";
 import {
   Spinner,
   Jumbotron,
   Form,
   Row,
   Col,
+  Card,
   Container,
+  DropdownButton,
+  Dropdown,
+  CardColumns,
   Button,
 } from "react-bootstrap";
 import LineGraphComponent from "./LineGraphComponent";
@@ -26,6 +31,9 @@ export default class UserPageComponent extends Component {
     dataLoaded: false,
     selectMonth: 1,
     selectYear: 2020,
+    barActive: true,
+    incomePieActive: true,
+    expensePieActive: true,
   };
 
   componentDidMount() {
@@ -47,6 +55,42 @@ export default class UserPageComponent extends Component {
 
   handleChange2 = (e) => {
     this.loadData(this.state.selectMonth, e.target.value);
+  };
+
+  handleBar = () => {
+    if (this.state.barActive) {
+      this.setState({
+        barActive: false,
+      });
+    } else {
+      this.setState({
+        barActive: true,
+      });
+    }
+  };
+
+  handlePieIncome = () => {
+    if (this.state.incomePieActive) {
+      this.setState({
+        incomePieActive: false,
+      });
+    } else {
+      this.setState({
+        incomePieActive: true,
+      });
+    }
+  };
+
+  handlePieExpense = () => {
+    if (this.state.expensePieActive) {
+      this.setState({
+        expensePieActive: false,
+      });
+    } else {
+      this.setState({
+        expensePieActive: true,
+      });
+    }
   };
 
   deleteBudget = () => {
@@ -180,22 +224,75 @@ export default class UserPageComponent extends Component {
                 <br />
                 <br />
 
+                <DropdownButton id="dropdown-item-button" title="Graphs">
+                  <Dropdown.Item as="button" onClick={this.handleBar}>
+                    Bar Graph
+                  </Dropdown.Item>
+                  <Dropdown.Item as="button" onClick={this.handlePieIncome}>
+                    Income Pie Chart
+                  </Dropdown.Item>
+                  <Dropdown.Item as="button" onClick={this.handlePieExpense}>
+                    Expenses Pie Chart
+                  </Dropdown.Item>
+                </DropdownButton>
+
+                <br />
+
                 <TableComponent
                   category={this.state.data.labels}
                   price={this.state.data.data}
                 />
-                <ChartComponent
-                  labels={this.state.data.labels}
-                  data={this.state.data.data}
-                />
-                <PieChartIncomeComponent
-                  labels={this.state.data.labels}
-                  data={this.state.data.data}
-                />
-                <PieChartExpensesComponent
-                  labels={this.state.data.labels}
-                  data={this.state.data.data}
-                />
+
+                <CardColumns>
+                  <Card
+                    border="none"
+                    style={
+                      this.state.barActive
+                        ? { border: "none" }
+                        : { display: "none" }
+                    }
+                  >
+                    <ChartCardComponent
+                      handleBar={this.handleBar}
+                      labels={this.state.data.labels}
+                      data={this.state.data.data}
+                      Component={"BarChart"}
+                    />
+                  </Card>
+
+                  <Card
+                    border="none"
+                    style={
+                      this.state.incomePieActive
+                        ? { border: "none" }
+                        : { display: "none" }
+                    }
+                  >
+                    <ChartCardComponent
+                      handlePieIncome={this.handlePieIncome}
+                      labels={this.state.data.labels}
+                      data={this.state.data.data}
+                      Component={"IncomePie"}
+                    />
+                  </Card>
+
+                  <Card
+                    border="none"
+                    style={
+                      this.state.expensePieActive
+                        ? { border: "none" }
+                        : { display: "none" }
+                    }
+                  >
+                    <ChartCardComponent
+                      handlePieExpense={this.handlePieExpense}
+                      labels={this.state.data.labels}
+                      data={this.state.data.data}
+                      Component={"ExpensePie"}
+                    />
+                  </Card>
+                </CardColumns>
+
                 <LineGraphComponent
                   year={this.state.selectYear}
                   user={this.props.user}

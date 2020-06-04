@@ -16,14 +16,11 @@ import {
 
 import { ArrowsFullscreen, X } from "react-bootstrap-icons";
 import Backdrop from "@material-ui/core/Backdrop";
-import Box from "@material-ui/core/Box";
 
 const style = {
-  zIndex: 1,
+  zIndex: 2,
   color: "#fff",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
 };
 
 export default class ChartCardComponent extends Component {
@@ -71,7 +68,7 @@ export default class ChartCardComponent extends Component {
             open={this.state.openBar}
             onClick={this.handleToggleBar}
           >
-            <Box width="75%">
+            <Container>
               <h2>Bar Graph</h2>
               <Card>
                 <ChartComponent
@@ -79,7 +76,7 @@ export default class ChartCardComponent extends Component {
                   data={this.state.data}
                 />
               </Card>
-            </Box>
+            </Container>
           </Backdrop>
           <Card.Header>
             <h3 id="bar-chart-h3">Bar Chart</h3>
@@ -126,7 +123,7 @@ export default class ChartCardComponent extends Component {
             open={this.state.openPieExp}
             onClick={this.handleTogglePieExp}
           >
-            <Box width="75%">
+            <Container>
               <h2>Pie Chart of Expense</h2>
               <Card>
                 <PieChartExpensesComponent
@@ -134,7 +131,7 @@ export default class ChartCardComponent extends Component {
                   data={this.state.data}
                 />
               </Card>
-            </Box>
+            </Container>
           </Backdrop>
           <Card.Header>
             <h3 id="pie-expense-chart-h3">Pie Chart of Expenses</h3>
@@ -184,7 +181,7 @@ export default class ChartCardComponent extends Component {
             open={this.state.openPieInc}
             onClick={this.handleTogglePieInc}
           >
-            <Box width="75%">
+            <Container>
               <h2>Pie Chart of Income</h2>
               <Card>
                 <PieChartIncomeComponent
@@ -192,7 +189,7 @@ export default class ChartCardComponent extends Component {
                   data={this.state.data}
                 />
               </Card>
-            </Box>
+            </Container>
           </Backdrop>
           <Card.Header>
             <h3 id="pie-chart-h3">Pie Income Chart</h3>
