@@ -46,7 +46,7 @@ class ChartFormComponent extends Component {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group as={Col} md="4" controlId="category">
+            <Form.Group as={Col} md="5" controlId="category">
               <Form.Label>Category:</Form.Label>
               <Form.Control
                 as="select"
@@ -62,7 +62,7 @@ class ChartFormComponent extends Component {
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
-            <Form.Group as={Col} md="8" controlId="expense">
+            <Form.Group as={Col} md="7" controlId="expense">
               <Form.Label>Expense($):</Form.Label>
               <Form.Control
                 name="input"

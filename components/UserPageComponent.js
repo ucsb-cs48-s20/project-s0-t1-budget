@@ -200,30 +200,45 @@ export default class UserPageComponent extends Component {
                 <br />
                 {this.state.dataModify ? (
                   <div>
-                    <Jumbotron>
-                      <UserPageUpdateComponent
-                        user={this.props.user}
-                        month={this.state.selectMonth}
-                        year={this.state.selectYear}
-                        update={this.update}
-                        currData={this.state.data}
-                      />
-                      <br />
-                      <Button onClick={this.cancelModifyBudget}>Cancel</Button>
-                    </Jumbotron>
+                    <Row>
+                      <Col md="6">
+                        <Jumbotron>
+                          <UserPageUpdateComponent
+                            user={this.props.user}
+                            month={this.state.selectMonth}
+                            year={this.state.selectYear}
+                            update={this.update}
+                            currData={this.state.data}
+                          />
+                          <br />
+                          <Button onClick={this.cancelModifyBudget}>
+                            Cancel
+                          </Button>
+                        </Jumbotron>
+                      </Col>
+                      <Col md="6">
+                        <TableComponent
+                          category={this.state.data.labels}
+                          price={this.state.data.data}
+                        />
+                      </Col>
+                    </Row>
                   </div>
                 ) : (
-                  <Button onClick={this.modifyBudget}>
-                    Modify Month's Finances
-                  </Button>
-                )}
-                <br />
-                <br />
+                  <div>
+                    <Button onClick={this.modifyBudget}>
+                      Modify Month's Finances
+                    </Button>
+                    <br />
+                    <br />
 
-                <TableComponent
-                  category={this.state.data.labels}
-                  price={this.state.data.data}
-                />
+                    <TableComponent
+                      category={this.state.data.labels}
+                      price={this.state.data.data}
+                    />
+                  </div>
+                )}
+
                 <ChartComponent
                   labels={this.state.data.labels}
                   data={this.state.data.data}

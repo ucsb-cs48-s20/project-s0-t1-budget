@@ -106,8 +106,8 @@ class UserPageUpdateComponent extends Component {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group as={Col} md="4" controlId="categoryUser">
-              <Form.Label>Change Or Add Category:</Form.Label>
+            <Form.Group as={Col} md="5" controlId="categoryUser">
+              <Form.Label>Change/Add Category:</Form.Label>
               <Form.Control
                 as="select"
                 name="category"
@@ -122,7 +122,7 @@ class UserPageUpdateComponent extends Component {
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
-            <Form.Group as={Col} md="8" controlId="expenseUser">
+            <Form.Group as={Col} md="7" controlId="expenseUser">
               <Form.Label>Expense($):</Form.Label>
               <Form.Control
                 name="input"
