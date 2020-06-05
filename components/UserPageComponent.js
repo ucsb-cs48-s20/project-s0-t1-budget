@@ -20,6 +20,8 @@ import {
   DropdownButton,
   Dropdown,
   CardColumns,
+  ButtonToolbar,
+  ButtonGroup,
   Button,
 } from "react-bootstrap";
 import LineGraphComponent from "./LineGraphComponent";
@@ -273,37 +275,43 @@ export default class UserPageComponent extends Component {
                   </div>
                 ) : (
                   <div>
-                    <Button onClick={this.modifyBudget}>
-                      Modify Month's Finances
-                    </Button>
-                    <br />
-                    <br />
+                    <ButtonToolbar>
+                      <ButtonGroup className="mr-2">
+                        <Button onClick={this.modifyBudget}>
+                          Modify Month's Finances
+                        </Button>
+                      </ButtonGroup>
+                      <ButtonGroup className="mr-2">
+                        <DropdownButton
+                          id="dropdown-item-button"
+                          title="Graphs"
+                        >
+                          <Dropdown.Item as="button" onClick={this.handleBar}>
+                            Bar Graph
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            as="button"
+                            onClick={this.handlePieIncome}
+                          >
+                            Income Pie Chart
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            as="button"
+                            onClick={this.handlePieExpense}
+                          >
+                            Expenses Pie Chart
+                          </Dropdown.Item>
+                        </DropdownButton>
+                      </ButtonGroup>
+                    </ButtonToolbar>
 
+                    <br />
                     <TableComponent
                       category={this.state.data.labels}
                       price={this.state.data.data}
                     />
                   </div>
                 )}
-
-                <DropdownButton id="dropdown-item-button" title="Graphs">
-                  <Dropdown.Item as="button" onClick={this.handleBar}>
-                    Bar Graph
-                  </Dropdown.Item>
-                  <Dropdown.Item as="button" onClick={this.handlePieIncome}>
-                    Income Pie Chart
-                  </Dropdown.Item>
-                  <Dropdown.Item as="button" onClick={this.handlePieExpense}>
-                    Expenses Pie Chart
-                  </Dropdown.Item>
-                </DropdownButton>
-
-                <br />
-
-                <TableComponent
-                  category={this.state.data.labels}
-                  price={this.state.data.data}
-                />
 
                 <CardColumns>
                   <Card

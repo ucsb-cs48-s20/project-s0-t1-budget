@@ -29,6 +29,8 @@ import {
   Card,
   CardColumns,
   DropdownButton,
+  ButtonGroup,
+  ButtonToolbar,
   Dropdown,
 } from "react-bootstrap";
 
@@ -153,10 +155,36 @@ class HomePage extends Component {
                     handleFormUpdate={this.handleFormUpdate.bind(this)}
                   />
                   <br />
-                  <Button variant="secondary" onClick={this.handleResetUpdate}>
-                    Reset
-                  </Button>
-                  <br />
+                  <ButtonToolbar>
+                    <ButtonGroup className="mr-2">
+                      <Button
+                        variant="secondary"
+                        onClick={this.handleResetUpdate}
+                      >
+                        Reset
+                      </Button>
+                    </ButtonGroup>
+
+                    <ButtonGroup className="mr-2">
+                      <DropdownButton id="dropdown-item-button" title="Graphs">
+                        <Dropdown.Item as="button" onClick={this.handleBar}>
+                          Bar Graph
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          as="button"
+                          onClick={this.handlePieIncome}
+                        >
+                          Income Pie Chart
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          as="button"
+                          onClick={this.handlePieExpense}
+                        >
+                          Expenses Pie Chart
+                        </Dropdown.Item>
+                      </DropdownButton>
+                    </ButtonGroup>
+                  </ButtonToolbar>
                   <br />
                   <Form.Check
                     type="switch"
@@ -164,18 +192,6 @@ class HomePage extends Component {
                     label="Colorblind Mode"
                     onChange={this.handleSwitchChange}
                   />
-                  <DropdownButton id="dropdown-item-button" title="Graphs">
-                    <Dropdown.Item as="button" onClick={this.handleBar}>
-                      Bar Graph
-                    </Dropdown.Item>
-                    <Dropdown.Item as="button" onClick={this.handlePieIncome}>
-                      Income Pie Chart
-                    </Dropdown.Item>
-                    <Dropdown.Item as="button" onClick={this.handlePieExpense}>
-                      Expenses Pie Chart
-                    </Dropdown.Item>
-                  </DropdownButton>
-                  <br />
                 </Jumbotron>
               </Col>
               <Col md="7">
