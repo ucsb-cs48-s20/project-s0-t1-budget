@@ -1,30 +1,65 @@
 import React, { Component } from "react";
 import { Pie } from "react-chartjs-2";
-import { Card } from "react-bootstrap";
+import { draw } from "patternomaly";
 
 export default class PieChartExpensesComponent extends Component {
-  state = {
-    labels: ["Red", "Blue", "Yellow"],
-    datasets: [
-      {
-        data: [300, 50, 100],
-        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-      },
-    ],
-  };
-
   static getDerivedStateFromProps(props, state) {
-    return {
-      labels: props.labels.slice(2),
-      datasets: [
-        {
-          data: props.data.slice(2),
-          backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-          hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-        },
-      ],
-    };
+    var categories = props.labels.slice(2);
+    var posData = props.data.slice(2);
+    for (var i = 0; i < posData.length; i++) {
+      posData[i] = posData[i] * -1;
+    }
+    if (props.color == true) {
+      return {
+        labels: categories,
+        datasets: [
+          {
+            data: posData,
+            backgroundColor: [
+              draw("cross", "#c93fde"),
+              draw("circle", "#1e52f1"),
+              draw("line", "#489c07"),
+              draw("box", "#e5c10b"),
+              draw("triangle", "#ed8421"),
+              draw("diagonal", "#d60a0a"),
+            ],
+            hoverBackgroundColor: [
+              draw("cross", "#c93fde"),
+              draw("circle", "#1e52f1"),
+              draw("line", "#489c07"),
+              draw("box", "#e5c10b"),
+              draw("triangle", "#ed8421"),
+              draw("diagonal", "#d60a0a"),
+            ],
+          },
+        ],
+      };
+    } else {
+      return {
+        labels: categories,
+        datasets: [
+          {
+            data: posData,
+            backgroundColor: [
+              "#c93fde",
+              "#1e52f1",
+              "#489c07",
+              "#e5c10b",
+              "#ed8421",
+              "#d60a0a",
+            ],
+            hoverBackgroundColor: [
+              "#c93fde",
+              "#1e52f1",
+              "#489c07",
+              "#e5c10b",
+              "#ed8421",
+              "#d60a0a",
+            ],
+          },
+        ],
+      };
+    }
   }
 
   render() {

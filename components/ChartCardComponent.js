@@ -31,6 +31,7 @@ export default class ChartCardComponent extends Component {
     openBar: false,
     openPieInc: false,
     openPieExp: false,
+    color: false,
   };
 
   handleToggleBar = () => {
@@ -56,6 +57,7 @@ export default class ChartCardComponent extends Component {
       labels: props.labels,
       data: props.data,
       Component: props.Component,
+      color: props.color,
     };
   }
 
@@ -129,6 +131,7 @@ export default class ChartCardComponent extends Component {
                 <PieChartExpensesComponent
                   labels={this.state.labels}
                   data={this.state.data}
+                  color={this.state.color}
                 />
               </Card>
             </Container>
@@ -140,6 +143,7 @@ export default class ChartCardComponent extends Component {
             <PieChartExpensesComponent
               labels={this.state.labels}
               data={this.state.data}
+              color={this.state.color}
             />
           </Card.Body>
           <Card.Footer>
@@ -187,6 +191,7 @@ export default class ChartCardComponent extends Component {
                 <PieChartIncomeComponent
                   labels={this.state.labels}
                   data={this.state.data}
+                  color={this.state.color}
                 />
               </Card>
             </Container>
@@ -198,6 +203,7 @@ export default class ChartCardComponent extends Component {
             <PieChartIncomeComponent
               labels={this.state.labels}
               data={this.state.data}
+              color={this.state.color}
             />
           </Card.Body>
           <Card.Footer>

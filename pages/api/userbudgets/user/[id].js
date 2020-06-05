@@ -1,6 +1,7 @@
 import nextConnect from "next-connect";
 import middleware from "../../../../middleware/database";
 import { useCallback } from "react";
+import { getUserSession } from "../../../../utils/ssr";
 
 var stringify = require("json-stringify-safe");
 
@@ -12,9 +13,7 @@ Email : trungbui@ucsb.edu (string)
 this will get you everything you need to know about that user
 
 All method here will search by the parameters specified above
-DELETE method - delete will delete data in the database
-GET method - will return the cursor to the data
-PUT method - will modify the data
+GET method - will return all the data of the user
 */
 
 const { ObjectId } = require("mongodb"); //To get MongoDB objectIDs
@@ -24,6 +23,7 @@ const handler = nextConnect();
 handler.use(middleware); //here the handler will be using our database from mongoDB
 
 handler.get(async (req, res) => {
+  const user = await getUserSession(req);
   const {
     query: { id },
     method,
@@ -41,6 +41,10 @@ handler.get(async (req, res) => {
 
         //Extracting the info from the string, we are searching by id
         const userEmail = id.toString();
+        // USER-VERIFICATION-CODE: user.email vs userEmail, if they don't match return json code 403
+        if (user.email !== userEmail) {
+          return res.status(403).json({ success: false });
+        }
 
         //Reference to the findOne method https://docs.mongodb.com/manual/reference/method/db.collection.findOne/#definition
         const budget = await req.db
