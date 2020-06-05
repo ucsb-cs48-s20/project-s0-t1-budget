@@ -186,7 +186,7 @@ export default class LineGraphComponent extends Component {
     };
     return (
       <div>
-        <h4>This is a LineGraphComponent</h4>
+        <h1>Line Graph</h1>
         <div>
           <h4>Year</h4>
           <Form.Row>
