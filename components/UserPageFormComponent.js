@@ -5,7 +5,12 @@ import { Form, Col, Button, Alert } from "react-bootstrap";
 class UserPageFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { income: "", input: "", category: "Auto & Transport" };
+    this.state = {
+      income: "",
+      goal: "",
+      input: "",
+      category: "Auto & Transport",
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +29,7 @@ class UserPageFormComponent extends Component {
       year: parseInt(this.props.year),
       labels: ["Income", "Net Income", this.state.category],
       data: [this.state.income, diff.toString(), this.state.input],
+      goal: this.state.goal,
     };
 
     fetch("/api/userbudgets", {
@@ -53,6 +59,20 @@ class UserPageFormComponent extends Component {
               placeholder="7000"
               type="number"
               value={this.state.income}
+              onChange={this.handleChange}
+              onKeyDown={(evt) =>
+                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+              } //Stop the user from entering the letter 'e'
+              required
+            />
+          </Form.Group>
+          <Form.Group controlId="monthlyNetIncomeGoal">
+            <Form.Label>Net Income Goal For This Month($):</Form.Label>
+            <Form.Control
+              name="goal"
+              placeholder="3500"
+              type="number"
+              value={this.state.goal}
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
