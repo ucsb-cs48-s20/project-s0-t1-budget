@@ -208,7 +208,6 @@ export default class UserPageComponent extends Component {
                         update={this.update}
                         currData={this.state.data}
                       />
-                      <p>{JSON.stringify(this.state.data)}</p>
                       <br />
                       <Button onClick={this.cancelModifyBudget}>Cancel</Button>
                     </Jumbotron>

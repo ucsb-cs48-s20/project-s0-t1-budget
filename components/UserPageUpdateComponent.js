@@ -21,34 +21,47 @@ class UserPageUpdateComponent extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const diff = parseInt(this.state.income) - parseInt(this.state.input);
+
     var newLabels = this.props.currData.labels;
     var newData = this.props.currData.data;
-    if (newLabels.indexOf(this.state.category) == -1) {
-      newLabels.push(this.state.category);
-      newData.push(this.state.input);
-    } else {
-      let i = newLabels.indexOf(this.state.category);
-      alert(i);
-      newLabels[i] = this.state.category;
-      newData[i] = this.state.input;
+    //change income
+    newData[0] = this.state.income;
+
+    //change expense
+    if (this.state.input != "") {
+      if (newLabels.indexOf(this.state.category) == -1) {
+        newLabels.push(this.state.category);
+        newData.push(this.state.input);
+      } else {
+        let i = newLabels.indexOf(this.state.category);
+        newLabels[i] = this.state.category;
+        newData[i] = this.state.input;
+      }
     }
+
+    //calculate net income
+    var expenseSum = 0;
+    for (var j = 2; j < newData.length; j++) {
+      expenseSum += parseInt(newData[j]);
+    }
+    const diff = parseInt(newData[0]) - parseInt(expenseSum);
+    newData[1] = diff;
+
+    //load new data
     const data = {
       $set: {
         labels: newLabels,
         data: newData,
       },
-      //email: this.props.user.email,
-      //month: parseInt(this.props.month),
-      //year: parseInt(this.props.year),
     };
+
+    //handle request
     var monthstr;
     if (this.props.currData.month.toString().length == 1) {
       monthstr = "0" + this.props.currData.month.toString();
     } else {
       monthstr = this.props.currData.month.toString();
     }
-    alert(JSON.stringify(data));
 
     fetch(
       "/api/userbudgets/" +
@@ -113,14 +126,13 @@ class UserPageUpdateComponent extends Component {
               <Form.Label>Expense($):</Form.Label>
               <Form.Control
                 name="input"
-                placeholder="300"
+                placeholder="Leave blank if no change"
                 value={this.state.input}
                 type="number"
                 onChange={this.handleChange}
                 onKeyDown={(evt) =>
                   ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
                 } //Stop the user from entering the letter 'e'
-                required
               />
             </Form.Group>
           </Form.Row>
