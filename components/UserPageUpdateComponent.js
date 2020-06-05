@@ -1,12 +1,15 @@
 import { render } from "react-dom";
 import { Component } from "react";
-import { Form, Col, Button } from "react-bootstrap";
-import { ArrowsFullscreen, X } from "react-bootstrap-icons";
+import { Form, Col, Button, Alert } from "react-bootstrap";
 
-class ChartFormComponent extends Component {
+class UserPageUpdateComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { income: "", input: "", category: "Auto & Transport" };
+    this.state = {
+      income: this.props.currData.data[0],
+      input: "",
+      category: "Auto & Transport",
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,21 +20,78 @@ class ChartFormComponent extends Component {
   }
 
   handleSubmit(event) {
-    this.props.handleFormUpdate(
-      this.state.income,
-      this.state.category,
-      this.state.input
-    );
     event.preventDefault();
+
+    var newLabels = this.props.currData.labels;
+    var newData = this.props.currData.data;
+    //change income
+    newData[0] = this.state.income;
+
+    //change expense
+    if (this.state.input != "") {
+      if (newLabels.indexOf(this.state.category) == -1) {
+        newLabels.push(this.state.category);
+        newData.push(this.state.input);
+      } else {
+        let i = newLabels.indexOf(this.state.category);
+        newLabels[i] = this.state.category;
+        newData[i] = this.state.input;
+      }
+    }
+
+    //calculate net income
+    var expenseSum = 0;
+    for (var j = 2; j < newData.length; j++) {
+      expenseSum += parseInt(newData[j]);
+    }
+    const diff = parseInt(newData[0]) - parseInt(expenseSum);
+    newData[1] = diff;
+
+    //load new data
+    const data = {
+      $set: {
+        labels: newLabels,
+        data: newData,
+      },
+    };
+
+    //handle request
+    var monthstr;
+    if (this.props.currData.month.toString().length == 1) {
+      monthstr = "0" + this.props.currData.month.toString();
+    } else {
+      monthstr = this.props.currData.month.toString();
+    }
+
+    fetch(
+      "/api/userbudgets/" +
+        this.props.currData.email +
+        monthstr +
+        this.props.currData.year,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        this.props.update(this.props.month, this.props.year);
+      } else {
+        console.log("Something Went Wrong Try Again");
+      }
+    });
+    this.props.update(this.props.month, this.props.year);
   }
 
   render() {
     return (
       <div>
-        <h4>Calculate Finances</h4>
+        <h4>Update This Month</h4>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="monthlyIncome">
-            <Form.Label>Income($):</Form.Label>
+          <Form.Group controlId="monthlyIncomeUser">
+            <Form.Label>Change Income($):</Form.Label>
             <Form.Control
               name="income"
               placeholder="7000"
@@ -46,8 +106,8 @@ class ChartFormComponent extends Component {
           </Form.Group>
 
           <Form.Row>
-            <Form.Group as={Col} md="5" controlId="category">
-              <Form.Label>Category:</Form.Label>
+            <Form.Group as={Col} md="5" controlId="categoryUser">
+              <Form.Label>Change/Add Category:</Form.Label>
               <Form.Control
                 as="select"
                 name="category"
@@ -75,23 +135,22 @@ class ChartFormComponent extends Component {
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
-            <Form.Group as={Col} md="7" controlId="expense">
+            <Form.Group as={Col} md="7" controlId="expenseUser">
               <Form.Label>Expense($):</Form.Label>
               <Form.Control
                 name="input"
-                placeholder="300"
+                placeholder="Leave blank if no change"
                 value={this.state.input}
                 type="number"
                 onChange={this.handleChange}
                 onKeyDown={(evt) =>
                   ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
                 } //Stop the user from entering the letter 'e'
-                required
               />
             </Form.Group>
           </Form.Row>
-          <Button variant="primary" type="submit" id="form-submit-btn">
-            Submit
+          <Button variant="primary" type="submit">
+            Update
           </Button>
         </Form>
       </div>
@@ -99,4 +158,4 @@ class ChartFormComponent extends Component {
   }
 }
 
-export default ChartFormComponent;
+export default UserPageUpdateComponent;

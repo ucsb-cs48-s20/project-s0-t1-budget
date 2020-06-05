@@ -4,7 +4,11 @@ import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
+
 import ChartCardComponent from "../components/ChartCardComponent";
+
+import UserPageUpdateComponent from "../components/UserPageUpdateComponent";
+
 import {
   Spinner,
   Jumbotron,
@@ -29,6 +33,7 @@ export default class UserPageComponent extends Component {
 
   state = {
     dataLoaded: false,
+    dataModify: false,
     selectMonth: 1,
     selectYear: 2020,
     barActive: true,
@@ -43,6 +48,7 @@ export default class UserPageComponent extends Component {
   update(month, year) {
     this.setState({
       dataLoaded: false,
+      dataModify: false,
       selectMonth: month,
       selectYear: year,
     });
@@ -56,6 +62,7 @@ export default class UserPageComponent extends Component {
   handleChange2 = (e) => {
     this.loadData(this.state.selectMonth, e.target.value);
   };
+
 
   handleBar = () => {
     if (this.state.barActive) {
@@ -91,6 +98,18 @@ export default class UserPageComponent extends Component {
         expensePieActive: true,
       });
     }
+
+  modifyBudget = () => {
+    this.setState((prevState) => ({
+      dataModify: true,
+    }));
+  };
+
+  cancelModifyBudget = () => {
+    this.setState((prevState) => ({
+      dataModify: false,
+    }));
+
   };
 
   deleteBudget = () => {
@@ -110,7 +129,7 @@ export default class UserPageComponent extends Component {
       if (response.status >= 200 && response.status < 300) {
         this.update(this.state.selectMonth, this.state.selectYear);
       } else {
-        Alert("Something Went Wrong Try Again");
+        console.log("Something Went Wrong Try Again");
       }
     });
   };
@@ -118,6 +137,7 @@ export default class UserPageComponent extends Component {
   loadData = (month, year) => {
     this.setState({
       dataLoaded: false,
+      dataModify: false,
       selectMonth: month,
       selectYear: year,
     });
@@ -139,6 +159,7 @@ export default class UserPageComponent extends Component {
           if (out) {
             this.setState({
               dataLoaded: true,
+              dataModify: false,
               dataFound: true,
               selectMonth: month,
               selectYear: year,
@@ -147,6 +168,7 @@ export default class UserPageComponent extends Component {
           } else {
             this.setState({
               dataLoaded: true,
+              dataModify: false,
               dataFound: false,
               selectMonth: month,
               selectYear: year,
@@ -156,6 +178,7 @@ export default class UserPageComponent extends Component {
         (error) => {
           this.setState({
             dataLoaded: false,
+            dataModify: false,
             selectMonth: month,
             selectYear: year,
             labels: ["Income", "Net Income"],
@@ -223,6 +246,47 @@ export default class UserPageComponent extends Component {
                 </Button>
                 <br />
                 <br />
+                {this.state.dataModify ? (
+                  <div>
+                    <Row>
+                      <Col md="6">
+                        <Jumbotron>
+                          <UserPageUpdateComponent
+                            user={this.props.user}
+                            month={this.state.selectMonth}
+                            year={this.state.selectYear}
+                            update={this.update}
+                            currData={this.state.data}
+                          />
+                          <br />
+                          <Button onClick={this.cancelModifyBudget}>
+                            Cancel
+                          </Button>
+                        </Jumbotron>
+                      </Col>
+                      <Col md="6">
+                        <TableComponent
+                          category={this.state.data.labels}
+                          price={this.state.data.data}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                ) : (
+                  <div>
+                    <Button onClick={this.modifyBudget}>
+                      Modify Month's Finances
+                    </Button>
+                    <br />
+                    <br />
+
+                    <TableComponent
+                      category={this.state.data.labels}
+                      price={this.state.data.data}
+                    />
+                  </div>
+                )}
+
 
                 <DropdownButton id="dropdown-item-button" title="Graphs">
                   <Dropdown.Item as="button" onClick={this.handleBar}>
@@ -292,6 +356,8 @@ export default class UserPageComponent extends Component {
                     />
                   </Card>
                 </CardColumns>
+
+
 
                 <LineGraphComponent
                   year={this.state.selectYear}

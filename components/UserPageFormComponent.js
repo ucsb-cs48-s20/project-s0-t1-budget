@@ -5,7 +5,7 @@ import { Form, Col, Button, Alert } from "react-bootstrap";
 class UserPageFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { income: "", input: "", category: "Groceries" };
+    this.state = { income: "", input: "", category: "Auto & Transport" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,11 +70,24 @@ class UserPageFormComponent extends Component {
                 onChange={this.handleChange}
                 value={this.state.category}
               >
+                <option value="Auto & Transport">Auto & Transport</option>
+                <option value="Bills & Utilities">Bills & Utilities</option>
+                <option value="Business Services">Business Services</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Fees & Charges">Fees & Charges</option>
+                <option value="Financials">Financials</option>
+                <option value="Food & Dining">Food & Dining</option>
+                <option value="Gifts & Donations">Gifts & Donations</option>
+                <option value="Health & Fitness">Health & Fitness</option>
+                <option value="Home">Home</option>
+                <option value="Personal Care">Personal Care</option>
+                <option value="Pets">Pets</option>
+                <option value="Shopping">Shopping</option>
                 <option value="Groceries">Groceries</option>
-                <option value="Utility">Utility</option>
-                <option value="Decoration">Decoration</option>
-                <option value="Transportation">Transportation</option>
-                <option value="Insurance">Insurance</option>
+                <option value="Taxes">Taxes</option>
+                <option value="Travel">Travel</option>
+                <option value="Memberships">Memberships</option>
                 <option value="Other">Other</option>
               </Form.Control>
             </Form.Group>
