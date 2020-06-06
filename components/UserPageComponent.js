@@ -41,6 +41,7 @@ export default class UserPageComponent extends Component {
     barActive: true,
     incomePieActive: true,
     expensePieActive: true,
+    codeMode: false,
   };
 
   componentDidMount() {
@@ -110,6 +111,7 @@ export default class UserPageComponent extends Component {
   cancelModifyBudget = () => {
     this.setState((prevState) => ({
       dataModify: false,
+      colorMode: !this.state.colorMode,
     }));
   };
 
@@ -188,6 +190,12 @@ export default class UserPageComponent extends Component {
           });
         }
       );
+  };
+
+  handleSwitchChange = () => {
+    this.setState({
+      colorMode: !this.state.colorMode,
+    });
   };
 
   render() {
@@ -304,6 +312,12 @@ export default class UserPageComponent extends Component {
                         </DropdownButton>
                       </ButtonGroup>
                     </ButtonToolbar>
+                    <Form.Check
+                      type="switch"
+                      id="custom-switch"
+                      label="Colorblind Mode"
+                      onChange={this.handleSwitchChange}
+                    />
 
                     <br />
                     <TableComponent
@@ -342,6 +356,7 @@ export default class UserPageComponent extends Component {
                       handlePieIncome={this.handlePieIncome}
                       labels={this.state.data.labels}
                       data={this.state.data.data}
+                      color={this.state.colorMode}
                       Component={"IncomePie"}
                     />
                   </Card>
@@ -358,15 +373,11 @@ export default class UserPageComponent extends Component {
                       handlePieExpense={this.handlePieExpense}
                       labels={this.state.data.labels}
                       data={this.state.data.data}
+                      color={this.state.colorMode}
                       Component={"ExpensePie"}
                     />
                   </Card>
                 </CardColumns>
-
-                <LineGraphComponent
-                  year={this.state.selectYear}
-                  user={this.props.user}
-                />
               </div>
             ) : (
               <div>
@@ -428,6 +439,10 @@ export default class UserPageComponent extends Component {
                 </Jumbotron>
               </div>
             )}
+            <LineGraphComponent
+              year={this.state.selectYear}
+              user={this.props.user}
+            />
           </div>
         ) : (
           <Spinner animation="border" variant="primary">
