@@ -9,6 +9,7 @@ class UserPageUpdateComponent extends Component {
       income: this.props.currData.data[0],
       input: "",
       category: "Auto & Transport",
+      goal: this.props.currData.goal,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,6 +53,7 @@ class UserPageUpdateComponent extends Component {
       $set: {
         labels: newLabels,
         data: newData,
+        goal: this.state.goal,
       },
     };
 
@@ -97,6 +99,21 @@ class UserPageUpdateComponent extends Component {
               placeholder="7000"
               type="number"
               value={this.state.income}
+              onChange={this.handleChange}
+              onKeyDown={(evt) =>
+                ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
+              } //Stop the user from entering the letter 'e'
+              required
+            />
+          </Form.Group>
+
+          <Form.Group controlId="monthlyNetIncomeGoal">
+            <Form.Label>Change Net Income Goal($):</Form.Label>
+            <Form.Control
+              name="goal"
+              placeholder="3500"
+              type="number"
+              value={this.state.goal}
               onChange={this.handleChange}
               onKeyDown={(evt) =>
                 ["e", "E", "+"].includes(evt.key) && evt.preventDefault()
