@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ChartComponent from "../components/ChartComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import BarGoalComponent from "../components/BarGoalComponent";
 import {
   Button,
   Col,
@@ -29,6 +30,7 @@ export default class ChartCardComponent extends Component {
     data: [0, 0],
     Component: "default",
     openBar: false,
+    openBarGoal: false,
     openPieInc: false,
     openPieExp: false,
     color: false,
@@ -37,6 +39,12 @@ export default class ChartCardComponent extends Component {
   handleToggleBar = () => {
     this.setState({
       openBar: !this.state.openBar,
+    });
+  };
+
+  handleToggleBarGoal = () => {
+    this.setState({
+      openBarGoal: !this.state.openBarGoal,
     });
   };
 
@@ -102,6 +110,61 @@ export default class ChartCardComponent extends Component {
             </Button>
             <Button
               id="delete-bar-chart"
+              variant="danger"
+              style={{
+                height: 50,
+                width: 50,
+                margin: 5,
+                borderRadius: 25,
+                align: "center",
+              }}
+              onClick={this.props.handleBar}
+            >
+              <X size={25} />
+            </Button>
+          </Card.Footer>
+        </Card>
+      );
+    } else if (this.state.Component == "BarGoal") {
+      return (
+        <Card>
+          <Backdrop
+            style={style}
+            open={this.state.openBarGoal}
+            onClick={this.handleToggleBarGoal}
+          >
+            <Container>
+              <h2>Net Income Vs. Goal</h2>
+              <Card>
+                <BarGoalComponent
+                  labels={this.state.labels}
+                  data={this.state.data}
+                />
+              </Card>
+            </Container>
+          </Backdrop>
+          <Card.Header>
+            <h3 id="bar-goal-h3">Net Income Vs. Goal</h3>
+          </Card.Header>
+          <Card.Body>
+            <ChartComponent labels={this.state.labels} data={this.state.data} />
+          </Card.Body>
+          <Card.Footer>
+            <Button
+              variant="primary"
+              style={{
+                height: 50,
+                width: 50,
+                margin: 5,
+                borderRadius: 25,
+                align: "center",
+              }}
+              onClick={this.handleToggleBar}
+            >
+              <ArrowsFullscreen size={25} />
+            </Button>
+            <Button
+              id="delete-bar-goal"
               variant="danger"
               style={{
                 height: 50,

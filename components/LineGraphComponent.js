@@ -72,6 +72,20 @@ export default class LineGraphComponent extends Component {
             null,
             null,
           ];
+          var goalDataSet = [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+          ];
           for (var j = 0; j < selectedData.length; j++) {
             incomeDataSet[parseInt(selectedData[j].month) - 1] = parseInt(
               selectedData[j].data[0]
@@ -82,6 +96,9 @@ export default class LineGraphComponent extends Component {
             expenseDataSet[parseInt(selectedData[j].month) - 1] =
               incomeDataSet[parseInt(selectedData[j].month) - 1] -
               netIncomeDataSet[parseInt(selectedData[j].month) - 1];
+            goalDataSet[parseInt(selectedData[j].month) - 1] = parseInt(
+              selectedData[j].goal
+            );
             //iterates through selectedData and replaces incomeDataSet with income value based off of month
           }
           //income is selectedData[j].data[0]
@@ -91,6 +108,7 @@ export default class LineGraphComponent extends Component {
             incomeData: incomeDataSet, //creates a state label of incomeData that stores the new array containing the income data
             netIncomeData: netIncomeDataSet,
             expenseData: expenseDataSet,
+            goalData: goalDataSet,
           });
         },
         (error) => {
@@ -180,6 +198,27 @@ export default class LineGraphComponent extends Component {
           pointRadius: 5,
           pointHitRadius: 10,
           data: this.state.expenseData, //this is sample data for Expenses for now, replace with new array containing the data from database
+        },
+        {
+          label: "Net Income Goal",
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(255, 223, 63, 0.2)",
+          borderColor: "rgba(255, 223, 63, 1)",
+          borderCapStyle: "butt",
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: "miter",
+          pointBorderColor: "rgba(255, 223, 63, 1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 5,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(255, 223, 63, 0.2)",
+          pointHoverBorderColor: "rgba(255, 223, 63, 0.2)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          pointHitRadius: 10,
+          data: this.state.goalData,
         },
       ],
     };
