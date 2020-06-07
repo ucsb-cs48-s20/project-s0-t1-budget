@@ -17,7 +17,7 @@ var bkColor,
 
 export default class BarGoalComponent extends Component {
   state = {
-    labels: ["Net Income", "Goal"],
+    labels: ["Net Income", "Goal", "Difference"],
     datasets: [
       {
         label: "Amount ($)",
@@ -26,7 +26,7 @@ export default class BarGoalComponent extends Component {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255,99,132,0.4)",
         hoverBorderColor: "rgba(255,99,132,1)",
-        data: [0, 0],
+        data: [0, 0, 0],
       },
     ],
   };
@@ -48,10 +48,9 @@ export default class BarGoalComponent extends Component {
       hboColor = "rgba(255,99,132,0,1)";
     }
     return {
-      labels: props.labels,
       datasets: [
         {
-          label: "Amount ($)",
+          label: "Net Income",
           backgroundColor: [
             ibkColor,
             bkColor,
@@ -91,7 +90,7 @@ export default class BarGoalComponent extends Component {
             chboColor,
             chboColor,
           ],
-          data: props.data,
+          data: [props.data[1], props.goal, props.data[1] - props.goal],
         },
       ],
     };

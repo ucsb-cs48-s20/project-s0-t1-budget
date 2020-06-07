@@ -64,6 +64,7 @@ export default class ChartCardComponent extends Component {
     return {
       labels: props.labels,
       data: props.data,
+      goal: props.goal,
       Component: props.Component,
       color: props.color,
     };
@@ -139,6 +140,7 @@ export default class ChartCardComponent extends Component {
                 <BarGoalComponent
                   labels={this.state.labels}
                   data={this.state.data}
+                  goal={this.state.goal}
                 />
               </Card>
             </Container>
@@ -147,7 +149,11 @@ export default class ChartCardComponent extends Component {
             <h3 id="bar-goal-h3">Net Income Vs. Goal</h3>
           </Card.Header>
           <Card.Body>
-            <ChartComponent labels={this.state.labels} data={this.state.data} />
+            <BarGoalComponent
+              labels={this.state.labels}
+              data={this.state.data}
+              goal={this.state.goal}
+            />
           </Card.Body>
           <Card.Footer>
             <Button
@@ -159,7 +165,7 @@ export default class ChartCardComponent extends Component {
                 borderRadius: 25,
                 align: "center",
               }}
-              onClick={this.handleToggleBar}
+              onClick={this.handleToggleBarGoal}
             >
               <ArrowsFullscreen size={25} />
             </Button>
@@ -173,7 +179,7 @@ export default class ChartCardComponent extends Component {
                 borderRadius: 25,
                 align: "center",
               }}
-              onClick={this.props.handleBar}
+              onClick={this.props.handleBarGoals}
             >
               <X size={25} />
             </Button>
