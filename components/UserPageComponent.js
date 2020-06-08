@@ -41,6 +41,7 @@ export default class UserPageComponent extends Component {
     barActive: true,
     incomePieActive: true,
     expensePieActive: true,
+    barGoalsPieActive: true,
     codeMode: false,
   };
 
@@ -98,6 +99,18 @@ export default class UserPageComponent extends Component {
     } else {
       this.setState({
         expensePieActive: true,
+      });
+    }
+  };
+
+  handleBarGoals = () => {
+    if (this.state.barGoalsPieActive) {
+      this.setState({
+        barGoalsPieActive: false,
+      });
+    } else {
+      this.setState({
+        barGoalsPieActive: true,
       });
     }
   };
@@ -309,6 +322,12 @@ export default class UserPageComponent extends Component {
                           >
                             Expenses Pie Chart
                           </Dropdown.Item>
+                          <Dropdown.Item
+                            as="button"
+                            onClick={this.handleBarGoals}
+                          >
+                            Goal Chart
+                          </Dropdown.Item>
                         </DropdownButton>
                       </ButtonGroup>
                     </ButtonToolbar>
@@ -375,6 +394,23 @@ export default class UserPageComponent extends Component {
                       data={this.state.data.data}
                       color={this.state.colorMode}
                       Component={"ExpensePie"}
+                    />
+                  </Card>
+
+                  <Card
+                    border="none"
+                    style={
+                      this.state.barGoalsPieActive
+                        ? { border: "none" }
+                        : { display: "none" }
+                    }
+                  >
+                    <ChartCardComponent
+                      handleBarGoals={this.handleBarGoals}
+                      data={this.state.data.data}
+                      goal={this.state.data.goal}
+                      color={this.state.colorMode}
+                      Component={"BarGoal"}
                     />
                   </Card>
                 </CardColumns>
