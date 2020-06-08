@@ -3,6 +3,7 @@ import ChartComponent from "../components/ChartComponent";
 import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import BarGoalComponent from "../components/BarGoalComponent";
+import RadarChartComponent from "../components/RadarChartComponent";
 import {
   Button,
   Col,
@@ -33,6 +34,7 @@ export default class ChartCardComponent extends Component {
     openBarGoal: false,
     openPieInc: false,
     openPieExp: false,
+    openRadar: false,
     color: false,
   };
 
@@ -57,6 +59,12 @@ export default class ChartCardComponent extends Component {
   handleTogglePieExp = () => {
     this.setState({
       openPieExp: !this.state.openPieExp,
+    });
+  };
+
+  handleToggleRadar = () => {
+    this.setState({
+      openRadar: !this.state.openRadar,
     });
   };
 
@@ -300,6 +308,64 @@ export default class ChartCardComponent extends Component {
                 align: "center",
               }}
               onClick={this.props.handlePieIncome}
+            >
+              <X size={25} />
+            </Button>
+          </Card.Footer>
+        </Card>
+      );
+    } else if (this.state.Component == "RadarPie") {
+      return (
+        <Card style={true ? {} : { display: "none" }}>
+          <Backdrop
+            style={style}
+            open={this.state.openRadar}
+            onClick={this.handleToggleRadar}
+          >
+            <Container>
+              <h2>Expense Variance Chart</h2>
+              <Card>
+                <RadarChartComponent
+                  labels={this.state.labels}
+                  data={this.state.data}
+                />
+              </Card>
+            </Container>
+          </Backdrop>
+          <Card.Header>
+            <h3 id="radar-chart-h3">Expense Variance Chart</h3>
+          </Card.Header>
+          <Card.Body>
+            <RadarChartComponent
+              labels={this.state.labels}
+              data={this.state.data}
+            />
+          </Card.Body>
+          <Card.Footer>
+            <Button
+              variant="primary"
+              style={{
+                height: 50,
+                width: 50,
+                margin: 5,
+                borderRadius: 25,
+                align: "center",
+              }}
+              onClick={this.handleToggleRadar}
+            >
+              <ArrowsFullscreen size={25} />
+            </Button>
+            <Button
+              id="delete-radar-chart"
+              variant="danger"
+              style={{
+                height: 50,
+                width: 50,
+                margin: 5,
+                borderRadius: 25,
+                align: "center",
+              }}
+              onClick={this.props.handleRadar}
             >
               <X size={25} />
             </Button>
