@@ -42,7 +42,7 @@ export default class UserPageComponent extends Component {
     incomePieActive: true,
     expensePieActive: true,
     barGoalsPieActive: true,
-    codeMode: false,
+    colorMode: false,
   };
 
   componentDidMount() {
@@ -124,7 +124,6 @@ export default class UserPageComponent extends Component {
   cancelModifyBudget = () => {
     this.setState((prevState) => ({
       dataModify: false,
-      colorMode: !this.state.colorMode,
     }));
   };
 
@@ -331,8 +330,8 @@ export default class UserPageComponent extends Component {
                         </DropdownButton>
                       </ButtonGroup>
                     </ButtonToolbar>
-                    <Form.Check
-                      type="switch"
+                    <Form.Switch
+                      checked={this.state.colorMode}
                       id="custom-switch"
                       label="Colorblind Mode"
                       onChange={this.handleSwitchChange}

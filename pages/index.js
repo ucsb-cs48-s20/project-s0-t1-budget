@@ -177,8 +177,8 @@ class HomePage extends Component {
                     </ButtonGroup>
                   </ButtonToolbar>
                   <br />
-                  <Form.Check
-                    type="switch"
+                  <Form.Switch
+                    checked={this.state.colorMode}
                     id="custom-switch"
                     label="Colorblind Mode"
                     onChange={this.handleSwitchChange}
