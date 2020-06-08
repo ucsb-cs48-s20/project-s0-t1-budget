@@ -1,21 +1,12 @@
 import Layout from "../components/Layout";
-import ChartComponent from "../components/ChartComponent";
 import ChartFormComponent from "../components/ChartFormComponent";
 import TableComponent from "../components/TableComponent";
-import LineGraphComponent from "../components/LineGraphComponent";
-import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
-import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
+import RadarChartComponent from "../components/RadarChartComponent";
 import ChartCardComponent from "../components/ChartCardComponent";
 
-import Backdrop from "@material-ui/core/Backdrop";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { makeStyles } from "@material-ui/core/styles";
-import { flexbox } from "@material-ui/system";
-import Box from "@material-ui/core/Box";
 import React from "react";
 
 import Form from "react-bootstrap/Form";
-import { ArrowsFullscreen, X } from "react-bootstrap-icons";
 
 import UserPageComponent from "../components/UserPageComponent";
 import { optionalAuth } from "../utils/ssr";
@@ -186,8 +177,8 @@ class HomePage extends Component {
                     </ButtonGroup>
                   </ButtonToolbar>
                   <br />
-                  <Form.Check
-                    type="switch"
+                  <Form.Switch
+                    checked={this.state.colorMode}
                     id="custom-switch"
                     label="Colorblind Mode"
                     onChange={this.handleSwitchChange}
@@ -252,6 +243,10 @@ class HomePage extends Component {
             </CardColumns>
           </Container>
         )}
+        <RadarChartComponent
+          labels={this.state.labels}
+          data={this.state.data}
+        />
       </Layout>
     );
   }
