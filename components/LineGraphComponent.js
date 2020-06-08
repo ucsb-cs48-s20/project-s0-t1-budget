@@ -5,10 +5,11 @@ import { Form, Col, Button } from "react-bootstrap";
 export default class LineGraphComponent extends Component {
   constructor(props) {
     super(props);
+    this.loadData(this.props.year);
   }
 
   state = {
-    selectedYear: "",
+    selectedYear: this.props.year,
   };
 
   handleChange = (e) => {
@@ -235,7 +236,6 @@ export default class LineGraphComponent extends Component {
                 onChange={this.handleChange}
                 value={this.state.selectedYear}
               >
-                <option value="">Select a Year</option>
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
                 <option value="2018">2018</option>
