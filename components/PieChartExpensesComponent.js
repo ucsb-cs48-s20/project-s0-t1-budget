@@ -3,6 +3,7 @@ import { Pie } from "react-chartjs-2";
 import { draw } from "patternomaly";
 
 export default class PieChartExpensesComponent extends Component {
+  state = {};
   static getDerivedStateFromProps(props, state) {
     var categories = props.labels.slice(2);
     var posData = props.data.slice(2);
