@@ -4,7 +4,7 @@ import PieChartExpensesComponent from "../components/PieChartExpensesComponent";
 import PieChartIncomeComponent from "../components/PieChartIncomeComponent";
 import TableComponent from "../components/TableComponent";
 import UserPageFormComponent from "../components/UserPageFormComponent";
-
+import RadarChartComponent from "../components/RadarChartComponent";
 import ChartCardComponent from "../components/ChartCardComponent";
 
 import UserPageUpdateComponent from "../components/UserPageUpdateComponent";
@@ -42,6 +42,7 @@ export default class UserPageComponent extends Component {
     incomePieActive: true,
     expensePieActive: true,
     barGoalsPieActive: true,
+    radarActive: true,
     colorMode: false,
   };
 
@@ -111,6 +112,18 @@ export default class UserPageComponent extends Component {
     } else {
       this.setState({
         barGoalsPieActive: true,
+      });
+    }
+  };
+
+  handleRadar = () => {
+    if (this.state.radarActive) {
+      this.setState({
+        radarActive: false,
+      });
+    } else {
+      this.setState({
+        radarActive: true,
       });
     }
   };
@@ -327,6 +340,9 @@ export default class UserPageComponent extends Component {
                           >
                             Goal Chart
                           </Dropdown.Item>
+                          <Dropdown.Item as="button" onClick={this.handleRadar}>
+                            Expense Variance Chart
+                          </Dropdown.Item>
                         </DropdownButton>
                       </ButtonGroup>
                     </ButtonToolbar>
@@ -410,6 +426,20 @@ export default class UserPageComponent extends Component {
                       goal={this.state.data.goal}
                       color={this.state.colorMode}
                       Component={"BarGoal"}
+                    />
+                  </Card>
+                  <Card
+                    style={
+                      this.state.radarActive
+                        ? { border: "none" }
+                        : { display: "none" }
+                    }
+                  >
+                    <ChartCardComponent
+                      handleRadar={this.handleRadar}
+                      labels={this.state.data.labels}
+                      data={this.state.data.data}
+                      Component={"RadarPie"}
                     />
                   </Card>
                 </CardColumns>

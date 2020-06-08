@@ -52,6 +52,7 @@ class HomePage extends Component {
     barActive: true,
     incomePieActive: true,
     expensePieActive: true,
+    radarActive: true,
     colorMode: false,
   };
 
@@ -125,6 +126,18 @@ class HomePage extends Component {
     }
   };
 
+  handleRadar = () => {
+    if (this.state.radarActive) {
+      this.setState({
+        radarActive: false,
+      });
+    } else {
+      this.setState({
+        radarActive: true,
+      });
+    }
+  };
+
   handleSwitchChange = () => {
     this.setState({
       colorMode: !this.state.colorMode,
@@ -172,6 +185,9 @@ class HomePage extends Component {
                           onClick={this.handlePieExpense}
                         >
                           Expenses Pie Chart
+                        </Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={this.handleRadar}>
+                          Expense Variance Chart
                         </Dropdown.Item>
                       </DropdownButton>
                     </ButtonGroup>
@@ -240,13 +256,24 @@ class HomePage extends Component {
                   Component={"ExpensePie"}
                 />
               </Card>
+
+              <Card
+                style={
+                  this.state.radarActive
+                    ? { border: "none" }
+                    : { display: "none" }
+                }
+              >
+                <ChartCardComponent
+                  handleRadar={this.handleRadar}
+                  labels={this.state.labels}
+                  data={this.state.data}
+                  Component={"RadarPie"}
+                />
+              </Card>
             </CardColumns>
           </Container>
         )}
-        <RadarChartComponent
-          labels={this.state.labels}
-          data={this.state.data}
-        />
       </Layout>
     );
   }
