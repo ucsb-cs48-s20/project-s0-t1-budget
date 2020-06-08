@@ -44,6 +44,7 @@ export default class UserPageComponent extends Component {
     barGoalsPieActive: true,
     radarActive: true,
     colorMode: false,
+    showTable: false,
   };
 
   componentDidMount() {
@@ -126,6 +127,12 @@ export default class UserPageComponent extends Component {
         radarActive: true,
       });
     }
+  };
+
+  toggleTable = () => {
+    this.setState({
+      showTable: !this.state.showTable,
+    });
   };
 
   modifyBudget = () => {
@@ -274,12 +281,6 @@ export default class UserPageComponent extends Component {
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>
-
-                <Button onClick={this.deleteBudget}>
-                  Delete Month's Finances
-                </Button>
-                <br />
-                <br />
                 {this.state.dataModify ? (
                   <div>
                     <Row>
@@ -309,6 +310,11 @@ export default class UserPageComponent extends Component {
                 ) : (
                   <div>
                     <ButtonToolbar>
+                      <ButtonGroup className="mr-2">
+                        <Button variant="danger" onClick={this.deleteBudget}>
+                          Delete Month's Finances
+                        </Button>
+                      </ButtonGroup>
                       <ButtonGroup className="mr-2">
                         <Button onClick={this.modifyBudget}>
                           Modify Month's Finances
@@ -352,12 +358,28 @@ export default class UserPageComponent extends Component {
                       label="Colorblind Mode"
                       onChange={this.handleSwitchChange}
                     />
-
                     <br />
-                    <TableComponent
-                      category={this.state.data.labels}
-                      price={this.state.data.data}
-                    />
+                    {this.state.showTable ? (
+                      <div>
+                        <Button onClick={this.toggleTable}>
+                          Hide Finances Table
+                        </Button>
+                        <br />
+                        <br />
+                        <TableComponent
+                          category={this.state.data.labels}
+                          price={this.state.data.data}
+                        />
+                      </div>
+                    ) : (
+                      <div>
+                        <Button onClick={this.toggleTable}>
+                          Show Finances Table
+                        </Button>
+                        <br />
+                        <br />
+                      </div>
+                    )}
                   </div>
                 )}
 
