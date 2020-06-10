@@ -9,7 +9,7 @@ export default class RadarChartComponent extends Component {
     var categories = props.labels.slice(2);
     var posData = props.data.slice(2);
     for (var i = 0; i < posData.length; i++) {
-      posData[i] = posData[i] * 1;
+      posData[i] = posData[i] * -1;
     }
     return {
       labels: categories,
@@ -38,8 +38,8 @@ export default class RadarChartComponent extends Component {
                 display: false,
               },
               ticks: {
-                suggestedMin: 50,
-                suggestedMax: 800,
+                min: 0,
+                suggestedMax: 1000,
               },
             },
           }}
