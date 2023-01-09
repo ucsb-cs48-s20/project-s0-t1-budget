@@ -49,7 +49,7 @@
   "devDependencies": {
     "@rckeller/cypress-unfetch": "^1.0.1",
     "cypress": "^4.2.0",
-    "danger": "^10.0.0",
+    "danger": "^11.2.1",
     "heroku-dotenv": "^0.4.1",
     "husky": "^4.2.3",
     "inquirer": "^7.1.0",
